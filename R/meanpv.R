@@ -1,7 +1,3 @@
-library(dplyr)
-library(lazyeval)
-library(roxygen2)
-
 #' Student's average performance by given factors in selected year.
 #'
 #' @param pvlabs Names of column that contain five plausible values.
@@ -33,5 +29,10 @@ mean.pv <- function(pvlabs, groups, weights, data) {
         mutate(mean = round((mpv1 + mpv2 + mpv3 + mpv4 + mpv5)/5, 2),
                    freq = freq) %>%
         select(-c(mpv1, mpv2, mpv3, mpv4, mpv5)) %>%
+        ungroup() %>%
         arrange_(.dots = groups)
 }
+
+use_package("dplyr")
+use_package("lazyeval")
+use_package("roxygen2")
