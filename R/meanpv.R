@@ -32,7 +32,3 @@ mean.pv <- function(pvlabs, groups, weights, data) {
         ungroup() %>%
         arrange_(.dots = groups)
 }
-
-use_package("dplyr")
-use_package("lazyeval")
-use_package("roxygen2")

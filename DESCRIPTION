@@ -9,3 +9,9 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
+
+
+
+use_package("dplyr", pkg = "PISAoccupations")
+use_package("lazyeval", pkg = "PISAoccupations")
+use_package("roxygen2", pkg = "PISAoccupations")
