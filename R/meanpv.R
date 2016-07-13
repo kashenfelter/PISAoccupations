@@ -27,8 +27,6 @@ mean.pv <- function(pvlabs, groups, weights, data) {
                   mpv5 = sum(wpv5)/sum(weights),
                   freq = sum(weights)) %>%
         mutate(mean = round((mpv1 + mpv2 + mpv3 + mpv4 + mpv5)/5, 2),
-                   freq = freq) %>%
-        select(-c(mpv1, mpv2, mpv3, mpv4, mpv5)) %>%
-        ungroup() %>%
-        arrange_(.dots = groups)
+                   population.share = freq) %>%
+        select(-c(mpv1, mpv2, mpv3, mpv4, mpv5))
 }
