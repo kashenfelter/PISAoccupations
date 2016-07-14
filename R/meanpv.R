@@ -10,7 +10,7 @@
 #'
 #' @export
 
-mean.pv <- function(pvlabs, groups, weights, data) {
+mean_pv <- function(pvlabs, groups, weights, data) {
     data  %>%
         group_by_(.dots = groups) %>%
         select_(.dots = c(pvlabs, weights)) %>%
