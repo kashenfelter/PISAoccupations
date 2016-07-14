@@ -13,4 +13,4 @@ pisa2012 <- read_fwf(
                 c("CNT", "OCO1", "OCO2", paste0("PV",1:5,"MATH"), paste0("PV",1:5,"READ"), paste0("PV",1:5,"SCIE"),"W_FSTUWT",paste0("W_FSTR",1:80),"VER_STU")),
   col_types = paste0("ccc",paste(rep("n",3*5 + 1 + 80), collapse=""),"c"))
 
-
+save(pisa2012, file="pisa2012.rda", compression_level = 9, compress = "xz")
