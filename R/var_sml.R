@@ -10,8 +10,7 @@
 #'
 
 var_sml <- function(pvname, groups, brr_weights, means, data) {
-    replicate_means <- lapply(brr_weights, {function(x) return(mean_o(mean_ppvs(pvname, groups, x, data)))})
+    replicate_means <- lapply(brr_weights, {function(x) return(mean_ppvs(pvname, groups, x, data))})
     diffs <- lapply(replicate_means, {function(x) return((x - means)^2)})
-    return(0.05*rowSums(data.frame(diffs)))
-
+    return(0.2*0.05*rowSums(data.frame(diffs)))
 }
