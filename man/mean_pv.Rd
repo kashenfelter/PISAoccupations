@@ -4,7 +4,7 @@
 \alias{mean_pv}
 \title{Average student's performances with standard errors by given factor variables.}
 \usage{
-mean_pv(pvname, groups, final_weight, data, se = T, brr_weights = "")
+mean_pv(pvname, groups, final_weight, data, se = F, brr_weights = "")
 }
 \arguments{
 \item{pvname}{String of the form "MATH", "READ", "SCIE".}
