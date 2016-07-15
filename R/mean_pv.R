@@ -12,7 +12,7 @@
 #'
 #' @export
 
-mean_pv <- function(pvname, groups, final_weight, data, se = T, brr_weights = "") {
+mean_pv <- function(pvname, groups, final_weight, data, se = F, brr_weights = "") {
     tmp <- mean_ppvs(pvname, groups, final_weight, data)
     tmp %>% select(-starts_with("mpv")) -> tmp2
     if(se)
