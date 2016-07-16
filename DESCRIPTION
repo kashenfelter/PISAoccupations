@@ -13,4 +13,5 @@ Imports: dplyr,
     lazyeval,
     roxygen2,
     reshape2,
-    ggplot2
+    ggplot2,
+    WriteXLS

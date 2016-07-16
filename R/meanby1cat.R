@@ -10,6 +10,7 @@
 #'
 
 mean_by_1_cat <- function(subject, cnt_col, isco_cols, cat, final_weights, data) {
-    isco_cat(isco_cols, data) %>% filter(mother_occuI == cat | father_occuI == cat) %>%
+    isco_cat(isco_cols, data) %>%
+        filter(mother_occuI == cat | father_occuI == cat | mother_occuII == cat | father_occuII == cat) %>%
         mean_pv(subject, cnt_col, final_weights, .) %>% select(-population.share)
 }
