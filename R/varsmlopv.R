@@ -1,4 +1,4 @@
-#' Sampling variance for a given set of plausible values and weights.
+#' Sampling variance for one plausible values and a set of replicate weights.
 #'
 #' @param pvname String of the form "MATH", "READ", "SCIE".
 #' @param groups Name of one or more factors used for grouping.

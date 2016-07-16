@@ -2,7 +2,7 @@
 % Please edit documentation in R/meanbyallcats.R
 \name{mean_by_all_cats}
 \alias{mean_by_all_cats}
-\title{Average student performance by country and ISCO category - all categories.}
+\title{Average student performance by country and ISCO category - all categories - first digits of the code.}
 \usage{
 mean_by_all_cats(subject, cnt_col, isco_cols, final_weight, data)
 }
@@ -14,11 +14,13 @@ mean_by_all_cats(subject, cnt_col, isco_cols, final_weight, data)
 \item{isco_cols}{Names of two columns with isco codes for mother's and father's occupation.}
 
 \item{final_weight}{Name of a column that contains final student weights.}
+
+\item{data}{Data frame containing columns given in previous arguments.}
 }
 \value{
 Data frame with names of countries and means for isco categories.
 }
 \description{
-Average student performance by country and ISCO category - all categories.
+Average student performance by country and ISCO category - all categories - first digits of the code.
 }
 

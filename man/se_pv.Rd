@@ -2,7 +2,7 @@
 % Please edit documentation in R/sepv.R
 \name{se_pv}
 \alias{se_pv}
-\title{Standard errors for average performances grouped by a given factor variable.}
+\title{Standard errors for average performances grouped by given factors.}
 \usage{
 se_pv(pvname, groups, final_weight, brr_weights, means_ppv, data)
 }
@@ -24,6 +24,6 @@ computed for each plausible value.}
 Vector that contains computed standard errors.
 }
 \description{
-Standard errors for average performances grouped by a given factor variable.
+Standard errors for average performances grouped by given factors.
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/varsmlopv.R
 \name{var_sml_opv}
 \alias{var_sml_opv}
-\title{Sampling variance for a given set of plausible values and weights.}
+\title{Sampling variance for one plausible values and a set of replicate weights.}
 \usage{
 var_sml_opv(pvname, groups, brr_weights, means, data)
 }
@@ -21,6 +21,6 @@ var_sml_opv(pvname, groups, brr_weights, means, data)
 Vector that contains computed sampling variances.
 }
 \description{
-Sampling variance for a given set of plausible values and weights.
+Sampling variance for one plausible values and a set of replicate weights.
 }
 

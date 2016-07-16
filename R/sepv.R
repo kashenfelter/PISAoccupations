@@ -1,4 +1,4 @@
-#' Standard errors for average performances grouped by a given factor variable.
+#' Standard errors for average performances grouped by given factors.
 #'
 #' @param pvname String of the form "MATH", "READ", "SCIE".
 #' @param groups Name of one or more factors used for grouping.
