@@ -12,5 +12,5 @@
 #'
 
 se_pv <- function(pvname, groups, final_weight, brr_weights, means_ppv, data) {
-    return(sqrt(var_sml(pvname, groups, brr_weights, mean_o(means_ppv), data) + 1.2*var_imp(means_ppv)))
+    return(sqrt(var_sml(pvname, groups, brr_weights, final_weight, data) + 1.2*var_imp(means_ppv)))
 }

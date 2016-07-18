@@ -9,8 +9,8 @@
 #' @return Vector that contains computed sampling variances.
 #'
 
-var_sml <- function(pvname, groups, brr_weights, means, data) {
+var_sml <- function(pvname, groups, brr_weights, final_weight, data) {
     pvlabs <- paste0(paste0("PV", 1:5), pvname)
-    varsmls <- lapply((1:5), {function(x) return(var_sml_opv(pvlabs[x], groups, brr_weights, means, data))})
+    varsmls <- lapply((1:5), {function(x) return(var_sml_opv(pvlabs[x], groups, brr_weights, final_weight, data))})
     return(0.2*rowSums(data.frame(varsmls)))
 }

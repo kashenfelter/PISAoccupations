@@ -7,5 +7,5 @@
 #'
 
 mean_o <- function(means_ppv) {
-    return(round(rowSums(means_ppv[, paste0("mpv", 1:5)])/5, 2))
+    return(rowSums(means_ppv[, paste0("mpv", 1:5)])/5)
 }
