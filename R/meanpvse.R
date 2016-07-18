@@ -16,3 +16,4 @@ mean_pvse <- function(pvname, groups, weight, data) {
                 weights = interp(~w, w = as.name(weight))) %>%
         summarise(mpv1 = sum(wpv1)/sum(weights))
 }
+

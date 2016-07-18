@@ -12,6 +12,6 @@ add_isco <- function(isco_cols, data) {
         mutate_(ID = 1:dim(data)[1],
                 mother_occuI = interp("as.factor(substr(i, 1, 1))", i = as.name(isco_cols[1])),
                 father_occuI = interp("as.factor(substr(i, 1, 1))", i = as.name(isco_cols[2]))) %>%
-        melt(measure.vars = c("mother_occuI", "father_occuI"), variable.name = "isco_cat")
+        melt(measure.vars = c("mother_occuI", "father_occuI"), variable.name = "isco_cat_name", value.name = "isco_cat")
 
 }
