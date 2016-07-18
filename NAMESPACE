@@ -3,3 +3,4 @@
 export(add_isco)
 export(mean_pv)
 export(plot_rainbow)
+export(plot_rainbow_shiny)
