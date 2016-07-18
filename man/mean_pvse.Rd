@@ -4,16 +4,16 @@
 \alias{mean_pvse}
 \title{Average performance for one plausible value and a given replicate weight.}
 \usage{
-mean_pvse(pvname, groups, brr_weight, data)
+mean_pvse(pvname, groups, weight, data)
 }
 \arguments{
 \item{pvname}{Name of the plausible value column.}
 
 \item{groups}{Name of one or more factors used for grouping.}
 
-\item{data}{Name of a data frame containing columns given in previous arguments.}
+\item{weight}{Name of a column that contains final student weights.}
 
-\item{final_weight}{Name of a column that contains final student weights.}
+\item{data}{Name of a data frame containing columns given in previous arguments.}
 }
 \value{
 Data frame containing columns for each of given factor variables, five columns with

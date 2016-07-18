@@ -4,7 +4,7 @@
 \alias{var_sml_opv}
 \title{Sampling variance for one plausible values and a set of replicate weights.}
 \usage{
-var_sml_opv(pvname, groups, brr_weights, means, data)
+var_sml_opv(pvname, groups, brr_weights, final_weight, data)
 }
 \arguments{
 \item{pvname}{String of the form "MATH", "READ", "SCIE".}
@@ -13,9 +13,9 @@ var_sml_opv(pvname, groups, brr_weights, means, data)
 
 \item{brr_weights}{Names of columns that contain BRR weights.}
 
-\item{means}{Vector of average performances computed by mean_o function.}
-
 \item{data}{Name of a data frame containing columns given in previous arguments.}
+
+\item{means}{Vector of average performances computed by mean_o function.}
 }
 \value{
 Vector that contains computed sampling variances.

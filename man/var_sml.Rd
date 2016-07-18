@@ -4,7 +4,7 @@
 \alias{var_sml}
 \title{Sampling variance for a given set of plausible values and weights.}
 \usage{
-var_sml(pvname, groups, brr_weights, means, data)
+var_sml(pvname, groups, brr_weights, final_weight, data)
 }
 \arguments{
 \item{pvname}{String of the form "MATH", "READ", "SCIE".}
@@ -13,9 +13,9 @@ var_sml(pvname, groups, brr_weights, means, data)
 
 \item{brr_weights}{Names of columns that contain BRR weights.}
 
-\item{means}{Vector of average performances computed by mean_o function.}
-
 \item{data}{Name of a data frame containing columns given in previous arguments.}
+
+\item{means}{Vector of average performances computed by mean_o function.}
 }
 \value{
 Vector that contains computed sampling variances.
