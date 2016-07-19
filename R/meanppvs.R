@@ -24,5 +24,6 @@ mean_ppvs <- function(pvname, groups, weights, data) {
                    mpv5 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[5]), w = as.name(weights)),
                    population.share = interp("sum(w, na.rm = T)", w = as.name(weights)),
-                   nstud = interp("n()"))
+                   nstud = interp("n()"),
+                   nschool = interp("n_distinct(s)"), s = as.name("SCH_ID"))
 }
