@@ -1,5 +1,6 @@
 #' Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.
 #'
+#' @param subject Character of the from "MATH"/"READ"/"SCIE".
 #' @param cnts Country codes of countries to compare on a rainbow plot.
 #' @param cyear Chosen year as a character - 2003/2006/2009/2012.
 #'
@@ -7,9 +8,9 @@
 #'
 #' @export
 
-plot_rainbow_shiny <- function(cnts, cyear) {
-    math %>%
-        filter(year == cyear, cnt %in% cnts) %>%
+plot_rainbow_shiny <- function(csubject, cnts, cyear) {
+    pisa %>%
+        filter(subject == csubject, year == cyear, cnt %in% cnts) %>%
         arrange(as.character(cnt), as.numeric(as.character(isco))) %>%
         mutate(no = if_else(cnt == sort(cnts)[1], 1, 5)) %>%
         mutate(isco2 = ifelse(as.numeric(as.character(isco)) < 10,

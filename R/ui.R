@@ -2,7 +2,12 @@ shinyUI(fluidPage(
     titlePanel("PISA occupations"),
 
     sidebarLayout(
-        sidebarPanel(selectInput("cnt1", label = "Select first",
+        sidebarPanel(
+            selectInput("subject", label = "Subject",
+                        choices = c("Mathematics" = "MATH",
+                                    "Reading" = "READ",
+                                    "Science" = "SCIE"), selected = "MATH"),
+            selectInput("cnt1", label = "Select first",
                                  choices = c("Germany" = "DEU",
                                              "Finland" = "FIN",
                                              "France" = "FRA",
@@ -10,8 +15,8 @@ shinyUI(fluidPage(
                                              "South Korea" = "KOR",
                                              "Poland" = "POL",
                                              "United States of America" = "USA"), selected = "DUE"),
-        conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1'",
-                         selectInput("cnt2", label = "and second country for comparison",
+            conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1'",
+                             selectInput("cnt2", label = "and second country for comparison",
                                  choices = c("Germany" = "DEU",
                                              "Finland" = "FIN",
                                              "France" = "FRA",
@@ -20,13 +25,13 @@ shinyUI(fluidPage(
                                              "Poland" = "POL",
                                              "United States of America" = "USA"), selected = "USA")),
 
-                     checkboxGroupInput("years", label = "Years",
+             checkboxGroupInput("years", label = "Years",
                                         choices = c("2012" = "2012",
                                                     "2009" = "2009",
-                                                    "2006" = "2009",
-                                                    "2003" = "2009"), selected = "2012"),
-
-                     checkboxGroupInput("isco_cats", label = "Primary ISCO categories",
+                                                    "2006" = "2006",
+                                                    "2003" = "2003"), selected = "2012"),
+             conditionalPanel(condition = "input.condPans == 'tm1'",
+                              checkboxGroupInput("isco_cats", label = "Primary ISCO categories",
                                         choices = c("Armed forces occupations" = "0",
                                                      "Managers" = "1",
                                                      "Professionals" = "2",
@@ -36,11 +41,11 @@ shinyUI(fluidPage(
                                                      "Skilled agricultural, forestry and fishery workers" = "6",
                                                      "Craft and related trade workers" = "7",
                                                      "Plant and machine operators, and assemblers" = "8",
-                                                     "Elementary occupations" = "9"), selected = "9")),
+                                                     "Elementary occupations" = "9"), selected = "9"))),
 
         mainPanel(
             tabsetPanel(
-                tabPanel("Rainbow plot one country", plotOutput("rainbow1"), value = "rnbw1"),
+                # tabPanel("Rainbow plot one country", plotOutput("rainbow1"), value = "rnbw1"),
                 tabPanel("Rainbow plot two countries", plotOutput("rainbow2"), value = "rnbw2"),
                 tabPanel("Two countries over time", plotOutput("time"), value = "tm1"),
                 id = "condPans"
