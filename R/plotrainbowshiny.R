@@ -12,16 +12,16 @@ plot_rainbow_shiny <- function(cnts, cyear) {
         filter(year == cyear, cnt %in% cnts) %>%
         arrange(as.character(cnt), as.numeric(as.character(isco))) %>%
         mutate(no = if_else(cnt == sort(cnts)[1], 1, 5)) %>%
-        mutate(isco2 = ifelse(as.numeric(as.character(isco)) >= 0,
+        mutate(isco2 = ifelse(as.numeric(as.character(isco)) < 10,
                               isco_text_plt[as.integer(as.character(isco))+1], as.character(cnt))) -> sdf
-    sdf$isco2[is.na(sdf$isco2)] <- sort(cnts)
     ggplot(sdf, aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
         theme_bw() +
         geom_line(size = 1.5) +
         geom_text_repel(data = subset(sdf, no == 1 & !(isco2 %in% cnts))) +
         geom_text_repel(data = subset(sdf, no == 5 & !(isco2 %in% cnts))) +
-        geom_line(data = subset(sdf, isco2 %in% cnts), aes(group = year), size = 1.5) +
-        geom_point(data = subset(sdf, isco2 %in% cnts), aes(size = pop.share)) +
+        geom_line(data = subset(sdf, isco2 %in% cnts), aes(group = year), size = 1.5, color = I("black")) +
+        geom_point(data = subset(sdf, isco2 %in% cnts[1]), aes(size = pop.share), color = I("black")) +
+        geom_point(data = subset(sdf, isco2 %in% cnts[2]), aes(size = pop.share), color = I("black")) +
         theme(axis.ticks.x = element_blank(), axis.text.x = element_blank(), legend.position = "none") +
         xlab("") +
         ylab("") +
