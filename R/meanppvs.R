@@ -13,7 +13,7 @@ mean_ppvs <- function(pvname, groups, weights, data) {
     id_school <- "SCH_ID"
     data %>%
         group_by_(.dots = groups) %>%
-        select_(.dots = c(pvlabs, weights)) %>%
+        select_(.dots = c(pvlabs, weights, "SCH_ID")) %>%
         summarise_(mpv1 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[1]), w = as.name(weights)),
                    mpv2 = interp("stats::weighted.mean(p,w, na.rm = T)",
