@@ -28,9 +28,13 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
         # geom_hline()
         theme_bw() +
         theme(axis.ticks.x = element_blank(),
-              axis.text.x = element_text(angle = 90),
+              # axis.text.x = element_text(angle = 90),
+              axis.text.x = element_blank(),
               legend.position = "bottom") +
-        scale_color_discrete(name = "Country") +
+        scale_shape_discrete(name = "Country") +
+        scale_color_discrete(name = "Primary ISCO category",
+                             breaks = as.character(0:9),
+                             labels = as.character(0:9)) +
         xlab("") +
         ylab("")
 }
