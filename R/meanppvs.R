@@ -28,4 +28,3 @@ mean_ppvs <- function(pvname, groups, weights, data) {
                    nstud = interp("n()"),
                    nschool = interp("n_distinct(s, na.rm = t)", s = as.name(id_school), t = T))
 }
-mean_ppvs("MATH", "CNT", "W_FSTUWT", pisa2012)
