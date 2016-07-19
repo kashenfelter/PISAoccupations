@@ -39,3 +39,8 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
         xlab("") +
         ylab("")
 }
+<<<<<<< HEAD
+=======
+
+plot_time_shiny("READ", c("USA", "POL"), c("1","2"), c("2009", "2012"))
+>>>>>>> fa62f93a668513db098fa65ec4990da84628a1fb
