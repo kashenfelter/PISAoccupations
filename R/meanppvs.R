@@ -13,16 +13,16 @@ mean_ppvs <- function(pvname, groups, weights, data) {
     data %>%
         group_by_(.dots = groups) %>%
         select_(.dots = c(pvlabs, weights)) %>%
-        summarise_(mpv1 = interp("stats::weighted.mean(p,w)",
+        summarise_(mpv1 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[1]), w = as.name(weights)),
-                   mpv2 = interp("stats::weighted.mean(p,w)",
+                   mpv2 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[2]), w = as.name(weights)),
-                   mpv3 = interp("stats::weighted.mean(p,w)",
+                   mpv3 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[3]), w = as.name(weights)),
-                   mpv4 = interp("stats::weighted.mean(p,w)",
+                   mpv4 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[4]), w = as.name(weights)),
-                   mpv5 = interp("stats::weighted.mean(p,w)",
+                   mpv5 = interp("stats::weighted.mean(p,w, na.rm = T)",
                                  p = as.name(pvlabs[5]), w = as.name(weights)),
-                   population.share = interp("sum(w)", w = as.name(weights)),
+                   population.share = interp("sum(w, na.rm = T)", w = as.name(weights)),
                    nstud = interp("n()"))
 }
