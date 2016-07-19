@@ -10,6 +10,7 @@
 
 mean_ppvs <- function(pvname, groups, weights, data) {
     pvlabs <- paste0(paste0("PV", 1:5), pvname)
+    id_school <- "SCH_ID"
     data %>%
         group_by_(.dots = groups) %>%
         select_(.dots = c(pvlabs, weights)) %>%
@@ -25,5 +26,5 @@ mean_ppvs <- function(pvname, groups, weights, data) {
                                  p = as.name(pvlabs[5]), w = as.name(weights)),
                    population.share = interp("sum(w, na.rm = T)", w = as.name(weights)),
                    nstud = interp("n()"),
-                   nschool = interp("n_distinct(s, na.rm = T)"), s = as.name("SCH_ID"))
+                   nschool = interp("n_distinct(ss, na.rm = T)", ss = as.name(id_school)))
 }
