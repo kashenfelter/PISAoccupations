@@ -13,16 +13,16 @@ mean_ppvs <- function(pvname, groups, weights, data) {
     data %>%
         group_by_(.dots = groups) %>%
         select_(.dots = c(pvlabs, weights)) %>%
-        mutate_(wpv1 = interp(~p*w, p = as.name(pvlabs[1]), w = as.name(weights)),
-                wpv2 = interp(~p*w, p = as.name(pvlabs[2]), w = as.name(weights)),
-                wpv3 = interp(~p*w, p = as.name(pvlabs[3]), w = as.name(weights)),
-                wpv4 = interp(~p*w, p = as.name(pvlabs[4]), w = as.name(weights)),
-                wpv5 = interp(~p*w, p = as.name(pvlabs[5]), w = as.name(weights)),
-                weights = interp(~w, w = as.name(weights))) %>%
-        summarise(mpv1 = sum(wpv1)/sum(weights),
-                  mpv2 = sum(wpv2)/sum(weights),
-                  mpv3 = sum(wpv3)/sum(weights),
-                  mpv4 = sum(wpv4)/sum(weights),
-                  mpv5 = sum(wpv5)/sum(weights),
-                  population.share = sum(weights))
+        summarise_(mpv1 = interp("stats::weighted.mean(p,w)",
+                                 p = as.name(pvlabs[1]), w = as.name(weights)),
+                   mpv2 = interp("stats::weighted.mean(p,w)",
+                                 p = as.name(pvlabs[2]), w = as.name(weights)),
+                   mpv3 = interp("stats::weighted.mean(p,w)",
+                                 p = as.name(pvlabs[3]), w = as.name(weights)),
+                   mpv4 = interp("stats::weighted.mean(p,w)",
+                                 p = as.name(pvlabs[4]), w = as.name(weights)),
+                   mpv5 = interp("stats::weighted.mean(p,w)",
+                                 p = as.name(pvlabs[5]), w = as.name(weights)),
+                   population.share = interp("sum(w)", w = as.name(weights)),
+                   nstud = interp("n()"))
 }

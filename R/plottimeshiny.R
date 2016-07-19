@@ -24,12 +24,8 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
                    aes(group = isco)) +
         geom_line(data = subset(sdf, cnt == sort(cnts)[2] & isco != "cnt"),
                   aes(group = isco)) +
-        # scale_x_continuous(breaks = seq(from = 1, to = length(years)*length(isco_cats), by = 3)) +
-        # labels = c("", "2003", "", "", "2006", "", "", "2009", "", "", "2012", "")) +
-        # geom_hline()
         theme_bw() +
         theme(axis.ticks.x = element_blank(),
-              # axis.text.x = element_text(angle = 90),
               axis.text.x = element_blank(),
               legend.position = "bottom") +
         scale_shape_discrete(name = "Country") +
