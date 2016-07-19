@@ -14,17 +14,18 @@ mean_ppvs <- function(pvname, groups, weights, data) {
     data %>%
         group_by_(.dots = groups) %>%
         select_(.dots = c(pvlabs, weights, id_school)) %>%
-        summarise_(mpv1 = interp("stats::weighted.mean(p,w, na.rm = T)",
-                                 p = as.name(pvlabs[1]), w = as.name(weights)),
-                   mpv2 = interp("stats::weighted.mean(p,w, na.rm = T)",
-                                 p = as.name(pvlabs[2]), w = as.name(weights)),
-                   mpv3 = interp("stats::weighted.mean(p,w, na.rm = T)",
-                                 p = as.name(pvlabs[3]), w = as.name(weights)),
-                   mpv4 = interp("stats::weighted.mean(p,w, na.rm = T)",
-                                 p = as.name(pvlabs[4]), w = as.name(weights)),
-                   mpv5 = interp("stats::weighted.mean(p,w, na.rm = T)",
-                                 p = as.name(pvlabs[5]), w = as.name(weights)),
-                   population.share = interp("sum(w, na.rm = T)", w = as.name(weights)),
+        summarise_(mpv1 = interp("stats::weighted.mean(p,w, na.rm = t)",
+                                 p = as.name(pvlabs[1]), w = as.name(weights), t = T),
+                   mpv2 = interp("stats::weighted.mean(p,w, na.rm = t)",
+                                 p = as.name(pvlabs[2]), w = as.name(weights), t = T),
+                   mpv3 = interp("stats::weighted.mean(p,w, na.rm = t)",
+                                 p = as.name(pvlabs[3]), w = as.name(weights), t = T),
+                   mpv4 = interp("stats::weighted.mean(p,w, na.rm = t)",
+                                 p = as.name(pvlabs[4]), w = as.name(weights), t = T),
+                   mpv5 = interp("stats::weighted.mean(p,w, na.rm = t)",
+                                 p = as.name(pvlabs[5]), w = as.name(weights), t = T),
+                   population.share = interp("sum(w, na.rm = t)", w = as.name(weights), t = T),
                    nstud = interp("n()"),
-                   nschool = interp("n_distinct(s, na.rm = T)", s = as.name(id_school)))
+                   nschool = interp("n_distinct(s, na.rm = t)", s = as.name(id_school), t = T))
 }
+mean_ppvs("MATH", "CNT", "W_FSTUWT", pisa2012)
