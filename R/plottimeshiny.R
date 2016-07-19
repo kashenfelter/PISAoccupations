@@ -19,7 +19,8 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
         mutate(nno = paste0(year,isco)) -> sdf
     ggplot(sdf, aes(x = as.factor(nno), y = ave.perf, color = isco, shape = cnt)) +
         geom_point(size = 4) +
-         geom_line(data = subset(sdf, cnt == sort(cnts)[1] & isco != "cnt"),
+        geom_pointrange(aes(ymin=ave.perf - se, ymax=ave.perf + se)) +
+        geom_line(data = subset(sdf, cnt == sort(cnts)[1] & isco != "cnt"),
                    aes(group = isco)) +
         geom_line(data = subset(sdf, cnt == sort(cnts)[2] & isco != "cnt"),
                   aes(group = isco)) +
@@ -39,3 +40,4 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
         ylab("")
 }
 
+plot_time_shiny("READ", c("USA", "POL"), c("1","2"), c("2009", "2012"))
