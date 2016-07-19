@@ -30,6 +30,10 @@ shinyUI(fluidPage(
                                                     "2009" = "2009",
                                                     "2006" = "2006",
                                                     "2003" = "2003"), selected = "2012"),
+
+            # sliderInput("yaxis", label = "Range for vertical axis",
+                        # min = 300, max = 700, value = c(475, 580)), # Do zmiany później.
+
              conditionalPanel(condition = "input.condPans == 'tm1'",
                               checkboxGroupInput("isco_cats", label = "Primary ISCO categories",
                                         choices = c("0 Armed forces occupations" = "0",

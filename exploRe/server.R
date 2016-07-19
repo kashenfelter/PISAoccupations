@@ -9,7 +9,8 @@
 
 shinyServer(function(input, output) {
      output$rainbow2 <- renderPlot(
-          plot_rainbow_shiny(input$subject, c(input$cnt1, input$cnt2), input$years[1])
+          plot_rainbow_shiny(input$subject, c(input$cnt1, input$cnt2), input$years[1]) #+
+              # ylim(input$yaxis)
      )
      output$time <- renderPlot(
          plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats, input$years)
