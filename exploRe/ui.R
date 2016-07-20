@@ -31,11 +31,24 @@ shinyUI(fluidPage(
                              selectInput("cnt2", label = "and second country for comparison",
                                  choices = kraje, selected = kraje[length(kraje)])),
 
-             checkboxGroupInput("years", label = "Years",
+            conditionalPanel(condition = "input.condPans == 'rnbw2'",
+                             radioButtons("cyear", "Year",
+                                          choices = c("2012" = "2012",
+                                                      "2009" = "2009",
+                                                      "2006" = "2006",
+                                                      "2003" = "2003"), selected = "2012")),
+
+            conditionalPanel(condition = "input.condPans == 'tm1'",
+                 checkboxGroupInput("years", label = "Years",
                                         choices = c("2012" = "2012",
                                                     "2009" = "2009",
                                                     "2006" = "2006",
-                                                    "2003" = "2003"), selected = "2012"),
+                                                    "2003" = "2003"), selected = NULL)),
+
+            conditionalPanel(condition = "input.condPans == 'spr'",
+                             selectInput("fspr", label = "Type of spread plot",
+                                        choices = c("Extreme values" = "sp",
+                                                    "All categories" = "ac"), selected = "sp")),
 
             # sliderInput("yaxis", label = "Range for vertical axis",
                         # min = 300, max = 700, value = c(475, 580)), # Do zmiany później.

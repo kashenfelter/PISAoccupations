@@ -7,7 +7,7 @@
 #'
 #' @export
 
-plot_spread__all_shiny <- function(csubject, ccnts) {
+plot_spread_all_shiny <- function(csubject, ccnts) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% ccnts) %>%
