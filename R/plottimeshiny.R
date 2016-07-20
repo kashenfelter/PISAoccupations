@@ -27,7 +27,7 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
                    aes(group = isco)) +
         geom_line(data = subset(sdf, cnt == sort(cnts)[2] & isco != "10"),
                   aes(group = isco)) +
-        geom_line(data = subset(sdf, isco != "10"), aes(x = as.factor(nno), y = mxl, group = nno2, linetype = cnt, color = cnt)) +
+        geom_line(data = subset(sdf, isco != "10"), aes(x = as.factor(nno), y = mxl, group = nno2, linetype = cnt), color = I("black"), size = 2) +
         theme_bw() +
         theme(axis.ticks.x = element_blank(),
               axis.text.x = element_blank(),
