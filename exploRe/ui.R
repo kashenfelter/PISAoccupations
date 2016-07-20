@@ -1,3 +1,19 @@
+kraje <- sort(c("Germany" = "DEU",
+           "Finland" = "FIN",
+           "France" = "FRA",
+           "Great Britain" = "GBR",
+           "South Korea" = "KOR",
+           "Poland" = "POL",
+           "United States of America" = "USA",
+           "Belgium" = "BEL",
+           "Russian Federation" = "RUS",
+           "Liechtenstein" = "LIE",
+           "Turkey" = "TUR",
+           "Czech Republic" = "CZE",
+           "Spain" = "ESP",
+           "Mexico" = "MEX",
+           "Sweden" = "SWE"))
+
 shinyUI(fluidPage(
     titlePanel("PISA occupations"),
 
@@ -8,22 +24,10 @@ shinyUI(fluidPage(
                                     "Reading" = "READ",
                                     "Science" = "SCIE"), selected = "MATH"),
             selectInput("cnt1", label = "Select first",
-                                 choices = c("Germany" = "DEU",
-                                             "Finland" = "FIN",
-                                             "France" = "FRA",
-                                             "Great Britain" = "GBR",
-                                             "South Korea" = "KOR",
-                                             "Poland" = "POL",
-                                             "United States of America" = "USA"), selected = "DUE"),
-            conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1'",
+                                 choices = kraje, selected = kraje[1]),
+            conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1' | input.condPans == 'spr'",
                              selectInput("cnt2", label = "and second country for comparison",
-                                 choices = c("Germany" = "DEU",
-                                             "Finland" = "FIN",
-                                             "France" = "FRA",
-                                             "Great Britain" = "GBR",
-                                             "South Korea" = "KOR",
-                                             "Poland" = "POL",
-                                             "United States of America" = "USA"), selected = "USA")),
+                                 choices = kraje, selected = kraje[length(kraje)])),
 
              checkboxGroupInput("years", label = "Years",
                                         choices = c("2012" = "2012",
@@ -52,6 +56,7 @@ shinyUI(fluidPage(
                 # tabPanel("Rainbow plot one country", plotOutput("rainbow1"), value = "rnbw1"),
                 tabPanel("Rainbow plot two countries", plotOutput("rainbow2"), value = "rnbw2"),
                 tabPanel("Two countries over time", plotOutput("time"), value = "tm1"),
+                tabPanel("Spread between extreme categories", plotOutput("spread"), value = "spr"),
                 id = "condPans"
             )
         )

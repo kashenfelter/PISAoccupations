@@ -15,4 +15,7 @@ shinyServer(function(input, output) {
      output$time <- renderPlot(
          plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats, input$years)
      )
+     output$spread <- renderPlot(
+         plot_spread_shiny(input$subject, c(input$cnt1, input$cnt2))
+     )
 })
