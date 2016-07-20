@@ -13,17 +13,21 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
-               isco %in% isco_cats,
+               isco %in% c(isco_cats, "10"),
                year %in% years) %>%
         arrange(as.character(cnt), as.character(year), as.character(isco)) %>%
-        mutate(nno = paste0(year,isco)) -> sdf
-    ggplot(sdf, aes(x = as.factor(nno), y = ave.perf, color = isco, shape = cnt)) +
+        mutate(nno = paste0(year,isco),
+               nno2 = paste0(year, cnt)) -> sdf
+    sdf$mxl <- apply(data.frame(as.character(sdf$nno2)), 1, {function(x)
+        return(sdf[(sdf$cnt == substr(x, 5, 7) & sdf$isco == "10" & sdf$year == substr(x, 1, 4)), "ave.perf"])})
+    ggplot(subset(sdf, isco != "10"), aes(x = as.factor(nno), y = ave.perf, color = isco, shape = cnt)) +
         geom_point(size = 4) +
         geom_pointrange(aes(ymin=ave.perf - se, ymax=ave.perf + se)) +
-        geom_line(data = subset(sdf, cnt == sort(cnts)[1] & isco != "cnt"),
+        geom_line(data = subset(sdf, cnt == sort(cnts)[1] & isco != "10"),
                    aes(group = isco)) +
-        geom_line(data = subset(sdf, cnt == sort(cnts)[2] & isco != "cnt"),
+        geom_line(data = subset(sdf, cnt == sort(cnts)[2] & isco != "10"),
                   aes(group = isco)) +
+        geom_line(data = subset(sdf, isco != "10"), aes(x = as.factor(nno), y = mxl, group = nno2, linetype = cnt, color = cnt)) +
         theme_bw() +
         theme(axis.ticks.x = element_blank(),
               axis.text.x = element_blank(),
