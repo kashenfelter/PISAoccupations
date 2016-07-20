@@ -10,10 +10,9 @@
 
 mean_pvse <- function(pvname, groups, weight, data) {
     data %>%
+        select_(.dots = c(pvname, groups,  weight)) %>%
         group_by_(.dots = groups) %>%
-        select_(.dots = c(pvname, weight)) %>%
-        mutate_(wpv1 = interp(~p*w, p = as.name(pvname), w = as.name(weight)),
-                weights = interp(~w, w = as.name(weight))) %>%
-        summarise(mpv1 = sum(wpv1, na.rm = T)/sum(weights, na.rm = T))
+        rename_(.dots = setNames(c(pvname, weight), c("PV", "W_F"))) %>%
+        summarise(mpv1 = sum(PV*W_F, na.rm = T)/sum(W_F, na.rm = T))
 }
 

@@ -12,19 +12,15 @@ mean_ppvs <- function(pvname, groups, weights, data) {
     pvlabs <- paste0(paste0("PV", 1:5), pvname)
     id_school <- "SCH_ID"
     data %>%
+        select_(.dots = c(pvlabs, groups, weights, id_school)) %>%
         group_by_(.dots = groups) %>%
-        select_(.dots = c(pvlabs, weights, id_school)) %>%
-        summarise_(mpv1 = interp("stats::weighted.mean(p,w, na.rm = t)",
-                                 p = as.name(pvlabs[1]), w = as.name(weights), t = T),
-                   mpv2 = interp("stats::weighted.mean(p,w, na.rm = t)",
-                                 p = as.name(pvlabs[2]), w = as.name(weights), t = T),
-                   mpv3 = interp("stats::weighted.mean(p,w, na.rm = t)",
-                                 p = as.name(pvlabs[3]), w = as.name(weights), t = T),
-                   mpv4 = interp("stats::weighted.mean(p,w, na.rm = t)",
-                                 p = as.name(pvlabs[4]), w = as.name(weights), t = T),
-                   mpv5 = interp("stats::weighted.mean(p,w, na.rm = t)",
-                                 p = as.name(pvlabs[5]), w = as.name(weights), t = T),
-                   population.share = interp("sum(w, na.rm = t)", w = as.name(weights), t = T),
-                   nstud = interp("n()"),
-                   nschool = interp("n_distinct(s, na.rm = t)", s = as.name(id_school), t = T))
+        rename_(.dots = setNames(c(weights, pvlabs), c("W_F", paste0("PV", 1:5)))) %>%
+        summarise(mpv1 = sum(PV1*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
+                  mpv2 = sum(PV2*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
+                  mpv3 = sum(PV3*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
+                  mpv4 = sum(PV4*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
+                  mpv5 = sum(PV5*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
+                  population.share = sum(W_F, na.rm = TRUE),
+                  nstud = n(),
+                  nschool = n_distinct(SCH_ID, na.rm = TRUE))
 }

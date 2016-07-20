@@ -12,5 +12,5 @@
 var_sml_opv <- function(pvname, groups, brr_weights, final_weight, data) {
     replicate_means <- data.frame(lapply(brr_weights, {function(x) return(mean_pvse(pvname, groups, x, data)[, "mpv1"])}))
     diffs <- lapply(replicate_means, {function(x) return((x - mean_pvse(pvname, groups, final_weight, data)[, "mpv1"])^2)})
-    return(data.frame(0.05*rowSums(data.frame(diffs), na.rm = T)))
+    return(0.05*rowSums(data.frame(diffs), na.rm = T))
 }

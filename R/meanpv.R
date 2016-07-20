@@ -12,11 +12,8 @@
 #'
 #' @export
 
-mean_pv <- function(pvname, groups, final_weight, data, se = F, brr_weights = "") {
+mean_pv <- function(pvname, groups, final_weight, brr_weights, data) {
     tmp <- mean_ppvs(pvname, groups, final_weight, data)
     tmp %>% select(-starts_with("mpv")) -> tmp2
-    if(se)
-        return(data.frame(tmp2, "mean" = mean_o(tmp), "se" = se_pv(pvname, groups, final_weight, brr_weights, tmp, data)))
-    else
-        return(data.frame(tmp2, "mean" = mean_o(tmp)))
+    return(data.frame(tmp2, "mean" = mean_o(tmp), "se" = se_pv(pvname, groups, final_weight, brr_weights, tmp, data)))
 }

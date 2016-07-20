@@ -6,6 +6,8 @@
 #' @return Vector of student's average performances.
 #'
 
-mean_o <- function(means_ppv) {
-    return(rowSums(means_ppv[, paste0("mpv", 1:5)])/5)
+mean_o <- function(means) {
+    means %>%
+        select(starts_with("mpv")) %>%
+        rowSums(., na.rm = T)/5
 }
