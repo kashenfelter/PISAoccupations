@@ -25,7 +25,6 @@ plot_spread_shiny <- function(csubject, ccnts) {
     ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt)) +
         geom_line() +
         geom_point(data = subset(sdf, cat == "isco"), shape = 95, size = 6) +
-        geom_point(data = subset(sdf, cat == "isco"), shape = 95, size = 6) +
         geom_point(data = subset(sdf, cat == "cnt"), size = 2) +
         theme_bw() +
         theme(legend.position = "bottom",
