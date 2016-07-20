@@ -19,6 +19,8 @@ shinyUI(fluidPage(
 
     sidebarLayout(
         sidebarPanel(
+            # actionButton("save", "Save current plot"),
+
             selectInput("subject", label = "Subject",
                         choices = c("Mathematics" = "MATH",
                                     "Reading" = "READ",

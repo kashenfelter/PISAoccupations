@@ -10,14 +10,23 @@
 plot_spread_shiny <- function(csubject, ccnts) {
     pisa %>%
         filter(subject == csubject,
-               cnt %in% ccnts,
-               isco %in% c("1", "9", "10")) %>%
-        select(year, cnt, isco, ave.perf) %>%
-        mutate(xl = as.factor(paste0(year, cnt))) -> sdf
-    ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt)) + # +
+               cnt %in% ccnts) %>%
+        mutate(cat = ifelse(isco == "10", "cnt", "isco")) %>%
+        group_by(cnt, year, cat) %>%
+        summarise(max = max(ave.perf),
+                  min = min(ave.perf)) %>%
+        mutate(xl = paste0(year,cnt)) %>%
+        melt(measure.vars = c("max", "min"),
+             variable.name = "type", value.name = "ave.perf") %>%
+        arrange(cnt, year) %>%
+        filter(!(cat == "cnt" & type == "max")) %>%
+        select(-c(type, year))-> sdf
+
+    ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt)) +
         geom_line() +
-        geom_point(data = subset(sdf, isco != "10"), shape = 95, size = 6) +
-        geom_point(data = subset(sdf, isco == "10"), size = 2) +
+        geom_point(data = subset(sdf, cat == "isco"), shape = 95, size = 6) +
+        geom_point(data = subset(sdf, cat == "isco"), shape = 95, size = 6) +
+        geom_point(data = subset(sdf, cat == "cnt"), size = 2) +
         theme_bw() +
         theme(legend.position = "bottom",
               axis.ticks.x = element_blank()) +
