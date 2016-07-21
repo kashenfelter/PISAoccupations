@@ -1,11 +1,10 @@
-# library(dplyr)
-# library(ggplot2)
-# library(lazyeval)
-# library(ggrepel)
-# library(devtools)
-# library(PISAoccupations)
-# load("data/pisa.rda")
-# load("data/isco_text_plt.rda")
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(PISAoccupations)
+
+pisa_all %>%
+    filter(nstud >= 30, nschool >= 5) -> pisa
 
 shinyServer(function(input, output) {
      output$rainbow2 <- renderPlot(

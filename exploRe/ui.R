@@ -46,7 +46,7 @@ shinyUI(fluidPage(
                                                     "2003" = "2003"), selected = NULL)),
 
             conditionalPanel(condition = "input.condPans == 'spr'",
-                             selectInput("fspr", label = "Type of spread plot",
+                             selectInput("fspr", label = "Type",
                                         choices = c("Extreme values" = "sp",
                                                     "All categories" = "ac"), selected = "sp")),
 
@@ -71,7 +71,7 @@ shinyUI(fluidPage(
                 # tabPanel("Rainbow plot one country", plotOutput("rainbow1"), value = "rnbw1"),
                 tabPanel("Rainbow plot two countries", plotOutput("rainbow2"), value = "rnbw2"),
                 tabPanel("Two countries over time", plotOutput("time"), value = "tm1"),
-                tabPanel("Spread between extreme categories", plotOutput("spread"), value = "spr"),
+                tabPanel("Plot spread", plotOutput("spread"), value = "spr"),
                 id = "condPans"
             )
         )
