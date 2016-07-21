@@ -18,7 +18,7 @@ plot_spread_all_shiny <- function(csubject, ccnts) {
         geom_line() +
         geom_point(data = subset(sdf, isco != "10"), shape = 95, size = 6) +
         geom_point(data = subset(sdf, isco == "10"), size = 4) +
-        geom_text_repel(data = subset(sdf, isco != "10")) +
+        geom_text(data = subset(sdf, isco != "10"), hjust = "right", vjust = "top") +
         theme_bw() +
         theme(legend.position = "bottom",
               axis.ticks.x = element_blank()) +
