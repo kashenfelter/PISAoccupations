@@ -4,7 +4,8 @@ library(ggrepel)
 library(PISAoccupations)
 
 pisa_all %>%
-    filter(nstud >= 30, nschool >= 5) -> pisa
+    filter(nstud >= 30,
+           nschool >= 5) -> pisa
 
 shinyServer(function(input, output) {
      output$rainbow2 <- renderPlot(
