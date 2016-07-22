@@ -4,7 +4,7 @@
 \alias{mean_o}
 \title{Mean calculated from five plausible values.}
 \usage{
-mean_o(means)
+mean_o(means_ppv)
 }
 \arguments{
 \item{means_ppv}{Data frame returned by mean_ppvs function that contains average performances computed

@@ -25,13 +25,16 @@ shinyUI(fluidPage(
                         choices = c("Mathematics" = "MATH",
                                     "Reading" = "READ",
                                     "Science" = "SCIE"), selected = "MATH"),
-            selectInput("cnt1", label = "Select first",
-                                 choices = kraje, selected = kraje[1]),
+
+            conditionalPanel(condition = "input.condPans != 'dts'",
+                selectInput("cnt1", label = "Select first",
+                                 choices = kraje, selected = kraje[1])),
+
             conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1' | input.condPans == 'spr'",
                              selectInput("cnt2", label = "and second country for comparison",
                                  choices = kraje, selected = kraje[length(kraje)])),
 
-            conditionalPanel(condition = "input.condPans == 'rnbw2'",
+            conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'dts'",
                              radioButtons("cyear", "Year",
                                           choices = c("2012" = "2012",
                                                       "2009" = "2009",
@@ -68,6 +71,7 @@ shinyUI(fluidPage(
 
         mainPanel(
             tabsetPanel(
+                tabPanel("All countries comparison", plotOutput("dots"), value = "dts"),
                 # tabPanel("Rainbow plot one country", plotOutput("rainbow1"), value = "rnbw1"),
                 tabPanel("Rainbow plot two countries", plotOutput("rainbow2"), value = "rnbw2"),
                 tabPanel("Two countries over time", plotOutput("time"), value = "tm1"),

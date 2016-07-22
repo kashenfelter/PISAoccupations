@@ -8,6 +8,10 @@ pisa_all %>%
            nschool >= 5) -> pisa
 
 shinyServer(function(input, output) {
+    output$dots <- renderPlot(
+        plot_dot_shiny(input$subject, input$cyear)
+    )
+
      output$rainbow2 <- renderPlot(
           plot_rainbow_shiny(input$subject, c(input$cnt1, input$cnt2), input$cyear) #+
               # ylim(input$yaxis)
