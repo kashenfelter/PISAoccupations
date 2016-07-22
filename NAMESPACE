@@ -2,6 +2,7 @@
 
 export(add_isco)
 export(add_iscoII)
+export(exploreOccupations)
 export(mean_pv)
 export(plot_dot_shiny)
 export(plot_rainbow)
