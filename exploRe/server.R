@@ -1,12 +1,3 @@
-library(dplyr)
-library(ggplot2)
-library(ggrepel)
-library(PISAoccupations)
-
-pisa_all %>%
-    filter(nstud >= 30,
-           nschool >= 5) -> pisa
-
 shinyServer(function(input, output) {
     output$dots <- renderPlot(
         plot_dot_shiny(input$subject, input$cyear)

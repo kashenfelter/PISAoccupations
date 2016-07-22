@@ -1,4 +1,4 @@
-#' Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.
+#' Function thats starts package's shiny app.
 #'
 #' @export
 

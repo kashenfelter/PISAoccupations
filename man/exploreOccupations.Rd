@@ -2,11 +2,11 @@
 % Please edit documentation in R/exploreoccupations.R
 \name{exploreOccupations}
 \alias{exploreOccupations}
-\title{Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.}
+\title{Function thats starts package's shiny app.}
 \usage{
 exploreOccupations()
 }
 \description{
-Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.
+Function thats starts package's shiny app.
 }
 
