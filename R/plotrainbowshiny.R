@@ -13,8 +13,9 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
         filter(subject == csubject, year == cyear, cnt %in% cnts) %>%
         arrange(as.character(cnt), as.numeric(as.character(isco))) %>%
         mutate(no = if_else(cnt == sort(cnts)[1], 1, 5)) %>%
-        mutate(isco2 = ifelse(as.numeric(as.character(isco)) < 10,
+        mutate(isco2 = ifelse(!(isco == "cnt"),
                               isco_text_plt[as.integer(as.character(isco))+1], as.character(cnt))) -> sdf
+    # Powyższa linijka wymaga poprawy.
     ggplot(sdf, aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
         theme_bw() +
         geom_line(size = 1.5) +

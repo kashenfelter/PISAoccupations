@@ -8,7 +8,6 @@ exploreOccupations <- function() {
         mutate(cnt = as.character(cnt)) %>%
         distinct() -> kraje
 
-
     shinyApp(
         ui = fluidPage(
             titlePanel("PISA occupations"),
@@ -28,7 +27,7 @@ exploreOccupations <- function() {
 
                     conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1' | input.condPans == 'spr'",
                                      selectInput("cnt2", label = "and second country for comparison",
-                                                 choices = kraje, selected = kraje[length(kraje)])),
+                                                 choices = kraje, selected = kraje[2])),
 
                     conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'dts'",
                                      radioButtons("cyear", "Year",

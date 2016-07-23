@@ -16,9 +16,9 @@ plot_spread_all_shiny <- function(csubject, ccnts) {
 
     ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt, label = isco)) +
         geom_line() +
-        geom_point(data = subset(sdf, isco != "10"), shape = 95, size = 6) +
-        geom_point(data = subset(sdf, isco == "10"), size = 4) +
-        geom_text(data = subset(sdf, isco != "10"), hjust = "right", vjust = "top") +
+        geom_point(data = subset(sdf, isco != "cnt"), shape = 95, size = 6) +
+        geom_point(data = subset(sdf, isco == "cnt"), size = 4) +
+        geom_text(data = subset(sdf, isco != "cnt"), hjust = "right", vjust = "top") +
         theme_bw() +
         theme(legend.position = "bottom",
               axis.ticks.x = element_blank()) +

@@ -11,7 +11,7 @@ plot_spread_shiny <- function(csubject, ccnts) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% ccnts) %>%
-        mutate(cat = ifelse(isco == "10", "cnt", "isco")) %>%
+        mutate(cat = ifelse(isco == "cnt", "cnt", "isco")) %>%
         group_by(cnt, year, cat) %>%
         summarise(max = max(ave.perf),
                   min = min(ave.perf)) %>%
