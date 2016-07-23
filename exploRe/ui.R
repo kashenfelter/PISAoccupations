@@ -1,19 +1,3 @@
-# kraje <- sort(c("Germany" = "DEU",
-#            "Finland" = "FIN",
-#            "France" = "FRA",
-#            "Great Britain" = "GBR",
-#            "South Korea" = "KOR",
-#            "Poland" = "POL",
-#            "United States of America" = "USA",
-#            "Belgium" = "BEL",
-#            "Russian Federation" = "RUS",
-#            "Liechtenstein" = "LIE",
-#            "Turkey" = "TUR",
-#            "Czech Republic" = "CZE",
-#            "Spain" = "ESP",
-#            "Mexico" = "MEX",
-#            "Sweden" = "SWE"))
-
 pisa %>%
     select(cnt) %>%
     mutate(cnt = as.character(cnt)) %>%
