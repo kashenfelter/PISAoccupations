@@ -14,7 +14,7 @@ plot_dot_shiny <- function(csubject, cyear) {
         select(cnt, isco, ave.perf, se, pop.share) -> sdf
     ggplot(subset(sdf, isco == "cnt"), aes(x = reorder(cnt, ave.perf), y = ave.perf)) +
         geom_point() +
-        geom_point(data = subset(sdf, isco %in% as.character(c(1:4, 10))), aes(size = pop.share, color = isco)) +
+        geom_point(data = subset(sdf, isco %in% c(as.character(1:4), "cnt")), aes(size = pop.share, color = isco)) +
         coord_flip() +
         theme_bw() +
         xlab("") +
