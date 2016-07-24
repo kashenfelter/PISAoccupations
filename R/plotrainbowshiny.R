@@ -11,7 +11,7 @@
 plot_rainbow_shiny <- function(csubject, cnts, cyear) {
     pisa %>%
         filter(subject == csubject, year == cyear, cnt %in% cnts) %>%
-        arrange(as.character(cnt), s.character(isco)) %>%
+        arrange(as.character(cnt), as.character(isco)) %>%
         mutate(no = if_else(cnt == sort(cnts)[1], 1, 5)) %>%
         mutate(isco2 = ifelse(isco == "cnt", as.character(cnt), "tba")) -> sdf
     sdf$isco2[sdf$isco != "cnt"] <- isco_text_plt[as.integer(as.character(sdf$isco[sdf$isco != "cnt"])) + 1]
