@@ -18,11 +18,11 @@ exploreOccupations <- function() {
 
                     conditionalPanel(condition = "input.condPans != 'dts'",
                                      selectInput("cnt1", label = "Select first",
-                                                 choices = countries)),
+                                                 choices = country_names)),
 
                     conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1' | input.condPans == 'spr'",
                                      selectInput("cnt2", label = "and second country for comparison",
-                                                 choices = countries)),
+                                                 choices = country_names)),
 
                     conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'dts'",
                                      radioButtons("cyear", "Year",
