@@ -23,6 +23,7 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
         geom_text(data = subset(sdf, no == 5 & !(isco2 %in% cnts)), hjust = "left") +
         geom_line(data = subset(sdf, isco2 %in% cnts), aes(group = year), size = 1.5, color = I("black")) +
         geom_point(data = subset(sdf, isco2 %in% cnts), aes(size = pop.share), color = I("black")) +
+        scale_size(guide = "none") +
         theme(axis.ticks.x = element_blank(),
               axis.text.x = element_blank(),
               legend.position = "none") +
