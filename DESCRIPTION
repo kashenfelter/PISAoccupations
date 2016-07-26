@@ -14,5 +14,4 @@ Imports: dplyr,
     roxygen2,
     reshape2,
     ggplot2,
-    ggrepel,
     shiny

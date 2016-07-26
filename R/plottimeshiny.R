@@ -18,6 +18,7 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
         mutate(isco = factor(isco, levels = c("cnt", as.character(1:9)))) %>%
     ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
         geom_point() +
+        geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
         geom_line() +
         theme_bw() +
         theme(axis.text.x = element_text(angle = 90),
