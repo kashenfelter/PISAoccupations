@@ -3,7 +3,6 @@
 #' @param csubject Character of the from "MATH"/"READ"/"SCIE".
 #' @param cnts Country codes of countries to compare on a rainbow plot.
 #' @param isco_cats ISCO categories to plot - as a character - numbers of categories.
-#' @param years Chosen years  - as a character - 2003/2006/2009/2012.
 #'
 #' @return GGplot2 object.
 #'

@@ -4,7 +4,7 @@
 \alias{plot_time_shiny}
 \title{Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.}
 \usage{
-plot_time_shiny(csubject, cnts, isco_cats, years)
+plot_time_shiny(csubject, cnts, isco_cats)
 }
 \arguments{
 \item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}
@@ -12,8 +12,6 @@ plot_time_shiny(csubject, cnts, isco_cats, years)
 \item{cnts}{Country codes of countries to compare on a rainbow plot.}
 
 \item{isco_cats}{ISCO categories to plot - as a character - numbers of categories.}
-
-\item{years}{Chosen years  - as a character - 2003/2006/2009/2012.}
 }
 \value{
 GGplot2 object.
