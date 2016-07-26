@@ -36,7 +36,8 @@ exploreOccupations <- function() {
                                                         choices = c("2012" = "2012",
                                                                     "2009" = "2009",
                                                                     "2006" = "2006",
-                                                                    "2003" = "2003"), selected = NULL)),
+                                                                    "2003" = "2003"),
+                                                        selected = c("2003", "2006", "2009", "2012"))),
 
                     conditionalPanel(condition = "input.condPans == 'spr'",
                                      selectInput("fspr", label = "Type",
@@ -57,7 +58,7 @@ exploreOccupations <- function() {
                                                                     "6 Skilled agricultural, forestry and fishery workers" = "6",
                                                                     "7 Craft and related trade workers" = "7",
                                                                     "8 Plant and machine operators, and assemblers" = "8",
-                                                                    "9 Elementary occupations" = "9"), selected = NULL))),
+                                                                    "9 Elementary occupations" = "9"), selected = as.character(0:9)))),
 
                 mainPanel(
                     tabsetPanel(

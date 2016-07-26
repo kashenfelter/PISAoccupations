@@ -15,27 +15,16 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
                cnt %in% cnts,
                isco %in% c(isco_cats, "cnt"),
                year %in% years) %>%
-        arrange(as.character(cnt), as.character(year), as.character(isco)) %>%
-        mutate(nno = paste0(year,isco),
-               nno2 = paste0(year, cnt)) -> sdf
-    sdf$mxl <- apply(data.frame(as.character(sdf$nno2)), 1, {function(x)
-        return(sdf[(sdf$cnt == substr(x, 5, 7) & sdf$isco == "cnt" & sdf$year == substr(x, 1, 4)), "ave.perf"])})
-    ggplot(subset(sdf, isco != "cnt"), aes(x = as.factor(nno), y = ave.perf, color = isco, shape = cnt)) +
-        geom_point(size = 4) +
+    ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
+        geom_point() +
         geom_pointrange(aes(ymin=ave.perf - se, ymax=ave.perf + se)) +
-        geom_line(data = subset(sdf, cnt == sort(cnts)[1] & isco != "cnt"),
-                   aes(group = isco)) +
-        geom_line(data = subset(sdf, cnt == sort(cnts)[2] & isco != "cnt"),
-                  aes(group = isco)) +
-        geom_line(data = subset(sdf, isco != "10"), aes(x = as.factor(nno), y = mxl, group = nno2, linetype = cnt), color = I("black"), size = 2, inherit.aes = FALSE) +
+        geom_line() +
         theme_bw() +
         theme(axis.ticks.x = element_blank(),
               axis.text.x = element_blank(),
-              legend.position = "bottom") +
-        scale_shape_discrete(name = "Country") +
-        scale_color_discrete(name = "Primary ISCO category",
-                             breaks = as.character(0:9),
-                             labels = as.character(0:9)) +
+              legend.position = "right") +
+        scale_color_discrete(name = "Country") +
         xlab("") +
-        ylab("")
+        ylab("") +
+        facet_grid(~isco)
 }
