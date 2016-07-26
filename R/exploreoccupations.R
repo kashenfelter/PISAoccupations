@@ -2,6 +2,10 @@
 #'
 #' @export
 
+country_names <- as.character(countries[,1])
+names(country_names) <- as.character(countries2)
+
+
 exploreOccupations <- function() {
     shinyApp(
         ui = fluidPage(
@@ -18,11 +22,11 @@ exploreOccupations <- function() {
 
                     conditionalPanel(condition = "input.condPans != 'dts'",
                                      selectInput("cnt1", label = "Select first",
-                                                 choices = countries2)),
+                                                 choices = country_names)),
 
                     conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1' | input.condPans == 'spr'",
                                      selectInput("cnt2", label = "and second country for comparison",
-                                                 choices = countries2)),
+                                                 choices = country_names[2])),
 
                     conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'dts'",
                                      radioButtons("cyear", "Year",

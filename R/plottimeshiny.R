@@ -15,16 +15,19 @@ plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
                cnt %in% cnts,
                isco %in% c(isco_cats, "cnt"),
                year %in% years) %>%
+        mutate(isco = factor(isco, levels = c("cnt", as.character(1:9)))) %>%
     ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
         geom_point() +
-        geom_pointrange(aes(ymin=ave.perf - se, ymax=ave.perf + se)) +
+        # geom_pointrange(aes(ymin=ave.perf - se, ymax=ave.perf + se)) +
         geom_line() +
         theme_bw() +
-        theme(axis.ticks.x = element_blank(),
-              axis.text.x = element_blank(),
+        theme(axis.text.x = element_text(angle = 90),
               legend.position = "right") +
-        scale_color_discrete(name = "Country") +
+        scale_color_discrete(name = "Country",
+                             breaks = cnts,
+                             labels = country_names2[cnts]) +
         xlab("") +
         ylab("") +
-        facet_grid(~isco)
+        # ylim(c(min(ave.perf), max(ave.perf))) +
+        facet_grid(~isco, labeller = as_labeller(naming))
 }
