@@ -2,10 +2,6 @@
 #'
 #' @export
 
-country_names <- as.character(countries[,1])
-names(country_names) <- as.character(countries2)
-
-
 exploreOccupations <- function() {
     shinyApp(
         ui = fluidPage(
