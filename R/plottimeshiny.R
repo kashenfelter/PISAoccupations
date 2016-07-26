@@ -9,12 +9,11 @@
 #'
 #' @export
 
-plot_time_shiny <- function(csubject, cnts, isco_cats, years) {
+plot_time_shiny <- function(csubject, cnts, isco_cats) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
-               isco %in% c(isco_cats, "cnt"),
-               year %in% years) %>%
+               isco %in% c(isco_cats, "cnt")) %>%
         mutate(isco = factor(isco, levels = c("cnt", as.character(1:9)))) %>%
     ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
         geom_point() +
