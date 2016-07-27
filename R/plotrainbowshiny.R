@@ -22,8 +22,8 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
         theme_bw() +
         geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
         geom_line(size = 1.5) +
-        geom_text(data = subset(sdf, no == 1 & isco != "cnt"), hjust = "right", size = 12) +
-        geom_text(data = subset(sdf, no == 3 & isco != "cnt"), hjust = "left", size = 12) +
+        geom_text(data = subset(sdf, no == 1 & isco != "cnt"), hjust = "outward", size = 8, nudge_x = -0.1) +
+        geom_text(data = subset(sdf, no == 3 & isco != "cnt"), hjust = "outward", size = 8, nudge_x = 0.1) +
         geom_line(data = subset(sdf, isco == "cnt"), aes(group = year), size = 1.5, color = "black") +
         geom_point(data = subset(sdf, isco == "cnt"), color = "black") +
         scale_size(guide = "none") +
@@ -34,8 +34,10 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
         xlab("") +
         ylab("") +
         geom_text(data = subset(sdf, no == 1 & isco == "cnt"),
-                  aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "right", size = 12) +
+                  aes(x = no, y = ave.perf, label = isco2),
+                  color = "black", hjust = "outward", size = 8, nudge_x = -0.1) +
         geom_text(data = subset(sdf, no == 3 & isco == "cnt"),
-                  aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "left", size = 12) +
-        xlim(-3, 9)
+                  aes(x = no, y = ave.perf, label = isco2),
+                  color = "black", hjust = "outward", size = 8, nudge_x = 0.1) +
+        xlim(-4, 8)
 }
