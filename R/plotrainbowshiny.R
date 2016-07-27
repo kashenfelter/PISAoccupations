@@ -15,22 +15,27 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
         mutate(no = if_else(cnt == sort(cnts)[1], 1, 3)) %>%
         mutate(isco2 = ifelse(isco == "cnt", as.character(cnt), "tba")) -> sdf
     sdf$isco2[sdf$isco != "cnt"] <- isco_text_plt[as.integer(as.character(sdf$isco[sdf$isco != "cnt"])) + 1]
+    sdf$isco2[sdf$isco == "cnt"] <- apply(data.frame(sdf$isco2[sdf$isco == "cnt"]), 1,
+                                          {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
 
-        ggplot(sdf, aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
+    ggplot(sdf, aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
         theme_bw() +
-        geom_point(data = subset(sdf, !(isco2 %in% cnts)), aes(size = pop.share)) +
+        geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
         geom_line(size = 1.5) +
-        geom_text(data = subset(sdf, no == 1 & !(isco2 %in% cnts)), hjust = "right") +
-        geom_text(data = subset(sdf, no == 3 & !(isco2 %in% cnts)), hjust = "left") +
-        geom_line(data = subset(sdf, isco2 %in% cnts), aes(group = year), size = 1.5, color = "black") +
-        geom_point(data = subset(sdf, isco2 %in% cnts), color = "black") +
+        geom_text(data = subset(sdf, no == 1 & isco != "cnt"), hjust = "right") +
+        geom_text(data = subset(sdf, no == 3 & isco != "cnt"), hjust = "left") +
+        geom_line(data = subset(sdf, isco == "cnt"), aes(group = year), size = 1.5, color = "black") +
+        geom_point(data = subset(sdf, isco == "cnt"), color = "black") +
         scale_size(guide = "none") +
+        scale_color_discrete(guide = "none") +
         theme(axis.ticks.x = element_blank(),
               axis.text.x = element_blank(),
               legend.position = "none") +
         xlab("") +
         ylab("") +
-        geom_text(data = subset(sdf, isco2 %in% cnts),
-                  aes(x = no, y = ave.perf, label = isco2), color = "black") +
+        geom_text(data = subset(sdf, no == 1 & isco == "cnt"),
+                  aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "right") +
+        geom_text(data = subset(sdf, no == 3 & isco == "cnt"),
+                  aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "left") +
         xlim(-3, 9)
 }
