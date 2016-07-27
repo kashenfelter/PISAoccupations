@@ -23,7 +23,7 @@ plot_spread_all_shiny <- function(csubject, ccnts) {
         geom_point(data = subset(sdf, isco == "cnt"), size = 4) +
         xlab("") +
         ylab("") +
-        theme_bw() +
+        theme_tufte(base_size = 18) +
         facet_grid(~cnt) +
         scale_color_discrete(name = "Category",
                              labels = c("cnt" = "Country", isco_text[2:10]))

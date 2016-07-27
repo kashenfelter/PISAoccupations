@@ -19,7 +19,7 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
                                           {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
 
     ggplot(sdf, aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
-        theme_bw() +
+        theme_tufte(base_size = 18) +
         geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
         geom_line(size = 1.5) +
         geom_text(data = subset(sdf, no == 1 & isco != "cnt"), hjust = "outward", size = 8, nudge_x = -0.1) +

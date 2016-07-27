@@ -20,7 +20,7 @@ plot_time_shiny <- function(csubject, cnts, isco_cats = as.character(1:9)) {
                isco %in% c(isco_cats)) %>%
     ggplot(aes(x = year, y = ave.perf, shape = cnt, color = isco, group = as.factor(paste0(isco, cnt)))) +
         geom_point(size = 4) +
-        theme_bw() +
+        theme_tufte(base_size = 18) +
         theme(legend.position = "right") +
         scale_shape_discrete(name = "Country",
                              breaks = cnts,

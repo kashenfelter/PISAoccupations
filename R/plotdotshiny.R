@@ -19,7 +19,7 @@ plot_dot_shiny <- function(csubject, cyear, isco_cats = as.character(1:9)) {
     ggplot(subset(sdf, isco == "cnt"), aes(x = reorder(cnt_lab, ave.perf), y = ave.perf)) +
         geom_point(data = subset(sdf, isco %in% c(isco_cats, "cnt")), aes(size = pop.share, color = isco)) +
         coord_flip() +
-        theme_bw() +
+        theme_tufte(base_size = 18) +
         xlab("") +
         ylab("") +
         scale_size_continuous(guide = F) +
