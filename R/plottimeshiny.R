@@ -21,7 +21,6 @@ plot_time_shiny <- function(csubject, cnts, isco_cats) {
     ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
         geom_point(size = 2) +
         geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
-        # geom_line(size = 1.5) +
         theme_bw() +
         theme(legend.position = "right") +
         scale_color_discrete(name = "Country",
@@ -31,6 +30,4 @@ plot_time_shiny <- function(csubject, cnts, isco_cats) {
         ylab("") +
         geom_smooth(method = "lm", se = F) +
         facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) #+
-#         geom_point(data = sdf, color = I("black")) +
-#         geom_line(data = sdf, color = I("black"))
 }
