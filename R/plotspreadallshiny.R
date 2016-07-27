@@ -11,24 +11,21 @@ plot_spread_all_shiny <- function(csubject, ccnts) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% ccnts) %>%
-        mutate(xl = paste0(year,cnt)) %>%
         arrange(cnt, year) -> sdf
     sdf$cnt <- apply(data.frame(sdf$cnt), 1,
                      {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
 
-    ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt, label = isco)) +
+    ggplot(sdf, aes(x = year, y = ave.perf, group = isco, color = isco)) +
         geom_line() +
+        geom_line(aes(x = year, y = ave.perf, group = year),
+                  inherit = FALSE, size = 0.8, alpha = 0.7, color = "grey") +
         geom_point(data = subset(sdf, isco != "cnt"), shape = 95, size = 6) +
         geom_point(data = subset(sdf, isco == "cnt"), size = 4) +
-        geom_text(data = subset(sdf, isco != "cnt"), hjust = "right", vjust = "top") +
-        theme(axis.ticks.x = element_blank()) +
         xlab("") +
         ylab("") +
-        scale_color_brewer(name = "Country",
-                           # limits,
-                           palette = "Dark2") +
         theme_bw() +
-        scale_x_discrete(breaks = levels(sdf$xl),
-                         labels = c("            2003", " ", "            2006", " ",
-                                    "            2009", " ", "            2012", " "))
+        facet_grid(~cnt) +
+        scale_color_discrete(name = "Category",
+                             labels = c("cnt" = "Country", isco_text[2:10]))
+
 }

@@ -4,7 +4,7 @@
 \alias{plot_dot_shiny}
 \title{Dot plot of average performances of all countries in given year.}
 \usage{
-plot_dot_shiny(csubject, cyear, isco_cats)
+plot_dot_shiny(csubject, cyear, isco_cats = as.character(1:9))
 }
 \arguments{
 \item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}

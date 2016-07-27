@@ -4,7 +4,7 @@
 \alias{plot_time_shiny}
 \title{Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.}
 \usage{
-plot_time_shiny(csubject, cnts, isco_cats)
+plot_time_shiny(csubject, cnts, isco_cats = as.character(1:9))
 }
 \arguments{
 \item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}
