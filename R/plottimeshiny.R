@@ -8,7 +8,7 @@
 #'
 #' @export
 
-plot_time_shiny <- function(csubject, cnts, isco_cats) {
+plot_time_shiny <- function(csubject, cnts, isco_cats = as.character(1:9)) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
@@ -18,14 +18,15 @@ plot_time_shiny <- function(csubject, cnts, isco_cats) {
         filter(subject == csubject,
                cnt %in% cnts,
                isco %in% c(isco_cats)) %>%
-    ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
-        geom_point(size = 2) +
+    ggplot(aes(x = year, y = ave.perf, shape = cnt, color = isco, group = as.factor(paste0(isco, cnt)))) +
+        geom_point(size = 4) +
         geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
         theme_bw() +
         theme(legend.position = "right") +
-        scale_color_discrete(name = "Country",
+        scale_shape_discrete(name = "Country",
                              breaks = cnts,
                              labels = country_names2[cnts]) +
+        scale_color_discrete(guide = "none") +
         xlab("") +
         ylab("") +
         geom_smooth(method = "lm", se = F) +
