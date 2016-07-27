@@ -21,6 +21,8 @@ plot_spread_shiny <- function(csubject, ccnts) {
         arrange(cnt, year) %>%
         filter(!(cat == "cnt" & type == "max")) %>%
         select(-c(type, year))-> sdf
+    sdf$cnt <- apply(data.frame(sdf$cnt), 1,
+                     {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
 
     ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt)) +
         geom_line() +

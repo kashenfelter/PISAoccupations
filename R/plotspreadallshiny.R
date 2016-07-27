@@ -13,6 +13,8 @@ plot_spread_all_shiny <- function(csubject, ccnts) {
                cnt %in% ccnts) %>%
         mutate(xl = paste0(year,cnt)) %>%
         arrange(cnt, year) -> sdf
+    sdf$cnt <- apply(data.frame(sdf$cnt), 1,
+                     {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
 
     ggplot(sdf, aes(x = xl, y = ave.perf, group = xl, color = cnt, label = isco)) +
         geom_line() +
