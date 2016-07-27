@@ -8,10 +8,11 @@
 #'
 #' @export
 
-plot_dot_shiny <- function(csubject, cyear, isco_cats) {
+plot_dot_shiny <- function(csubject, cyear, isco_cats = as.character(1:9)) {
     pisa %>%
         filter(subject == csubject,
                year == cyear) %>%
+        mutate(isco = factor(isco, levels = c("cnt", as.character(1:9))), ordered = T) %>%
         select(cnt, isco, ave.perf, se, pop.share) -> sdf
     sdf$cnt_lab <- apply(data.frame(sdf$cnt), 1,
                          {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
@@ -23,5 +24,6 @@ plot_dot_shiny <- function(csubject, cyear, isco_cats) {
         xlab("") +
         ylab("") +
         scale_size_continuous(guide = F) +
-        scale_color_discrete(name = "Category")
+        scale_color_discrete(name = "Category",
+                             labels = c("cnt" = "Country mean", isco_text[2:10]))
 }
