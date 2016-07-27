@@ -28,12 +28,12 @@ plot_spread_shiny <- function(csubject, ccnts) {
         geom_line() +
         geom_point(data = subset(sdf, cat == "isco"), shape = 95, size = 6) +
         geom_point(data = subset(sdf, cat == "cnt"), size = 2) +
-        theme_bw() +
-        theme(legend.position = "bottom",
-              axis.ticks.x = element_blank()) +
+        theme(axis.ticks.x = element_blank()) +
         xlab("") +
         ylab("") +
-        scale_color_brewer(name = "Country", palette = "Dark2") +
+        scale_color_brewer(name = "Country",
+                           palette = "Dark2") +
+        theme_bw() +
         scale_x_discrete(breaks = levels(sdf$xl),
                          labels = c("            2003", " ", "            2006", " ",
                                     "            2009", " ", "            2012", " "))

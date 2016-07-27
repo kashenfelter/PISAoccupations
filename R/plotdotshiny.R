@@ -25,5 +25,5 @@ plot_dot_shiny <- function(csubject, cyear, isco_cats = as.character(1:9)) {
         ylab("") +
         scale_size_continuous(guide = F) +
         scale_color_discrete(name = "Category",
-                             labels = c("cnt" = "Country mean", isco_text[2:10]))
+                             labels = c("cnt" = "Country", isco_text[2:10]))
 }
