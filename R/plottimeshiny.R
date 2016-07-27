@@ -12,19 +12,25 @@ plot_time_shiny <- function(csubject, cnts, isco_cats) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
-               isco %in% c(isco_cats, "cnt")) %>%
-        mutate(isco = factor(isco, levels = c("cnt", as.character(1:9)))) %>%
+               isco == "cnt") -> sdf
+
+    pisa %>%
+        filter(subject == csubject,
+               cnt %in% cnts,
+               isco %in% c(isco_cats)) %>%
     ggplot(aes(x = year, y = ave.perf, color = cnt, group = as.factor(paste0(isco, cnt)))) +
-        geom_point() +
+        geom_point(size = 2) +
         geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
-        geom_line() +
+        # geom_line(size = 1.5) +
         theme_bw() +
-        theme(axis.text.x = element_text(angle = 90),
-              legend.position = "right") +
+        theme(legend.position = "right") +
         scale_color_discrete(name = "Country",
                              breaks = cnts,
                              labels = country_names2[cnts]) +
         xlab("") +
         ylab("") +
-        facet_grid(~isco, labeller = as_labeller(naming))
+        geom_smooth(method = "lm", se = F) +
+        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) #+
+#         geom_point(data = sdf, color = I("black")) +
+#         geom_line(data = sdf, color = I("black"))
 }
