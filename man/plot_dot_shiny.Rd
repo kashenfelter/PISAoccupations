@@ -4,12 +4,14 @@
 \alias{plot_dot_shiny}
 \title{Dot plot of average performances of all countries in given year.}
 \usage{
-plot_dot_shiny(csubject, cyear)
+plot_dot_shiny(csubject, cyear, isco_cats)
 }
 \arguments{
 \item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}
 
 \item{cyear}{Chosen years  - as a character - 2003/2006/2009/2012.}
+
+\item{isco_cats}{ISCO categories to display.}
 }
 \value{
 GGplot2 object.
