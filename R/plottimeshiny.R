@@ -30,4 +30,5 @@ plot_time_shiny <- function(csubject, cnts, isco_cats) {
         ylab("") +
         geom_smooth(method = "lm", se = F) +
         facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) #+
+        # geom_point(data = subset(sdf), )
 }
