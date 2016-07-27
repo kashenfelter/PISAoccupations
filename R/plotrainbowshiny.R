@@ -36,6 +36,6 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
         geom_text(data = subset(sdf, no == 1 & isco == "cnt"),
                   aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "right", size = 18) +
         geom_text(data = subset(sdf, no == 3 & isco == "cnt"),
-                  aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "left", 18) +
+                  aes(x = no, y = ave.perf, label = isco2), color = "black", hjust = "left", size = 18) +
         xlim(-3, 9)
 }
