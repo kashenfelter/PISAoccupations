@@ -8,11 +8,7 @@
 #'
 #' @export
 
-plot_dot <- function(csubject, cyear, isco_cats = as.character(1:9)) {
-    pisa %>%
-        filter(subject == csubject,
-               year == cyear) -> sdf
-
+plot_dot <- function(sdf, csubject, cyear, isco_cats = as.character(1:9)) {
     ggvis(sdf, y = ~reorder(cnt_lab, -ave.perf), x = ~ave.perf, fill = ~isco, size = ~pop.share, key := ~id) %>%
         layer_points() %>%
         add_axis("x", title = "Year") %>%
