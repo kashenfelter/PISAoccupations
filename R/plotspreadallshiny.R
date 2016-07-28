@@ -16,10 +16,10 @@ plot_spread_all_shiny <- function(csubject, ccnts) {
                      {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
 
     ggplot(sdf, aes(x = year, y = ave.perf, group = isco, color = isco)) +
-        geom_line() +
+        geom_line(size = 2) +
         geom_line(aes(x = year, y = ave.perf, group = year),
                   inherit = FALSE, size = 0.8, alpha = 0.7, color = "grey") +
-        geom_point(data = subset(sdf, isco != "cnt"), shape = 95, size = 6) +
+        geom_point(data = subset(sdf, isco != "cnt"), shape = 95, size = 8) +
         geom_point(data = subset(sdf, isco == "cnt"), size = 4) +
         xlab("") +
         ylab("") +
