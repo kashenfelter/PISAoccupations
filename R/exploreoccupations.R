@@ -4,91 +4,117 @@
 
 exploreOccupations <- function() {
     shinyApp(
-        ui = fluidPage(
-            titlePanel("PISA occupations"),
+        ui = navbarPage("PISA occupations",
+                        tabPanel("Changes in time",
+                                 fluidRow(
+                                     column(2,
+                                            selectInput("cnt1", label = "Select first",
+                                                        choices = country_names, selected = country_names[1]),
+                                            selectInput("cnt2", label = "and second country for comparison",
+                                                        choices = c("-" = "-", country_names), selected = "-"),
+                                            selectInput("subject", label = "Subject",
+                                                        choices = subs_i,
+                                                        selected = "MATH"),
+                                            actionButton("modify",
+                                                         "More details"),
+                                            conditionalPanel(condition = "(input.modify % 2) == 1",
+                                                             checkboxInput("se",
+                                                                           label = "Show standard errors",
+                                                                           value = TRUE),
+                                                             checkboxInput("trend",
+                                                                           label = "Show trend",
+                                                                           value = TRUE),
+                                                             checkboxGroupInput("isco_cats", label = "Primary ISCO categories",
+                                                                                choices = iscos, selected = as.character(1:9)))),
+                                     column(10, plotOutput("time"))
+                                 )),
+                        tabPanel("Rainbow plot",
+                                 fluidRow(
+                                     column(2,
+                                            selectInput("cnt12", label = "Select first",
+                                                        choices = country_names, selected = country_names[1]),
+                                            selectInput("cnt22", label = "and second country for comparison",
+                                                        choices = c("-" = "-", country_names), selected = country_names[3]),
+                                            selectInput("subject1", label = "Subject",
+                                                        choices = subs_i,
+                                                        selected = "MATH"),
+                                            radioButtons("cyear1", "Year",
+                                                         choices = years_i,
+                                                         selected = "2012")),
+                                     column(10, plotOutput("rainbow2"))
+                                 )),
+                        tabPanel("Rainbow plot in time",
+                                 fluidRow(
+                                     column(4,
+                                            selectInput("cnt11", label = "Select first",
+                                                        choices = country_names,
+                                                        selected = country_names[1])),
+                                     column(4,
+                                            selectInput("cnt21", label = "and second country for comparison",
+                                                        choices = c("-" = "-", country_names),
+                                                        selected = "-")),
+                                     column(4,
+                                            selectInput("subjectt1", label = "Subject",
+                                                        choices = subs_i,
+                                                        selected = "MATH")),
+                                     fluidRow(
+                                         column(12,
+                                                splitLayout(
+                                                    cellWidths = c("50%", "50%"),
+                                                    ggvisOutput("rnbwt1"),
+                                                    ggvisOutput("rnbwt2")))
 
-            sidebarLayout(
-                sidebarPanel(
-                    # actionButton("save", "Save current plot"),
-
-                    selectInput("subject", label = "Subject",
-                                choices = c("Mathematics" = "MATH",
-                                            "Reading" = "READ",
-                                            "Science" = "SCIE"), selected = "MATH"),
-
-                    conditionalPanel(condition = "input.condPans != 'dts'",
-                                     selectInput("cnt1", label = "Select first",
-                                                 choices = country_names)),
-
-                    conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'tm1' | input.condPans == 'spr'",
-                                     selectInput("cnt2", label = "and second country for comparison",
-                                                 choices = country_names[2])),
-
-                    conditionalPanel(condition = "input.condPans == 'rnbw2' | input.condPans == 'dts'",
-                                     radioButtons("cyear", "Year",
-                                                  choices = c("2012" = "2012",
-                                                              "2009" = "2009",
-                                                              "2006" = "2006",
-                                                              "2003" = "2003"), selected = "2012")),
-
-                    conditionalPanel(condition = "input.condPans == 'tm1'",
-                                     checkboxGroupInput("years", label = "Years",
-                                                        choices = c("2012" = "2012",
-                                                                    "2009" = "2009",
-                                                                    "2006" = "2006",
-                                                                    "2003" = "2003"),
-                                                        selected = c("2003", "2006", "2009", "2012"))),
-
-                    conditionalPanel(condition = "input.condPans == 'spr'",
-                                     selectInput("fspr", label = "Type",
-                                                 choices = c("Extreme values" = "sp",
-                                                             "All categories" = "ac"), selected = "sp")),
-
-                    # sliderInput("yaxis", label = "Range for vertical axis",
-                    # min = 300, max = 700, value = c(475, 580)), # Do zmiany później.
-
-                    conditionalPanel(condition = "input.condPans == 'tm1'",
-                                     checkboxGroupInput("isco_cats", label = "Primary ISCO categories",
-                                                        choices = c("0 Armed forces occupations" = "0",
-                                                                    "1 Managers" = "1",
-                                                                    "2 Professionals" = "2",
-                                                                    "3 Technicians and associate professionals" = "3",
-                                                                    "4 Clerical support workers" = "4",
-                                                                    "5 Services and sales workers" = "5",
-                                                                    "6 Skilled agricultural, forestry and fishery workers" = "6",
-                                                                    "7 Craft and related trade workers" = "7",
-                                                                    "8 Plant and machine operators, and assemblers" = "8",
-                                                                    "9 Elementary occupations" = "9"), selected = as.character(0:9)))),
-
-                mainPanel(
-                    tabsetPanel(
-                        tabPanel("All countries comparison", plotOutput("dots"), value = "dts"),
-                        # tabPanel("Rainbow plot one country", plotOutput("rainbow1"), value = "rnbw1"),
-                        tabPanel("Rainbow plot two countries", plotOutput("rainbow2"), value = "rnbw2"),
-                        tabPanel("Two countries over time", plotOutput("time"), value = "tm1"),
-                        tabPanel("Plot spread", plotOutput("spread"), value = "spr"),
-                        id = "condPans"
-                    )
-                )
-            )
+                                     ))),
+                        tabPanel("All countries comparison",
+                                 fluidRow(
+                                     column(2,
+                                            selectInput("subjectt", label = "Subject",
+                                                        choices = subs_i, selected = "MATH"),
+                                            radioButtons("cyear", "Year",
+                                                         choices = years_i, selected = "2012"),
+                                            actionButton("modify2",
+                                                         "More details"),
+                                            conditionalPanel(condition = "(input.modify2 % 2) == 1",
+                                                             checkboxGroupInput("isco_cats2", label = "Primary ISCO categories",
+                                                                                choices = iscos, selected = as.character(1:9)))),
+                                     column(10, ggvisOutput("dots"))
+                                 ))
         ),
     server = function(input, output) {
-        output$dots <- renderPlot(
-            plot_dot_shiny(input$subject, input$cyear)
-        )
+        sdf <- reactive({pisa %>%
+                filter(subject == input$subjectt,
+                       year == input$cyear,
+                       isco %in% c("cnt", input$isco_cats2))})
+        sdf1 <- reactive({pisa %>%
+                filter(subject == input$subjectt1,
+                       cnt == input$cnt11)
+        })
+        sdf2 <- reactive({pisa %>%
+                filter(subject == input$subjectt1,
+                       cnt == input$cnt21)
+        })
+        plot_dot(sdf) %>% bind_shiny("dots")
+        plot_rainbow_time(sdf1) %>% bind_shiny("rnbwt1")
+        plot_rainbow_time(sdf2) %>% bind_shiny("rnbwt2")
 
         output$rainbow2 <- renderPlot(
-            plot_rainbow_shiny(input$subject, c(input$cnt1, input$cnt2), input$cyear) #+
-            # ylim(input$yaxis)
+            plot_rainbow_shiny(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
+            height = 900
         )
         output$time <- renderPlot(
-            plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats, input$years)
-        )
-        output$spread <- renderPlot(
-            if(input$fspr == "sp")
-                plot_spread_shiny(input$subject, c(input$cnt1, input$cnt2))
+            if(input$se & input$trend)
+                plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats) +
+                geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
+                geom_smooth(method = "lm", se = F)
+            else if(input$se & !input$trend)
+                plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats) +
+                geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)))
+            else if(!input$se & input$trend)
+                plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats) +
+                geom_smooth(method = "lm", se = F)
             else
-                plot_spread_all_shiny(input$subject, c(input$cnt1, input$cnt2))
+                plot_time_shiny(input$subject, c(input$cnt1, input$cnt2), input$isco_cats),
+            height = 900
         )
     }
     )

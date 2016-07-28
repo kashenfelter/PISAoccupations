@@ -4,12 +4,10 @@
 \alias{plot_rainbow_time}
 \title{Rainbow plot of student's average performance over years.}
 \usage{
-plot_rainbow_time(csubject, ccnt)
+plot_rainbow_time(sdf)
 }
 \arguments{
-\item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}
-
-\item{ccnt}{Chosen country.}
+\item{sdf}{Data frame returned from reactive() function.}
 }
 \value{
 ggvis plot.

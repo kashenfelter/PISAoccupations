@@ -1,18 +1,13 @@
 #' Rainbow plot of student's average performance over years.
 #'
-#' @param csubject Character of the from "MATH"/"READ"/"SCIE".
-#' @param ccnt Chosen country.
+#' @param sdf Data frame returned from reactive() function.
 #'
 #' @return ggvis plot.
 #'
 #' @export
 
-plot_rainbow_time <- function(csubject, ccnt) {
-    pisa %>%
-        filter(subject == csubject,
-               cnt %in% ccnt,
-               isco != "cnt") %>%
-    ggvis(x = ~year, y = ~ave.perf) %>%
+plot_rainbow_time <- function(sdf) {
+    ggvis(sdf, x = ~year, y = ~ave.perf) %>%
         group_by(isco) %>%
         layer_paths(stroke = ~isco) %>%
         layer_points(fill = ~isco) %>%

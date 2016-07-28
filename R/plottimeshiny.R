@@ -30,5 +30,4 @@ plot_time_shiny <- function(csubject, cnts, isco_cats = as.character(1:9)) {
         ylab("") +
         theme(axis.text.x = element_text(angle = 90)) +
         facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"]))
-
 }
