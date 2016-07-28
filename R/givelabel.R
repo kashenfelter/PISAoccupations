@@ -7,9 +7,10 @@
 
 give_label <- function(point) {
     src <- as.list(pisa[pisa$id == point$id, ])
-    return(paste(src$cnt_lab, "<br />",
+    return(paste("Subject:", src$subject, "<br />",
+          src$cnt_lab, "<br />",
           src$isco_lab, "<br />",
-          "Mean:", round(src$ave.perf, 0), "<br />",
+          "Mean (plausible values):", round(src$ave.perf, 2), "<br />",
           "Standard error:", round(src$se, 2), "<br />",
-          "Population share:", round(src$pop.share, 2)))
+          "Population share:", round(src$pop.share, 0)))
 }

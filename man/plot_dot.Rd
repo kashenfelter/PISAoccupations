@@ -14,7 +14,7 @@ plot_dot(csubject, cyear, isco_cats = as.character(1:9))
 \item{isco_cats}{ISCO categories to display.}
 }
 \value{
-GGplot2 object.
+ggvis plot.
 }
 \description{
 Dot plot of average performances of all countries in given year.
