@@ -11,8 +11,8 @@
 plot_dot <- function(sdf, csubject, cyear, isco_cats = as.character(1:9)) {
     ggvis(sdf, y = ~reorder(cnt_lab, -ave.perf), x = ~ave.perf, fill = ~isco, size = ~pop.share, key := ~id) %>%
         layer_points() %>%
-        add_axis("x", title = "Year") %>%
-        add_axis("y", title = "Average performance") %>%
+        add_axis("x", title = "Average performance") %>%
+        add_axis("y", title = "") %>%
         hide_legend("size") %>%
         hide_legend("fill") %>%
         add_tooltip(give_label, "hover")
