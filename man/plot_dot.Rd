@@ -4,14 +4,10 @@
 \alias{plot_dot}
 \title{Dot plot of average performances of all countries in given year.}
 \usage{
-plot_dot(csubject, cyear, isco_cats = as.character(1:9))
+plot_dot(sdf)
 }
 \arguments{
-\item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}
-
-\item{cyear}{Chosen years as a character.}
-
-\item{isco_cats}{ISCO categories to display.}
+\item{sdf}{Data frame returned by interactive() function after filtering data.}
 }
 \value{
 ggvis plot.

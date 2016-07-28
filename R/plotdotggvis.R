@@ -1,14 +1,12 @@
 #' Dot plot of average performances of all countries in given year.
 #'
-#' @param csubject Character of the from "MATH"/"READ"/"SCIE".
-#' @param cyear Chosen years as a character.
-#' @param isco_cats ISCO categories to display.
+#' @param sdf Data frame returned by interactive() function after filtering data.
 #'
 #' @return ggvis plot.
 #'
 #' @export
 
-plot_dot <- function(sdf, csubject, cyear, isco_cats = as.character(1:9)) {
+plot_dot <- function(sdf) {
     ggvis(sdf, y = ~reorder(cnt_lab, -ave.perf), x = ~ave.perf, fill = ~isco, size = ~pop.share, key := ~id) %>%
         layer_points() %>%
         add_axis("x", title = "Average performance") %>%
