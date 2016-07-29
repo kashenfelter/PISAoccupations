@@ -22,7 +22,7 @@ plot_rainbow <- function(csubject, cnts, cyear) {
         geom_line(size = 1.5) +
         geom_text(hjust = "outward", size = 8, nudge_x = -0.1) +
         geom_line(data = subset(sdf, isco == "cnt"), aes(group = year), size = 1.5, color = "black") +
-        geom_point(data = subset(sdf, isco == "cnt", size = pop.share), color = "black") +
+        geom_point(data = subset(sdf, isco == "cnt"), aes(size = pop.share), color = "black") +
         geom_text(data = subset(sdf, isco == "cnt"),
                   color = "black", hjust = "outward", size = 8, nudge_x = -0.1) +
         scale_size(guide = "none") +
