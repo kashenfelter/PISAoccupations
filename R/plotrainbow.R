@@ -12,8 +12,8 @@ plot_rainbow <- function(csubject, cnts, cyear) {
     pisa %>%
         filter(subject == csubject, year == cyear, cnt %in% cnts) %>%
         arrange(as.character(cnt), as.character(isco)) %>%
-        mutate(no = if_else(cnt == cnts[1], 1, 3)) %>%
-        mutate(isco2 = ifelse(isco == "cnt", cnt_lab, isco_lab)) -> sdf
+        mutate(no = if_else(cnt == cnts[1], 1, 3),
+               isco2 = ifelse(isco == "cnt", cnt_lab, isco_lab)) -> sdf
 
     ggplot(subset(sdf, isco != "cnt"), aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
         theme_tufte(base_size = 18) +
