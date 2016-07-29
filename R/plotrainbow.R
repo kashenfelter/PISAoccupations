@@ -8,7 +8,7 @@
 #'
 #' @export
 
-plot_rainbow_shiny <- function(csubject, cnts, cyear) {
+plot_rainbow <- function(csubject, cnts, cyear) {
     pisa %>%
         filter(subject == csubject, year == cyear, cnt %in% cnts) %>%
         arrange(as.character(cnt), as.character(isco)) %>%

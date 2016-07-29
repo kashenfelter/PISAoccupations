@@ -98,7 +98,7 @@ exploreOccupations <- function() {
         plot_rainbow_time(sdf2) %>% bind_shiny("rnbwt2")
 
         output$rainbow2 <- renderPlot(
-            plot_rainbow_shiny(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
+            plot_rainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
             height = 900
         )
         output$time <- renderPlot(
