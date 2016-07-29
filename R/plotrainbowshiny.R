@@ -12,20 +12,19 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
     pisa %>%
         filter(subject == csubject, year == cyear, cnt %in% cnts) %>%
         arrange(as.character(cnt), as.character(isco)) %>%
-        mutate(no = if_else(cnt == sort(cnts)[1], 1, 3)) %>%
-        mutate(isco2 = ifelse(isco == "cnt", as.character(cnt), "tba")) -> sdf
-    sdf$isco2[sdf$isco != "cnt"] <- isco_text_plt[as.integer(as.character(sdf$isco[sdf$isco != "cnt"])) + 1]
-    sdf$isco2[sdf$isco == "cnt"] <- apply(data.frame(sdf$isco2[sdf$isco == "cnt"]), 1,
-                                          {function(x) return(names(country_names)[grep(country_names, pattern = x)])})
+        mutate(no = if_else(cnt == cnts[1], 1, 3)) %>%
+        mutate(isco2 = ifelse(isco == "cnt", cnt_lab, isco_lab)) %>%
+        select(-c(nstud, nschool, subject, se, cnt_lab, isco_lab, cnt, id)) -> sdf
 
-    ggplot(sdf, aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
+    ggplot(subset(sdf, isco != "cnt"), aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
         theme_tufte(base_size = 18) +
         geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
         geom_line(size = 1.5) +
-        geom_text(data = subset(sdf, no == 1 & isco != "cnt"), hjust = "outward", size = 8, nudge_x = -0.1) +
-        geom_text(data = subset(sdf, no == 3 & isco != "cnt"), hjust = "outward", size = 8, nudge_x = 0.1) +
+        geom_text(hjust = "outward", size = 8, nudge_x = -0.1) +
         geom_line(data = subset(sdf, isco == "cnt"), aes(group = year), size = 1.5, color = "black") +
-        geom_point(data = subset(sdf, isco == "cnt"), color = "black") +
+        geom_point(data = subset(sdf, isco == "cnt", size = pop.share), color = "black") +
+        geom_text(data = subset(sdf, isco == "cnt"),
+                  color = "black", hjust = "outward", size = 8, nudge_x = -0.1) +
         scale_size(guide = "none") +
         scale_color_discrete(guide = "none") +
         theme(axis.ticks.x = element_blank(),
@@ -33,11 +32,5 @@ plot_rainbow_shiny <- function(csubject, cnts, cyear) {
               legend.position = "none") +
         xlab("") +
         ylab("") +
-        geom_text(data = subset(sdf, no == 1 & isco == "cnt"),
-                  aes(x = no, y = ave.perf, label = isco2),
-                  color = "black", hjust = "outward", size = 8, nudge_x = -0.1) +
-        geom_text(data = subset(sdf, no == 3 & isco == "cnt"),
-                  aes(x = no, y = ave.perf, label = isco2),
-                  color = "black", hjust = "outward", size = 8, nudge_x = 0.1) +
         xlim(-4, 8)
 }
