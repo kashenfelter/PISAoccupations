@@ -4,21 +4,22 @@
 \alias{se_pv}
 \title{Standard errors for average performances grouped by given factors.}
 \usage{
-se_pv(pvname, groups, final_weight, brr_weights, means_ppv, data)
+se_pv(data, pvname, groups, means_ppv, final_weight = "W_FSTUWT",
+  brr_weights = paste0("W_FSTR", 1:80))
 }
 \arguments{
+\item{data}{Name of a data frame containing columns given in other arguments.}
+
 \item{pvname}{String of the form "MATH", "READ", "SCIE".}
 
 \item{groups}{Name of one or more factors used for grouping.}
 
-\item{final_weight}{Name of a column that contains final student weights.}
-
-\item{brr_weights}{Names of the columns that contain BRR weights.}
-
 \item{means_ppv}{Data frame returned by mean_ppvs function that contains average performances
 computed for each plausible value.}
 
-\item{data}{Name of a data frame containing columns given in previous arguments.}
+\item{final_weight}{Name of a column that contains final student weights.}
+
+\item{brr_weights}{Names of the columns that contain BRR weights.}
 }
 \value{
 Vector that contains computed standard errors.

@@ -1,18 +1,20 @@
 #' Duplicate rows to count each student two times - one for each parent's occupation - while calculating ave perf.
 #'
-#' @param isco_cols Names of columns with mother's and father's occupation codes - in this order.
-#' @param data Name of a data frame containing columns given in previous arguments.
+#' @param data Name of a data frame containing columns given in isco_cols argument.
+#' @param isco_cols Names of columns with mother's and father's occupation codes in this order.
+#' @param nc String character of the form "1"/"2" indicating if primary or secondary isco categories are to be added.
+#'        "1" corresponds to primary categories.
 #'
 #' @return Data frame given in data argument with twice as much rows and added column
 #'         with both parents' isco codes.
 #' @export
 
-add_isco <- function(isco_cols, data) {
+add_isco <- function(data, isco_cols, nc = "1") {
+    expr <- paste0("as.factor(substr(i, ", nc, ", ", nc, "))")
+    if(nc == "2")
+        expr <- paste0("as.factor(substr(i, ", nc, ", ", nc, "))")
     data %>%
-        mutate_(ID = 1:dim(data)[1],
-                mother_occuI = interp("as.factor(substr(i, 1, 1))", i = as.name(isco_cols[1])),
-                father_occuI = interp("as.factor(substr(i, 1, 1))", i = as.name(isco_cols[2]))) %>%
-        melt(measure.vars = c("mother_occuI", "father_occuI"),
-             variable.name = "isco_cat_name", value.name = "isco_cat")
-    # %>% filter(!(is.na(isco_cat)))
+        mutate_(mother_occu = interp(expr, i = as.name(isco_cols[1])),
+                father_occu = interp(expr, i = as.name(isco_cols[2]))) %>%
+        gather(isco_cat_name, isco_cat, mother_occu, father_occu)
 }

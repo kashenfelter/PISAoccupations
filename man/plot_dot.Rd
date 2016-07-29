@@ -7,7 +7,7 @@
 plot_dot(sdf)
 }
 \arguments{
-\item{sdf}{Data frame returned by interactive() function after filtering data.}
+\item{sdf}{Data frame returned by interactive function after filtering data.}
 }
 \value{
 ggvis plot.

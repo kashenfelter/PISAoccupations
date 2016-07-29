@@ -1,6 +1,6 @@
 #' Rainbow plot of student's average performance over years.
 #'
-#' @param sdf Data frame returned from reactive() function.
+#' @param sdf Data frame returned from reactive function.
 #'
 #' @return ggvis plot.
 #'

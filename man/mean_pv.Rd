@@ -4,10 +4,12 @@
 \alias{mean_pv}
 \title{Average student's performances with standard errors by given factor variables.}
 \usage{
-mean_pv(pvname, groups, final_weight, brr_weights, school_id, data)
+mean_pv(data, pvname, groups, final_weight, brr_weights, school_id)
 }
 \arguments{
-\item{pvname}{String of the form "MATH", "READ", "SCIE".}
+\item{data}{Name of a data frame containing columns given in other arguments.}
+
+\item{pvname}{String of the form "MATH"/"READ"/"SCIE".}
 
 \item{groups}{Name of one or more factors used for grouping.}
 
@@ -17,8 +19,6 @@ mean_pv(pvname, groups, final_weight, brr_weights, school_id, data)
 this argument is redunant and thus the default value is "".}
 
 \item{school_id}{Name of a column with school ids.}
-
-\item{data}{Name of a data frame containing columns given in previous arguments.}
 }
 \value{
 Data frame with columns for each given factor and student's average performances with standard errors.

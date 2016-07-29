@@ -4,15 +4,16 @@
 \alias{isco_cat}
 \title{Extract first and first two digits of ISCO code as factors both for mother's and father's occupation.}
 \usage{
-isco_cat(isco_cols, data)
+isco_cat(data, isco_cols)
 }
 \arguments{
-\item{isco_cols}{Names of columns with mother's and father's occupation codes (in this order).}
+\item{data}{Name of a data frame containing columns given in isco_cols argument.}
 
-\item{data}{Name of a data frame containing columns given in previous arguments.}
+\item{isco_cols}{Names of columns with mother's and father's occupation codes in this order.}
 }
 \value{
-Data frame given in 'data' argument with four described columns added.
+Data frame given in 'data' argument with four additional columns for mother's and father's
+        primary and secondary ISCO categories.
 }
 \description{
 Extract first and first two digits of ISCO code as factors both for mother's and father's occupation.

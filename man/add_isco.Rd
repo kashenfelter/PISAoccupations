@@ -4,12 +4,15 @@
 \alias{add_isco}
 \title{Duplicate rows to count each student two times - one for each parent's occupation - while calculating ave perf.}
 \usage{
-add_isco(isco_cols, data)
+add_isco(data, isco_cols, nc = "1")
 }
 \arguments{
-\item{isco_cols}{Names of columns with mother's and father's occupation codes - in this order.}
+\item{data}{Name of a data frame containing columns given in isco_cols argument.}
 
-\item{data}{Name of a data frame containing columns given in previous arguments.}
+\item{isco_cols}{Names of columns with mother's and father's occupation codes in this order.}
+
+\item{nc}{String character of the form "1"/"2" indicating if primary or secondary isco categories are to be added.
+"1" corresponds to primary categories.}
 }
 \value{
 Data frame given in data argument with twice as much rows and added column

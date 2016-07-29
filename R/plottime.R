@@ -2,13 +2,15 @@
 #'
 #' @param csubject Character of the from "MATH"/"READ"/"SCIE".
 #' @param cnts Country codes of countries to compare on a rainbow plot.
+#' @param disp Logical vector - first element indicates, if standard errors are to be displayed,
+#'        second argument indicates, if trend lines are to be displayed.
 #' @param isco_cats ISCO categories to plot - as a character - numbers of categories.
 #'
 #' @return GGplot2 object.
 #'
 #' @export
 
-plot_time <- function(csubject, cnts, isco_cats = as.character(1:9)) {
+plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
@@ -23,5 +25,16 @@ plot_time <- function(csubject, cnts, isco_cats = as.character(1:9)) {
         xlab("") +
         ylab("") +
         theme(axis.text.x = element_text(angle = 90)) +
-        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"]))
+        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) -> plt
+
+    if(disp[1] & disp[2])
+        plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
+            geom_smooth(aes(linetype = cnt), method = "lm", se = F, size = 1.5, show.legend = F)
+    else if(disp[1] & !disp[2])
+        plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)))
+    else if(!disp[1] & disp[2])
+        plt <- plt + geom_smooth(aes(linetype = cnt), method = "lm", se = F, size = 1.5, show.legend = F)
+
+    return(plt)
 }
+

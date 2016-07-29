@@ -4,18 +4,19 @@
 \alias{var_sml_opv}
 \title{Sampling variance for one plausible values and a set of replicate weights.}
 \usage{
-var_sml_opv(pvname, groups, brr_weights, final_weight, data)
+var_sml_opv(data, pvname, groups, final_weight = "W_FSTUWT",
+  brr_weights = paste0("W_FSTR", 1:80))
 }
 \arguments{
-\item{pvname}{String of the form "MATH", "READ", "SCIE".}
+\item{data}{Name of a data frame containing columns given in other arguments.}
+
+\item{pvname}{String of the form "MATH"/"READ"/"SCIE".}
 
 \item{groups}{Name of one or more factors used for grouping.}
 
+\item{final_weight}{Name of a column with student's final weight.}
+
 \item{brr_weights}{Names of columns that contain BRR weights.}
-
-\item{data}{Name of a data frame containing columns given in previous arguments.}
-
-\item{means}{Vector of average performances computed by mean_o function.}
 }
 \value{
 Vector that contains computed sampling variances.

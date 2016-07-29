@@ -7,7 +7,7 @@
 plot_rainbow_time(sdf)
 }
 \arguments{
-\item{sdf}{Data frame returned from reactive() function.}
+\item{sdf}{Data frame returned from reactive function.}
 }
 \value{
 ggvis plot.

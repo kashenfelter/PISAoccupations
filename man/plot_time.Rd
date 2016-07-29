@@ -4,12 +4,15 @@
 \alias{plot_time}
 \title{Plot of changes in average performances in time for one or two countries.}
 \usage{
-plot_time(csubject, cnts, isco_cats = as.character(1:9))
+plot_time(csubject, cnts, disp, isco_cats = as.character(1:9))
 }
 \arguments{
 \item{csubject}{Character of the from "MATH"/"READ"/"SCIE".}
 
 \item{cnts}{Country codes of countries to compare on a rainbow plot.}
+
+\item{disp}{Logical vector - first element indicates, if standard errors are to be displayed,
+second argument indicates, if trend lines are to be displayed.}
 
 \item{isco_cats}{ISCO categories to plot - as a character - numbers of categories.}
 }

@@ -1,6 +1,6 @@
 #' Dot plot of average performances of all countries in given year.
 #'
-#' @param sdf Data frame returned by interactive() function after filtering data.
+#' @param sdf Data frame returned by interactive function after filtering data.
 #'
 #' @return ggvis plot.
 #'
