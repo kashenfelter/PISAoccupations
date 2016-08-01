@@ -18,14 +18,15 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     ggplot(aes(x = year, y = ave.perf, shape = cnt_lab,
                color = isco, group = as.factor(paste0(isco, cnt)))) +
         geom_point(size = 4) +
-        theme_tufte(base_size = 20) +
-        theme(legend.position = "right") +
+        theme_bw(base_size = 20) +
+        theme(legend.position = "right",
+              axis.text.x = element_text(angle = 90)) +
         scale_shape_discrete(name = "Country") +
         scale_color_discrete(guide = "none") +
         xlab("") +
         ylab("") +
-        theme(axis.text.x = element_text(angle = 90)) +
-        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) -> plt
+        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) +
+        theme(panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black")) -> plt
 
     if(disp[1] & disp[2])
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se))) +
