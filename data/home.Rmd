@@ -1,0 +1,22 @@
+---
+output: html_document
+---
+
+# Trends in PISA occupations.
+
+This application aims to help explore the relationship between parents' occupations and child's performance in PISA study. Occupations are classified according to [ISCO](http://www.ilo.org/public/english/bureau/stat/isco/).  
+
+
+<!-- dodać autorów - z mejlami? -->
+Details about can be found [here](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/about.pdf).  
+
+Data used in this app can be downloaded here:  
+
+* [Data for PISA 2003](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2003.xlsx)  
+* [Data for PISA 2006](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2006.xlsx)  
+* [Data for PISA 2009](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2009.xlsx)  
+* [Data for PISA 2012](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2012.xlsx)  
+
+Calculations were performed using accompanying R package that can be downloaded from [github](https://github.com/mi2-warsaw/PISAoccupations).  
+Raw data can be found on [OECD website](http://www.oecd.org/pisa/pisaproducts/) under **Databases** category.
+

@@ -28,15 +28,12 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         ylab("") +
         facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) -> plt
 
-    if(disp[1] & disp[2])
-        plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2) +
-        geom_line(data = subset(sdf, cnt == sort(cnts)[1]), stat = "smooth",
+    if(disp[1])
+        plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2)
+    if(disp[2])
+        plt <- plt + geom_line(data = subset(sdf, cnt == sort(cnts)[1]), stat = "smooth",
                   linetype = 1, method = "lm", se = F, size = 1.5, show.legend = F) +
         geom_line(data = subset(sdf, cnt == sort(cnts)[2]), stat = "smooth",
                   linetype = 2, alpha = 0.5, method = "lm", se = F, size = 1.5, show.legend = F)
-    else if(disp[1] & !disp[2])
-        plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2)
-    else if(!disp[1] & disp[2])
-        plt <- plt + geom_smooth(aes(linetype = c, alpha = cnt), method = "lm", se = F, size = 1.5, show.legend = F)
     return(plt)
 }

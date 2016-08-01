@@ -13,8 +13,8 @@ plot_dot <- function(sdf) {
         add_axis("y", title = "") %>%
         hide_legend("size") %>%
         hide_legend("fill") %>%
-        add_tooltip(give_label, "hover") %>%
-        set_options(width = "auto",
-                    height = "auto",
-                    duration = 0)
+        add_tooltip(give_label, "hover") # %>%
+#         set_options(width = "auto",
+#                     height = "auto",
+#                     duration = 0)
 }
