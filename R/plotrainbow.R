@@ -14,14 +14,18 @@ plot_rainbow <- function(csubject, cnts, cyear) {
                year == cyear,
                cnt %in% cnts) %>%
         mutate(no = ifelse(cnt == cnts[1], 1, 3),
-               isco2 = ifelse(isco == "cnt", cnt_lab, isco_lab)) -> sdf
+               isco2 = ifelse(isco == "cnt", cnt_lab, isco_lab),
+               text_pos = ave.perf) %>%
+        arrange(cnt, ave.perf)-> sdf
+    sdf$text_pos[sdf$no == 1] <- nice_text(sdf$text_pos[sdf$no == 1])
+    sdf$text_pos[sdf$no == 3] <- nice_text(sdf$text_pos[sdf$no == 3])
 
     ggplot(subset(sdf, isco != "cnt"), aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
         theme_tufte(base_size = 18) +
         geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
         geom_line(size = 1.5) +
-        geom_text(data = subset(sdf, isco != "cnt" & no == 1), hjust = "outward", size = 8, nudge_x = -0.1) +
-        geom_text(data = subset(sdf, isco != "cnt" & no == 3), hjust = "outward", size = 8, nudge_x = 0.1) +
+        geom_text(data = subset(sdf, isco != "cnt" & no == 1), aes(y = text_pos), hjust = "outward", size = 8, nudge_x = -0.1) +
+        geom_text(data = subset(sdf, isco != "cnt" & no == 3), aes(y = text_pos), hjust = "outward", size = 8, nudge_x = 0.1) +
         geom_line(data = subset(sdf, isco == "cnt"), aes(group = year), size = 1.5, color = "black") +
         geom_point(data = subset(sdf, isco == "cnt"), color = "black") +
         geom_text(data = subset(sdf, isco == "cnt" & no == 1),

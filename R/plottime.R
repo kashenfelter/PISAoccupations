@@ -14,16 +14,17 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
-               isco %in% c(isco_cats)) %>%
-    ggplot(aes(x = year, y = ave.perf, shape = cnt_lab,
+               isco %in% c(isco_cats)) -> sdf
+    ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
         geom_point(size = 4) +
+        # geom_point(aes(solid = cnt), size = 4, shape = 1) +
+#         geom_point(data = subset(sdf, cnt == cnts[1]), size = 4, shape = 1, solid = F) +
+#         geom_point(data = subset(sdf, cnt == cnts[2]), size = 4, shape = 1, solid = T) +
         theme_bw(base_size = 20) +
         theme(legend.position = "right",
               axis.text.x = element_text(angle = 90)) +
-#         scale_shape_discrete(name = "Country") +
-        scale_shape_manual(name = "Country", values = c(1,4)) +
-        # sort(substr(cnts[1],1,1), substr(cnts[2],1,1)) - żeby dać literki na wykres
+        scale_shape_discrete(name = "Country") +
         scale_color_discrete(guide = "none") +
         xlab("") +
         ylab("") +
@@ -37,6 +38,6 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2)
     else if(!disp[1] & disp[2])
         plt <- plt + geom_smooth(aes(linetype = c, alpha = cnt), method = "lm", se = F, size = 1.5, show.legend = F)
-
+# Czy tu nie potrzeba data = ... ?
     return(plt)
 }
