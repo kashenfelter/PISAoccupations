@@ -20,7 +20,7 @@ plot_rainbow <- function(csubject, cnts, cyear) {
     sdf$text_pos[sdf$no == 1] <- nice_text(sdf$text_pos[sdf$no == 1])
     sdf$text_pos[sdf$no == 3] <- nice_text(sdf$text_pos[sdf$no == 3])
     sdf$isco2[sdf$isco != "cnt"] <- apply(data.frame(sdf$isco[sdf$isco != "cnt"]), 1,
-                                          {function(x) return(naming[names(naming) == x])})
+                                          {function(x) return(naming2[names(naming2) == x])})
 
 
     ggplot(subset(sdf, isco != "cnt"), aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
