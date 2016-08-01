@@ -16,5 +16,7 @@ plot_rainbow_time <- function(sdf) {
         hide_legend("stroke") %>%
         add_axis("x", title = "Year") %>%
         add_axis("y", title = "Mean performance") %>%
-        add_tooltip(give_label, "hover")
+        add_tooltip(give_label, "hover") %>%
+        set_options(width = "auto",
+                    height = "auto")
 }
