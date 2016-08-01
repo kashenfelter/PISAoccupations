@@ -19,14 +19,14 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
         geom_point(size = 4, stroke = 2) +
         theme_bw(base_size = 20) +
-        theme(legend.position = "right",
-              axis.text.x = element_text(angle = 90)) +
+        theme(legend.position = c(0.9, 0.1),
+              axis.text.x = element_text(angle = 90),
+              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black")) +
         scale_shape_manual(name = "Country", values = c(2,16)) +
         scale_color_discrete(guide = "none") +
         xlab("") +
         ylab("") +
-        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) +
-        theme(panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black")) -> plt
+        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) -> plt
 
     if(disp[1] & disp[2])
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2) +
