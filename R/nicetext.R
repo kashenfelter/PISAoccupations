@@ -14,6 +14,7 @@ nice_text <- function(ave_perfs) {
                 next
             else {
                 ave_perfs[i] <- ave_perfs[i] + 1
+                ave_perfs[i - 1] <- ave_perfs[i - 1] - 1
                 nc <- nc + 1
             } # else
         } # for
