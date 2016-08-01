@@ -15,5 +15,6 @@ plot_dot <- function(sdf) {
         hide_legend("fill") %>%
         add_tooltip(give_label, "hover") %>%
         set_options(width = "auto",
-                    height = "auto")
+                    height = "auto",
+                    duration = 0)
 }
