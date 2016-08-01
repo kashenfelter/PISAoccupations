@@ -13,8 +13,8 @@ nice_text <- function(ave_perfs) {
             if(ave_perfs[i] - ave_perfs[i - 1] >= 8)
                 next
             else {
-                ave_perfs[i] <- ave_perfs[i] + 1
-                ave_perfs[i - 1] <- ave_perfs[i - 1] - 1
+                ave_perfs[i] <- ave_perfs[i] + 0.5
+                ave_perfs[i - 1] <- ave_perfs[i - 1] - 0.5
                 nc <- nc + 1
             } # else
         } # for
