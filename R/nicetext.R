@@ -10,7 +10,7 @@ nice_text <- function(ave_perfs) {
     while(nc > 0) {
         nc <- 0
         for(i in 2:length(ave_perfs)) {
-            if(ave_perfs[i] - ave_perfs[i - 1] >= 8)
+            if(ave_perfs[i] - ave_perfs[i - 1] >= 5)
                 next
             else {
                 ave_perfs[i] <- ave_perfs[i] + 0.5
