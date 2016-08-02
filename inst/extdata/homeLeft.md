@@ -8,8 +8,9 @@
 
 [TODO: a mini screen shot with plot should be placed here]
 
-**Two countries** plots students' mean performance on vertical axis. Some of questions it may answer are: 
+**Two countries** perspective displays students' mean performance on vertical axis and two countries on left and right sides of the plot. Some of questions it may answer are: 
 
 * Do the countries have similar results for all occupations?   
 * In which country the difference between best- and worst-performing occupation is bigger?
 * Which occupations have mean results better than their country's mean?
+
