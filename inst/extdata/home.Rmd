@@ -2,8 +2,6 @@
 output: html_document
 ---
 
-# Trends in Occupations@PISA
-
 This application helps to explore the *relationship between parents' occupations and child's performance in reading, mathematics and science literacy* measured in [PISA](https://www.oecd.org/pisa/) studies.
 
 Occupations are classified according to [ISCO - International Standard Classification of Occupations](http://www.ilo.org/public/english/bureau/stat/isco/). Here we are using 9 major groups: 1 -	Managers, 2 -	Professionals, 3 - Technicians and Associate Professionals, 4 -	Clerical Support Workers, 5 - Services and Sales Workers, 6 - Skilled Agricultural, Forestry and Fishery Workers, 7 - Craft and Related Trades Workers, 8 - Plant and Machine Operators and Assemblers, 9 -	Elementary Occupations. Occupations that are not listed in ISCO, such as student or housewife, are assigned to the category 9. 
