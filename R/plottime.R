@@ -11,10 +11,12 @@
 #' @export
 
 plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
+    vals <- c(16,2)
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
                isco %in% c(isco_cats)) -> sdf
+    names(vals) <- unique(c(sdf$cnt_lab[sdf$cnt == cnts[1]], sdf$cnt_lab[sdf$cnt == cnts[2]]))
     ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
         geom_point(size = 4, stroke = 2) +
@@ -22,7 +24,7 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         theme(legend.position = c(0.94, 0.92),
               axis.text.x = element_text(angle = 90),
               panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black")) +
-        scale_shape_manual(name = "Country", values = c(2,16)) +
+        scale_shape_manual(name = "Country", values = vals) +
         scale_color_discrete(guide = "none") +
         xlab("") +
         ylab("") +
@@ -31,9 +33,9 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     if(disp[1])
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2)
     if(disp[2])
-        plt <- plt + geom_line(data = subset(sdf, cnt == sort(cnts)[1]), stat = "smooth",
+        plt <- plt + geom_line(data = subset(sdf, cnt == cnts[1]), stat = "smooth",
                   linetype = 1, method = "lm", se = F, size = 1.5, show.legend = F) +
-        geom_line(data = subset(sdf, cnt == sort(cnts)[2]), stat = "smooth",
+        geom_line(data = subset(sdf, cnt == cnts[2]), stat = "smooth",
                   linetype = 2, alpha = 0.5, method = "lm", se = F, size = 1.5, show.legend = F)
     return(plt)
 }

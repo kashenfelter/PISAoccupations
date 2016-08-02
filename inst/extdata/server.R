@@ -1,9 +1,9 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(reshape2)
 library(ggthemes)
 library(ggvis)
+install_github("mi2-warsaw/PISAoccupations", deps = F)
 library(PISAoccupations)
 
 shinyServer(function(input, output) {
