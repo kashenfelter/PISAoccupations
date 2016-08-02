@@ -1,35 +1,8 @@
 shinyUI(navbarPage(
     tags$head(tags$style(
-        HTML("
-                            #col1 {
-                                      background-color: #f8f8f8;
-                            }
-                            #col2 {
-                                      background-color: #f8f8f8;
-                            }
-                            #col3 {
-                                      background-color: #f8f8f8;
-                            }
-                            #col4 {
-                                      background-color: #f8f8f8;
-                            }
-             #time {
-             height: 100vh !important;
-             }
-             #rainbow2 {
-             height: 100vh !important;
-             }
-             #dots {
-             height: 100vh !important;
-             }
-             #rnbwt1 {
-             height: 100vh !important;
-             }
-             #rnbwt2 {
-             height: 100vh !important;
-             }
-             "
-        ))),
+        HTML("#col1 #col2 #col3 #col4 { background-color: #f8f8f8; }
+              #time #rainbow2 #dots #rnbwt1 #rnbwt2 { height: 100vh !important; }"))),
+    
     "PISA occupations trends",
                    tabPanel("Home",
                             fluidRow(column(12,
