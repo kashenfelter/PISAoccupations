@@ -9,7 +9,7 @@
 #' @export
 
 plot_rainbow <- function(csubject, cnts, cyear) {
-    if("AUT" %in% cnts) {
+    if("AUT" %in% cnts & cyear == "2012") {
         ggplot(pisa) +
             geom_blank() +
             ggtitle("Austria did not provide data on parents' occupations") +
