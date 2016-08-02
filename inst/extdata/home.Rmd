@@ -4,19 +4,62 @@ output: html_document
 
 # Trends in PISA occupations.
 
-This application aims to help explore the relationship between parents' occupations and child's performance in PISA study. Occupations are classified according to [ISCO](http://www.ilo.org/public/english/bureau/stat/isco/).  
+This application aims to help explore the relationship between parents' occupations and child's performance in PISA study. Occupations are classified according to [ISCO](http://www.ilo.org/public/english/bureau/stat/isco/).
+Below a quick overview of provided graphical tools is given.
 
+***
 
-<!-- dodać autorów - z mejlami? -->
-Details about can be found [here](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/about.pdf).  
+In each study students' skills in mathematics, reading and science were tested. 
+You can switch between subject by clicking items on the **Subject** list.
+Similarly, first three plots show data from one study. 
+Selecting an item on the **Year** list changes displayed year. 
+Clicking each tab at the top of this page takes you to a different kind of a plot.
+
+1. **Compare categories in time** plot display students' mean performance on vertical axis and year of study on horizontal axis.   <!-- The results are grouped by parents' occupation category written above the plots -->
+This plot helps you answer questions like:  
+    * In which categories the results improved over years?  
+    * Are the trends in two countries similar or different?  
+    * In which categories difference between countries became smaller/bigger?
+    
+By default all ISCO categories are displayed. You can focus on some of them by clicking **Details** and unchecking categories. You can also uncheck **Show standard error** or **Show trend** checkbox to make the plot simpler.
+
+2. **Compare two countries** plots students' mean performance on vertical axis. Some of questions it may answer are: 
+    * Do the countries have similar structure?   <!-- wyjaśnić -->
+    * In which country the difference between children from best- and worst-performing category is bigger?
+    * Which categories have mean results better than their country's mean?
+    
+3. **Compare countries in time** plots students' mean performance on vertical axis and year on horizontal axis.
+Plots showing two countries are displayed side-by-side for comparison. 
+Colors refer to ISCO categories. 
+Hovering over lines or points on the plot displays a tooltip that gives a name of the category, it's mean performance
+and more information.
+This plot helps answer questions like:  
+    * Did the structure of results change over years?   <!-- Tzn. czy któreś dzieci zaczęły pisać lepiej -->
+    * Did the spread in results got bigger or smaller?  
+    * Did the spread change because of one or more categories?   <!-- Improving/pogarszająće się -->
+
+4. **Compare all countries** plots students' mean performance on horizontal axis and names of the countries on vertical axis. It helps find out for example:  
+    * Which countries achieve the best mean results?  
+    * How are top countries different between subjects?  
+    * How big is the difference between best- and worst-performing countries?  
+By default all ISCO categories are displayed. You can focus on some of them or just country means by clicking 
+**Details** and unchecking categories.
+
+For details and examples please read [this document](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/about.pdf).  
+
+***
 
 Data used in this app can be downloaded here:  
 
-* [Data for PISA 2003](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2003.xlsx)  
-* [Data for PISA 2006](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2006.xlsx)  
-* [Data for PISA 2009](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2009.xlsx)  
-* [Data for PISA 2012](https://github.com/mi2-warsaw/PISAoccupations/raw/master/data/pisa2012.xlsx)  
+* [Data for PISA 2003](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/pisa2003.xlsx)  
+* [Data for PISA 2006](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/pisa2006.xlsx)  
+* [Data for PISA 2009](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/pisa2009.xlsx)  
+* [Data for PISA 2012](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/pisa2012.xlsx)  
 
-Calculations were performed using accompanying R package that can be downloaded from [github](https://github.com/mi2-warsaw/PISAoccupations).  
+PISA study along with several other large-scale assessment studies uses plausible values methodology.
+As a result, mean students' performances and other statistics (and their standard errors) must be calculated in a non-standard way. For details please refer to [PISA technical report](http://www.oecd.org/pisa/pisaproducts/pisa2012technicalreport.htm).
+Calculations were performed using accompanying R package that can be downloaded from [github](https://github.com/mi2-warsaw/PISAoccupations).
 Raw data can be found on [OECD website](http://www.oecd.org/pisa/pisaproducts/) under **Databases** category.
 
+The application was created by Mateusz Staniak (Institute of Mathematics, University of Wrocław) under Przemysław Biecek's supervision.
+<!-- Dodać link do strony? Potrzeba jakiś danych kontaktowych -->
