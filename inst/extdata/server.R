@@ -1,10 +1,13 @@
+if (!require(PISAoccupations)) {
+  devtools::install_github("mi2-warsaw/PISAoccupations")
+}
+
 library(shiny)
 library(ggplot2)
 library(dplyr)
 library(reshape2)
 library(ggthemes)
 library(ggvis)
-library(PISAoccupations)
 
 shinyServer(function(input, output) {
     sdf <- reactive({pisa %>%
