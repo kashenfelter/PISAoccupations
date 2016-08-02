@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 library(shiny)
 library(ggplot2)
 library(dplyr)
@@ -7,8 +6,6 @@ library(ggvis)
 install_github("mi2-warsaw/PISAoccupations", deps = F)
 library(PISAoccupations)
 
-=======
->>>>>>> a13823a85af50fabc2ce5292eff02e2c1f7875b0
 shinyServer(function(input, output) {
     sdf <- reactive({pisa %>%
                          filter(subject == input$subjectt,
