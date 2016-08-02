@@ -1,24 +1,16 @@
-library(shiny)
-library(ggplot2)
-library(dplyr)
-library(ggthemes)
-library(ggvis)
-install_github("mi2-warsaw/PISAoccupations", deps = F)
-library(PISAoccupations)
-
 shinyServer(function(input, output) {
     sdf <- reactive({pisa %>%
-                         filter(subject == input$subjectt,
-                                year == input$cyear,
-                                isco %in% c("cnt", input$isco_cats2))})
+            filter(subject == input$subjectt,
+                   year == input$cyear,
+                   isco %in% c("cnt", input$isco_cats2))})
     sdf1 <- reactive({pisa %>%
-                      filter(subject == input$subjectt1,
-                             cnt == input$cnt11)
-                    })
+            filter(subject == input$subjectt1,
+                   cnt == input$cnt11)
+    })
     sdf2 <- reactive({pisa %>%
-                          filter(subject == input$subjectt1,
-                                 cnt == input$cnt21)
-                    })
+            filter(subject == input$subjectt1,
+                   cnt == input$cnt21)
+    })
 
     plot_dot(sdf) %>%
         bind_shiny("dots")
@@ -32,7 +24,7 @@ shinyServer(function(input, output) {
         height = 800
     )
     output$time <- renderPlot(
-            plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
+        plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
         height = 800
     )
 })
