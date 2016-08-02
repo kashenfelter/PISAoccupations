@@ -21,10 +21,10 @@ shinyServer(function(input, output) {
 
     output$rainbow2 <- renderPlot(
         plot_rainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
-        height = 900
+        height = 800
     )
     output$time <- renderPlot(
             plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
-        height = 900
+        height = 800
     )
 })
