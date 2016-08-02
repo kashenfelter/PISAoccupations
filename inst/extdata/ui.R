@@ -1,13 +1,13 @@
 shinyUI(fluidPage(
   tags$head(tags$style(
     HTML("#col1 #col2 #col3 #col4 { background-color: #f8f8f8; }
-         #time #rainbow2 #dots #rnbwt1 #rnbwt2 { height: 100vh !important; }
-         .navbar .navbar-nav {float: left}"))),
+         #time #rainbow2 #dots #rnbwt1 #rnbwt2 { height: 100vh !important; }"))),
   navbarPage("Trends in Occupations@PISA",
              tabPanel("Home",
-                      fluidRow(column(12,
-                                      includeMarkdown("https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/home.Rmd")
-                      ))),
+                      fluidRow(column(12, includeMarkdown("home.md") )),
+                      fluidRow(column(6, includeMarkdown("homeLeft.md") ),
+                               column(6, includeMarkdown("homeRight.md") )),
+                      fluidRow(column(12, includeMarkdown("homeBottom.md") ))),
              tabPanel("Trends in Occupations",
                       fluidRow(
                         column(2,
