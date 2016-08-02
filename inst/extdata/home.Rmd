@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Trends in PISA occupations.
+# Trends in Occupations@PISA
 
 This application aims to help explore the relationship between parents' occupations and child's performance in PISA study. Occupations are classified according to [ISCO](http://www.ilo.org/public/english/bureau/stat/isco/).
 Below a quick overview of provided graphical tools is given.
