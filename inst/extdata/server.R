@@ -12,6 +12,7 @@ shinyServer(function(input, output) {
                    cnt == input$cnt21)
     })
 
+
     plot_dot(sdf) %>%
         bind_shiny("dots")
     plot_rainbow_time(sdf1) %>%

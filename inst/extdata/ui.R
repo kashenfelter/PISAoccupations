@@ -19,7 +19,7 @@ shinyUI(fluidPage(
                                radioButtons("subject", label = "Choose the subject of interest",
                                             choices = subs_i,
                                             selected = "MATH"),
-                               p("By default all ISCO categories are displayed. You can focus on some of them by clicking 'Plot settings' and unchecking some categories."),
+                               p("By default all ISCO categories are displayed. You can focus on some of them by clicking 'Plot settings' and unchecking categories."),
                                actionButton("modify",
                                             "Plot settings"),
                                conditionalPanel(condition = "(input.modify % 2) == 1",
@@ -67,7 +67,8 @@ shinyUI(fluidPage(
                                splitLayout(
                                  cellWidths = c("50%", "50%"),
                                  ggvisOutput("rnbwt1"),
-                                 ggvisOutput("rnbwt2")))
+                                 conditionalPanel(condition = "input.cnt21 != '-'",
+                                 ggvisOutput("rnbwt2"))))
                       )),
              tabPanel("All countries",
                       fluidRow(
@@ -77,7 +78,7 @@ shinyUI(fluidPage(
                                             choices = subs_i, selected = "MATH"),
                                radioButtons("cyear", "Choose the PISA study",
                                             choices = years_i, selected = "2012"),
-                               p("By default all ISCO categories are displayed. You can focus on some of them by clicking 'Plot settings' and unchecking some categories."),
+                               p("By default all ISCO categories are displayed. You can focus on some of them by clicking 'Plot settings' and unchecking categories."),
                                actionButton("modify2",
                                             "Plot settings"),
                                conditionalPanel(condition = "(input.modify2 % 2) == 1",
@@ -85,6 +86,6 @@ shinyUI(fluidPage(
                                                                    choices = iscos, selected = as.character(1:9)))),
                         column(10, ggvisOutput("dots"))
                       ))
-  )  
+  )
 )
 )

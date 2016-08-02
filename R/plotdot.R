@@ -11,7 +11,6 @@ plot_dot <- function(sdf) {
         layer_points() %>%
         add_axis("x", title = "Mean performance") %>%
         add_axis("y", title = "") %>%
-        # scale_ordinal("y", domain = cntsss) %>%
         hide_legend("size") %>%
         hide_legend("fill") %>%
         add_tooltip(give_label, "hover")  %>%
