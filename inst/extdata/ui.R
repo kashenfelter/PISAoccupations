@@ -1,10 +1,3 @@
-library(shiny)
-library(ggplot2)
-library(PISAoccupations)
-library(dplyr)
-library(ggvis)
-library(markdown)
-
 shinyUI(navbarPage(
     tags$head(tags$style(
         HTML("

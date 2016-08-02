@@ -1,14 +1,3 @@
-if (!require(PISAoccupations)) {
-  devtools::install_github("mi2-warsaw/PISAoccupations")
-}
-
-library(shiny)
-library(ggplot2)
-library(dplyr)
-library(reshape2)
-library(ggthemes)
-library(ggvis)
-
 shinyServer(function(input, output) {
     sdf <- reactive({pisa %>%
                          filter(subject == input$subjectt,
