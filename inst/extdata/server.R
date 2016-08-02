@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 library(shiny)
 library(ggplot2)
 library(dplyr)
@@ -6,6 +7,8 @@ library(ggvis)
 install_github("mi2-warsaw/PISAoccupations", deps = F)
 library(PISAoccupations)
 
+=======
+>>>>>>> a13823a85af50fabc2ce5292eff02e2c1f7875b0
 shinyServer(function(input, output) {
     sdf <- reactive({pisa %>%
                          filter(subject == input$subjectt,
@@ -29,10 +32,10 @@ shinyServer(function(input, output) {
 
     output$rainbow2 <- renderPlot(
         plot_rainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
-        height = 900
+        height = 800
     )
     output$time <- renderPlot(
             plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
-        height = 900
+        height = 800
     )
 })
