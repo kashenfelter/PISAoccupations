@@ -7,3 +7,10 @@ library(dplyr)
 library(ggvis)
 library(markdown)
 library(ggthemes)
+
+pisa %>%
+  group_by(cnt, year, subject) %>%
+  mutate(cnt_avg = head(ave.perf[isco == 'cnt'],1)) %>%
+  dplyr::ungroup() %>%
+  arrange(-cnt_avg) %>%
+  as.data.frame() -> pisa
