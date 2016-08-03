@@ -33,14 +33,14 @@ plot_rainbow <- function(csubject, cnts, cyear) {
             theme_tufte(base_size = 18) +
             geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
             geom_line(size = 1.5) +
-            geom_text(data = subset(sdf, isco != "cnt" & no == 1), aes(y = text_pos), hjust = "outward", size = 8, nudge_x = -0.1) +
-            geom_text(data = subset(sdf, isco != "cnt" & no == 3), aes(y = text_pos), hjust = "outward", size = 8, nudge_x = 0.1) +
+            geom_text(data = subset(sdf, isco != "cnt" & no == 1), aes(y = text_pos), hjust = "outward", size = 7, nudge_x = -0.1) +
+            geom_text(data = subset(sdf, isco != "cnt" & no == 3), aes(y = text_pos), hjust = "outward", size = 7, nudge_x = 0.1) +
             geom_line(data = subset(sdf, isco == "cnt"), aes(group = year), size = 1.5, color = "black") +
             geom_point(data = subset(sdf, isco == "cnt"), color = "black") +
             geom_text(data = subset(sdf, isco == "cnt" & no == 1),
-                      color = "black", hjust = "outward", size = 8, nudge_x = -0.1) +
+                      color = "black", hjust = "outward", size = 7, nudge_x = -0.1) +
             geom_text(data = subset(sdf, isco == "cnt" & no == 3),
-                      color = "black", hjust = "outward", size = 8, nudge_x = 0.1) +
+                      color = "black", hjust = "outward", size = 7, nudge_x = 0.1) +
             scale_size(guide = "none") +
             scale_color_discrete(guide = "none") +
             theme(axis.ticks.x = element_blank(),
