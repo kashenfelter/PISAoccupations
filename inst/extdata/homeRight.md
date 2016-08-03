@@ -1,4 +1,4 @@
-![Sorry, image could not be displayed.](example_3.png)
+<center><img style="border-style: solid; border-width: 1px;" src="example_3.png"></center>
 
 **Trends in two countries** perspective displays students' mean performance on vertical axis and year on horizontal axis. Plots showing two countries are displayed side-by-side for comparison. This plot helps answer questions like:  
 
@@ -8,7 +8,7 @@
 
 ***
 
-![Sorry, image could not be displayed.](example_4.png)
+<center><img style="border-style: solid; border-width: 1px;" src="example_4.png"></center>
 
 **All countries** perspective displays students' mean performance on horizontal axis and names of the countries on vertical axis. It helps find out for example:  
 
