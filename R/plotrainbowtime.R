@@ -9,13 +9,17 @@
 plot_rainbow_time <- function(sdf) {
     ggvis(sdf, x = ~year, y = ~ave.perf) %>%
         group_by(isco) %>%
-        layer_paths(stroke = ~isco) %>%
-        layer_points(fill = ~isco) %>%
-        layer_points(fill = ~isco, key := ~id) %>% # To przez jakiś bug w ggvis.
+        layer_paths(stroke := ~color) %>%
+        layer_points(fill := ~color) %>%
+        layer_points(fill := ~color, key := ~id) %>% # To przez jakiś bug w ggvis.
         hide_legend("fill") %>%
         hide_legend("stroke") %>%
-        add_axis("x", title = "Year") %>%
-        add_axis("y", title = "Mean performance") %>%
+        add_axis("x", title = "Year",
+                 properties = axis_props(title = list(fontSize = 16),
+                                         labels = list(fontSize = 16))) %>%
+        add_axis("y", title = "Mean performance", title_offset = 50,
+                 properties = axis_props(title = list(fontSize = 16),
+                                         labels = list(fontSize = 16))) %>%
         add_tooltip(give_label, "hover") %>%
         set_options(width = "auto",
                     height = "auto",
