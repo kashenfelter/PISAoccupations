@@ -9,7 +9,8 @@
 plot_rainbow_time <- function(sdf) {
     ggvis(sdf, x = ~year, y = ~ave.perf) %>%
         group_by(isco) %>%
-        layer_paths(stroke = ~isco) %>%
+        arrange(year) %>%
+        layer_paths(stroke := ~color) %>%
         layer_points(fill := ~color) %>%
         layer_points(fill := ~color, key := ~id) %>% # To przez jakiś bug w ggvis.
         hide_legend("fill") %>%
