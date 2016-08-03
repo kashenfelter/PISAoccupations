@@ -7,7 +7,7 @@
 #' @export
 
 plot_dot <- function(sdf) {
-    ggvis(sdf, y = ~cnt_lab, x = ~ave.perf, fill = ~isco, size = ~pop.share, key := ~id) %>%
+    ggvis(sdf, y = ~reorder(cnt_lab, cnt_avg), x = ~ave.perf, fill = ~isco, size = ~pop.share, key := ~id) %>%
         layer_points() %>%
         add_axis("x", title = "Mean performance") %>%
         add_axis("y", title = "") %>%

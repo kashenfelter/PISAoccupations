@@ -1,7 +1,7 @@
 shinyUI(fluidPage(
   tags$head(tags$style(
     HTML("#col1 #col2 #col3 #col4 { background-color: #f8f8f8; }
-         #time #rainbow2 #dots #rnbwt1 #rnbwt2 { height: 100vh !important; }"))),
+         #time #rainbow2{ height: 100vh !important; }"))), #  #rnbwt2  #dots #rnbwt1
   navbarPage("Trends in Occupations@PISA",
              tabPanel("Home",
                       fluidRow(column(12, includeMarkdown("home.md") )),
