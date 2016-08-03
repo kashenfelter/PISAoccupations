@@ -64,7 +64,7 @@ shinyUI(fluidPage(
                                             choices = subs_i,
                                             selected = "MATH")),
                         column(10,
-                               splitLayout(
+                               splitLayout( # Inna możliwość: verticalLayout
                                  cellWidths = c("50%", "50%"),
                                  ggvisOutput("rnbwt1"),
                                  conditionalPanel(condition = "input.cnt21 != '-'",
