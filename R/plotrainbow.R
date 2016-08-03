@@ -13,7 +13,7 @@ plot_rainbow <- function(csubject, cnts, cyear) {
         ggplot(pisa) +
             geom_blank() +
             ggtitle("Austria did not provide data on parents' occupations") +
-            theme_tufte(base_size = 18)
+            theme_tufte(base_size = 16)
     }
     else {
         pisa %>%
@@ -30,7 +30,7 @@ plot_rainbow <- function(csubject, cnts, cyear) {
                                               {function(x) return(naming2[names(naming2) == x])})
 
         ggplot(subset(sdf, isco != "cnt"), aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
-            theme_tufte(base_size = 18) +
+            theme_tufte(base_size = 16) +
             geom_point(data = subset(sdf, isco != "cnt"), aes(size = pop.share)) +
             geom_line(size = 1.5) +
             geom_text(data = subset(sdf, isco != "cnt" & no == 1), aes(y = text_pos), hjust = "outward", size = 7, nudge_x = -0.1) +

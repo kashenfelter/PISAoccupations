@@ -20,10 +20,11 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
         geom_point(size = 4, stroke = 2) +
-        theme_tufte(base_size = 18) +
+        theme_tufte(base_size = 16) +
         theme(legend.position = c(0.94, 0.92),
               axis.text.x = element_text(angle = 90),
-              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black")) +
+              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black"),
+              panel.grid = element_line(linetype = 2, size = 0.5, color = "black")) +
         scale_shape_manual(name = "Country", values = vals) +
         scale_color_discrete(guide = "none") +
         xlab("") +
