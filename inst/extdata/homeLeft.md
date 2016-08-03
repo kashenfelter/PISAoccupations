@@ -1,4 +1,4 @@
-[TODO: a mini screen shot with plot should be placed here]
+![](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/example_1.svg)
 
 **Trends in Occupations** perspective displays students' mean performance on vertical axis and year of study on horizontal axis. This plot helps you answer questions like: 
 
@@ -6,7 +6,7 @@
 * Are the trends in two countries similar or different?  
 * In which categories difference between countries became smaller/bigger?
 
-[TODO: a mini screen shot with plot should be placed here]
+![](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/example_2.svg)
 
 **Two countries** perspective displays students' mean performance on vertical axis and two countries on left and right sides of the plot. Some of questions it may answer are: 
 

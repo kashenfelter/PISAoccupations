@@ -1,4 +1,4 @@
-[TODO: a mini screen shot with plot should be placed here]
+![](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/example_3.svg)
 
 **Trends in two countries** perspective displays students' mean performance on vertical axis and year on horizontal axis. Plots showing two countries are displayed side-by-side for comparison. This plot helps answer questions like:  
 
@@ -6,7 +6,7 @@
 * Did the spread in results got bigger or smaller?  
 * Did the spread change because of one or more categories?  
 
-[TODO: a mini screen shot with plot should be placed here]
+![](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/example_4.svg)
 
 **All countries** perspective displays students' mean performance on horizontal axis and names of the countries on vertical axis. It helps find out for example:  
 
