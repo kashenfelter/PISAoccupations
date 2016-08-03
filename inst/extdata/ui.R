@@ -59,7 +59,7 @@ shinyUI(fluidPage(
                                            selected = country_names[1]),
                                selectInput("cnt21", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names),
-                                           selected = "-"),
+                                           selected = country_names[3]),
                                radioButtons("subjectt1", label = "Choose the subject of interest",
                                             choices = subs_i,
                                             selected = "MATH")),
