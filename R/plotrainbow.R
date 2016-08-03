@@ -13,7 +13,7 @@ plot_rainbow <- function(csubject, cnts, cyear) {
         ggplot(pisa) +
             geom_blank() +
             ggtitle("Austria did not provide data on parents' occupations") +
-            theme_tufte(base_size = 20)
+            theme_tufte(base_size = 18)
     }
     else {
         pisa %>%
