@@ -98,10 +98,11 @@ shinyUI(fluidPage(
                                                 checkboxGroupInput("isco_cats2", label = "Primary ISCO categories",
                                                                    choices = iscos, selected = as.character(1:9)))),
                         column(10,
+                               verticalLayout(
                                p("Students' mean performance is plotted on the horizontal axis,
                                   country names on the vertical axis.
                                  Hover over the points or lines to see detailed informations."),
-                               ggvisOutput("dots"))
+                               ggvisOutput("dots")))
                       ))
   )
 )
