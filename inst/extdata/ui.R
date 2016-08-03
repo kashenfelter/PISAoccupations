@@ -31,7 +31,11 @@ shinyUI(fluidPage(
                                                               value = TRUE),
                                                 checkboxGroupInput("isco_cats", label = "Major ISCO group",
                                                                    choices = iscos, selected = as.character(1:9)))),
-                        column(10, plotOutput("time"))
+                        column(10,
+                               p("Students' mean performance is plotted on the vertical axis and
+                                 years of study are displayed on the horizontal axis to help you discover
+                                 trends in all the ISCO categories."),
+                               plotOutput("time"))
                       )),
              tabPanel("Two countries",
                       fluidRow(
@@ -47,7 +51,11 @@ shinyUI(fluidPage(
                                radioButtons("cyear1", "Choose the PISA study",
                                             choices = years_i,
                                             selected = "2012")),
-                        column(10, plotOutput("rainbow2"))
+                        column(10,
+                               p("Students' mean performance is displayed on vertical axis,
+                                 two countries are on left and right sides of the plot.
+                                 This plot helps you find out if the results are similar in all categories and more."),
+                               plotOutput("rainbow2"))
                       )),
              tabPanel("Trends in two countries",
                       fluidRow(
@@ -64,7 +72,12 @@ shinyUI(fluidPage(
                                             choices = subs_i,
                                             selected = "MATH")),
                         column(10,
-                               splitLayout( # Inna możliwość: verticalLayout
+                               p("Mean performance is plotted on the vertical axis,
+                                 horizontal axis shows year of study.
+                                 You can see how results structure changed over years in one country
+                                 and compare it with another.
+                                 Choose '-' in the select list to hide the second country."),
+                               splitLayout(
                                  cellWidths = c("50%", "50%"),
                                  ggvisOutput("rnbwt1"),
                                  conditionalPanel(condition = "input.cnt21 != '-'",
@@ -84,7 +97,11 @@ shinyUI(fluidPage(
                                conditionalPanel(condition = "(input.modify2 % 2) == 1",
                                                 checkboxGroupInput("isco_cats2", label = "Primary ISCO categories",
                                                                    choices = iscos, selected = as.character(1:9)))),
-                        column(10, ggvisOutput("dots"))
+                        column(10,
+                               p("Students' mean performance is plotted on the horizontal axis,
+                                  country names on the vertical axis.
+                                 Hover over the points or lines to see detailed informations."),
+                               ggvisOutput("dots"))
                       ))
   )
 )

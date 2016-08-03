@@ -12,5 +12,5 @@ give_label <- function(point) {
           src$isco_lab, "<br />",
           "Mean (plausible values):", round(src$ave.perf, 2), "<br />",
           "Standard error:", round(src$se, 2), "<br />",
-          "Population share:", round(src$pop.share, 0)))
+          "Population share:", paste0(round(src$pop.share/1000), "k")))
 }

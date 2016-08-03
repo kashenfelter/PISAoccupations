@@ -15,7 +15,7 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
-               isco %in% c(isco_cats)) -> sdf
+               isco %in% c("cnt", isco_cats)) -> sdf
     names(vals) <- unique(c(sdf$cnt_lab[sdf$cnt == cnts[1]], sdf$cnt_lab[sdf$cnt == cnts[2]]))
     ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
@@ -29,7 +29,7 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         scale_color_discrete(guide = "none") +
         xlab("") +
         ylab("") +
-        facet_grid(~isco, labeller = as_labeller(naming[naming != "Country"])) -> plt
+        facet_grid(~isco, labeller = as_labeller(naming)) -> plt # [naming != "Country"]
 
     if(disp[1])
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2)
