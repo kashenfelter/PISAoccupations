@@ -12,8 +12,11 @@ shinyUI(fluidPage(
                       fluidRow(
                         column(2,
                                id = "col1",
+                               p("Students' mean performance is plotted on the vertical axis and
+                                 year of PISA study is displayed on the horizontal axis to help you discover
+                                 trends across all the ISCO categories."),br(),
                                selectInput("cnt1", label = "Select your country of interest",
-                                           choices = country_names, selected = country_names[1]),
+                                           choices = country_names, selected = "Finland"),
                                selectInput("cnt2", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names), selected = "-"),
                                radioButtons("subject", label = "Choose the subject of interest",
@@ -32,17 +35,17 @@ shinyUI(fluidPage(
                                                 checkboxGroupInput("isco_cats", label = "Major ISCO group",
                                                                    choices = iscos, selected = as.character(1:9)))),
                         column(10,
-                               p("Students' mean performance is plotted on the vertical axis and
-                                 years of study are displayed on the horizontal axis to help you discover
-                                 trends in all the ISCO categories."),
                                plotOutput("time"))
                       )),
              tabPanel("Two countries",
                       fluidRow(
                         column(2,
                                id = "col2",
+                               p("Students' mean performance is displayed on vertical axis,
+                                 two countries are on left and right sides of the plot.
+                                 This plot helps you find out if the results are similar in all categories."),br(),
                                selectInput("cnt12", label = "Select your country of interest",
-                                           choices = country_names, selected = country_names[1]),
+                                           choices = country_names, selected = "Finland"),
                                selectInput("cnt22", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names), selected = country_names[3]),
                                radioButtons("subject1", label = "Choose the subject of interest",
@@ -52,31 +55,27 @@ shinyUI(fluidPage(
                                             choices = years_i,
                                             selected = "2012")),
                         column(10,
-                               p("Students' mean performance is displayed on vertical axis,
-                                 two countries are on left and right sides of the plot.
-                                 This plot helps you find out if the results are similar in all categories and more."),
                                plotOutput("rainbow2"))
                       )),
              tabPanel("Trends in two countries",
                       fluidRow(
                         column(2,
                                id = "col3",
-                               p("Hovering over lines or points on the plot displays a tooltip that gives a name of occupation, it's mean performance and more information."),
+                               p("Mean performance is plotted on the vertical axis,
+                                 horizontal axis shows year of study.
+                                 You can see how results structure changed over years in one country
+                                 and compare it with another."),br(),
                                selectInput("cnt11", label = "Select your country of interest",
                                            choices = country_names,
-                                           selected = country_names[1]),
+                                           selected = "Finland"),
                                selectInput("cnt21", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names),
                                            selected = country_names[3]),
                                radioButtons("subjectt1", label = "Choose the subject of interest",
                                             choices = subs_i,
-                                            selected = "MATH")),
+                                            selected = "MATH"),
+                               p("Hovering over lines or points on the plot displays a tooltip that gives a name of occupation, it's mean performance and more information.")),
                         column(10,
-                               p("Mean performance is plotted on the vertical axis,
-                                 horizontal axis shows year of study.
-                                 You can see how results structure changed over years in one country
-                                 and compare it with another.
-                                 Choose '-' in the select list to hide the second country."),
                                splitLayout(
                                  cellWidths = c("50%", "50%"),
                                  ggvisOutput("rnbwt1"),
@@ -87,6 +86,9 @@ shinyUI(fluidPage(
                       fluidRow(
                         column(2,
                                id = "col4",
+                               p("Students' mean performance is plotted on the horizontal axis,
+                                  country names on the vertical axis.
+                                 Hover over the points or lines to see detailed informations."),br(),
                                radioButtons("subjectt", label = "Choose the subject of interest",
                                             choices = subs_i, selected = "MATH"),
                                radioButtons("cyear", "Choose the PISA study",
@@ -99,9 +101,6 @@ shinyUI(fluidPage(
                                                                    choices = iscos, selected = as.character(1:9)))),
                         column(10,
                                verticalLayout(
-                               p("Students' mean performance is plotted on the horizontal axis,
-                                  country names on the vertical axis.
-                                 Hover over the points or lines to see detailed informations."),
                                ggvisOutput("dots")))
                       ))
   )
