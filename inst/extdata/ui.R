@@ -1,7 +1,8 @@
 shinyUI(fluidPage(
   tags$head(tags$style(
     HTML("#col1 #col2 #col3 #col4 { background-color: #f8f8f8; }
-         #time #rainbow2{ height: 100vh !important; }"))), #  #rnbwt2  #dots #rnbwt1
+         #time #rainbow2{ height: 100vh !important; }
+         #title1 #title2 {text-align: center;}"))), #  #rnbwt2  #dots #rnbwt1
   navbarPage("Trends in Occupations@PISA",
              tabPanel("Home",
                       fluidRow(column(12, includeMarkdown("home.md") )),
@@ -47,7 +48,7 @@ shinyUI(fluidPage(
                                selectInput("cnt12", label = "Select your country of interest",
                                            choices = country_names, selected = "FIN"),
                                selectInput("cnt22", label = "Add second country for comparison",
-                                           choices = c("-" = "-", country_names), selected = country_names[3]),
+                                           choices = c("-" = "-", country_names), selected = "BEL"),
                                radioButtons("subject1", label = "Choose the subject of interest",
                                             choices = subs_i,
                                             selected = "MATH"),
@@ -67,10 +68,10 @@ shinyUI(fluidPage(
                                  and compare it with another."),br(),
                                selectInput("cnt11", label = "Select your country of interest",
                                            choices = country_names,
-                                           selected = "Fin"),
+                                           selected = "FIN"),
                                selectInput("cnt21", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names),
-                                           selected = country_names[3]),
+                                           selected = "BEL"),
                                radioButtons("subjectt1", label = "Choose the subject of interest",
                                             choices = subs_i,
                                             selected = "MATH"),
@@ -79,12 +80,12 @@ shinyUI(fluidPage(
                                splitLayout(
                                  cellWidths = c("50%", "50%"),
                                  verticalLayout(
-                                     ggvisOutput("rnbwt1"),
-                                     textOutput("title1")),
+                                     textOutput("title1"),
+                                     ggvisOutput("rnbwt1")),
                                  conditionalPanel(condition = "input.cnt21 != '-'",
                                  verticalLayout(
-                                     ggvisOutput("rnbwt2"),
-                                     textOutput("title2")))))
+                                     textOutput("title2"),
+                                     ggvisOutput("rnbwt2")))))
                       )),
              tabPanel("All countries",
                       fluidRow(

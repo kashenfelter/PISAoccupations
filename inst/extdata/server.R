@@ -28,6 +28,6 @@ shinyServer(function(input, output) {
         plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
         height = 800
     )
-    output$title1 <- renderText(input$cnt1)
-    output$title2 <- renderText(input$cnt2)
+    output$title1 <- renderText(names(country_names)[country_names == input$cnt1])
+    output$title2 <- renderText(names(country_names)[country_names == input$cnt2])
 })
