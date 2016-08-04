@@ -16,7 +16,7 @@ shinyUI(fluidPage(
                                  year of PISA study is displayed on the horizontal axis to help you discover
                                  trends across all the ISCO categories."),br(),
                                selectInput("cnt1", label = "Select your country of interest",
-                                           choices = country_names, selected = "Finland"),
+                                           choices = country_names, selected = "FIN"),
                                selectInput("cnt2", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names), selected = "-"),
                                radioButtons("subject", label = "Choose the subject of interest",
@@ -45,7 +45,7 @@ shinyUI(fluidPage(
                                  two countries are on left and right sides of the plot.
                                  This plot helps you find out if the results are similar in all categories."),br(),
                                selectInput("cnt12", label = "Select your country of interest",
-                                           choices = country_names, selected = "Finland"),
+                                           choices = country_names, selected = "FIN"),
                                selectInput("cnt22", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names), selected = country_names[3]),
                                radioButtons("subject1", label = "Choose the subject of interest",
@@ -67,7 +67,7 @@ shinyUI(fluidPage(
                                  and compare it with another."),br(),
                                selectInput("cnt11", label = "Select your country of interest",
                                            choices = country_names,
-                                           selected = "Finland"),
+                                           selected = "Fin"),
                                selectInput("cnt21", label = "Add second country for comparison",
                                            choices = c("-" = "-", country_names),
                                            selected = country_names[3]),
@@ -78,9 +78,13 @@ shinyUI(fluidPage(
                         column(10,
                                splitLayout(
                                  cellWidths = c("50%", "50%"),
-                                 ggvisOutput("rnbwt1"),
+                                 verticalLayout(
+                                     ggvisOutput("rnbwt1"),
+                                     textOutput("title2")),
                                  conditionalPanel(condition = "input.cnt21 != '-'",
-                                 ggvisOutput("rnbwt2"))))
+                                 verticalLayout(
+                                     ggvisOutput("rnbwt2"),
+                                     textOutput("title2")))))
                       )),
              tabPanel("All countries",
                       fluidRow(
@@ -100,8 +104,7 @@ shinyUI(fluidPage(
                                                 checkboxGroupInput("isco_cats2", label = "Primary ISCO categories",
                                                                    choices = iscos, selected = as.character(1:9)))),
                         column(10,
-                               verticalLayout(
-                               ggvisOutput("dots")))
+                               ggvisOutput("dots"))
                       ))
   )
 )

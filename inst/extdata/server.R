@@ -28,4 +28,11 @@ shinyServer(function(input, output) {
         plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
         height = 800
     )
+    output$title1 <- renderText(cat(input$cnt1))
+    output$title2 <- renderText(
+        if(input$cnt2 == "-")
+            cat("")
+        else
+            cat(input$cnt1)
+    )
 })
