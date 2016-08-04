@@ -2,7 +2,9 @@ shinyUI(fluidPage(
   tags$head(tags$style(
     HTML("#col1 #col2 #col3 #col4 { background-color: #f8f8f8; }
          #time #rainbow2{ height: 100vh !important; }
-         #title1 #title2 {text-align: center;}"))), #  #rnbwt2  #dots #rnbwt1
+         #title1 #title2 { text-align: center;
+                           font-weight: bold;
+                           font-size: 16px; }"))), #  #rnbwt2  #dots #rnbwt1
   navbarPage("Trends in Occupations@PISA",
              tabPanel("Home",
                       fluidRow(column(12, includeMarkdown("home.md") )),
