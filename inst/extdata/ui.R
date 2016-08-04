@@ -82,11 +82,11 @@ shinyUI(fluidPage(
                                splitLayout(
                                  cellWidths = c("50%", "50%"),
                                  verticalLayout(
-                                     textOutput("title1"),
+                                     htmlOutput("title1"),
                                      ggvisOutput("rnbwt1")),
                                  conditionalPanel(condition = "input.cnt21 != '-'",
                                  verticalLayout(
-                                     textOutput("title2"),
+                                     htmlOutput("title2"),
                                      ggvisOutput("rnbwt2")))))
                       )),
              tabPanel("All countries",

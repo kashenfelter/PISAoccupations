@@ -28,6 +28,9 @@ shinyServer(function(input, output) {
         plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
         height = 800
     )
-    output$title1 <- renderText(names(country_names)[country_names == input$cnt11])
-    output$title2 <- renderText(names(country_names)[country_names == input$cnt21])
+    output$title1 <- renderText(
+        {paste("<center><p style='font-size: 16px;'><b>", names(country_names)[country_names == input$cnt11], "</b></p></center>")})
+
+    output$title2 <- renderText(
+        {paste("<center><p style='font-size: 16px;'><b>", names(country_names)[country_names == input$cnt21], "</b></p></center>")})
 })
