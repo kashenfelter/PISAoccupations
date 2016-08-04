@@ -23,12 +23,12 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         theme_tufte(base_size = 16) +
         theme(legend.position = c(0.94, 0.92),
               axis.text.x = element_text(angle = 90),
-              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "black"),
-              panel.grid = element_line(linetype = 2, size = 0.5, color = "black")) +
+              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey"),
+              panel.grid = element_line(linetype = 2, size = 0.5, color = "grey")) +
         scale_shape_manual(name = "Country", values = vals) +
-        scale_color_discrete(guide = "none") +
-        xlab("") +
-        ylab("") +
+        scale_color_manual(values = colors, guide = "none") +
+        xlab("Year of study") +
+        ylab("Mean performance") +
         facet_grid(~isco, labeller = as_labeller(naming)) -> plt # [naming != "Country"]
 
     if(disp[1])

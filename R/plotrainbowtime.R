@@ -7,7 +7,7 @@
 #' @export
 
 plot_rainbow_time <- function(sdf) {
-    ggvis(sdf, x = ~year, y = ~ave.perf) %>%
+    ggvis(sdf, x = ~year, y = ~ave.perf, strokeWidth := 4) %>%
         group_by(isco) %>%
         arrange(year) %>%
         layer_paths(stroke := ~color) %>%

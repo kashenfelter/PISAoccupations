@@ -10,8 +10,8 @@ plot_dot <- function(sdf) {
     ggvis(sdf, y = ~reorder(cnt_lab, -cnt_avg), x = ~ave.perf, fill := ~color, size = ~pop.share, key := ~id) %>%
         layer_points() %>%
         add_axis("x", title = "Mean performance",
-                      properties = axis_props(labels = list(fontSize = 16),
-                                              title = list(fontSize = 9))) %>%
+                      properties = axis_props(#labels = list(fontSize = 16),
+                                              title = list(fontSize = 16))) %>%
         add_axis("y", title = "") %>%
         hide_legend("size") %>%
         hide_legend("fill") %>%

@@ -45,9 +45,11 @@ plot_rainbow <- function(csubject, cnts, cyear) {
             scale_color_discrete(guide = "none") +
             theme(axis.ticks.x = element_blank(),
                   axis.text.x = element_blank(),
-                  legend.position = "none") +
+                  legend.position = "none",
+                  panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey"),
+                  panel.grid = element_line(linetype = 2, size = 0.5, color = "grey")) +
             xlab("") +
-            ylab("") +
+            ylab("Mean performance") +
             xlim(-4, 8)
     }
 }
