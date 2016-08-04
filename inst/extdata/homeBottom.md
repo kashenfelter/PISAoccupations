@@ -2,8 +2,6 @@
 
 The application was created by [Mateusz Staniak](https://github.com/mstaniak), [Institute of Mathematics, University of Wrocław](http://www.math.uni.wroc.pl/) under supervision of [Przemysław Biecek](https://github.com/pbiecek), [Faculty of Mathematics and Information Science, Warsaw University of Technology](http://mini.pw.edu.pl). The application is created with R and Shiny. The source code is available at [https://github.com/mi2-warsaw/PISAoccupations](https://github.com/mi2-warsaw/PISAoccupations/tree/master/inst/extdata).
 
-For more details and examples related to this application please read [this document](https://github.com/mi2-warsaw/PISAoccupations/raw/master/inst/extdata/about.pdf).  
-
 For more results related to PISA 2012 please see <a href="http://www.oecd.org/pisa/pisaproducts/pisainfocus/PISA-in-Focus-n36-(eng)-FINAL.pdf">Pisa in Focus n36</a> or [this application](http://mi2.mini.pw.edu.pl:8080/SmarterPoland/PISAoccupations2012/).
 
 All results presented in this app can be downloaded in Excel format from following links.
