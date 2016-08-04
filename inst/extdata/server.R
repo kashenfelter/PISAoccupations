@@ -33,6 +33,6 @@ shinyServer(function(input, output) {
         if(input$cnt2 == "-")
             cat("")
         else
-            cat(input$cnt1)
+            cat(input$cnt2)
     )
 })

@@ -80,7 +80,7 @@ shinyUI(fluidPage(
                                  cellWidths = c("50%", "50%"),
                                  verticalLayout(
                                      ggvisOutput("rnbwt1"),
-                                     textOutput("title2")),
+                                     textOutput("title1")),
                                  conditionalPanel(condition = "input.cnt21 != '-'",
                                  verticalLayout(
                                      ggvisOutput("rnbwt2"),
