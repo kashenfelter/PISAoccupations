@@ -1,11 +1,20 @@
 Package: PISAoccupations
-Title: Package for exploring relationship between student's perfomance and parent's occupations in PISA studies.
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Title: Explore relationship between students' perfomance and parents' occupations in PISA studies.
+Version: 1.1.0 
+Authors@R: c(
+  person("Przemysław", "Biecek", role = "aut",
+    email = "przemyslaw.biecek@gmail.com"),
+  person("Mateusz", "Staniak", role = "cre",
+    email = "mateusz.staniak@math.uni.wroc.pl")
+  )
+Description: This package helps explore relationship between students' performance and parents' occupations 
+by providing tools for importing data from .txt files which can be found on OECD website, calculating 
+students' average performance with standard error grouped by chosen variables, exporting the results and creating basic plots.
+Data with calculated averages grouped just by parents' occupations and students' sex is included in the package.
+Shiny application presenting that data from different perspectives is also included.
 Depends:
     R (>= 3.0.0)
-License: What license is it under?
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
@@ -16,5 +25,6 @@ Imports: dplyr,
     shiny,
     ggthemes,
     ggvis,
-    tidyr
+    tidyr,
+    tibble
 Suggests: testthat
