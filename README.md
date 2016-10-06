@@ -9,3 +9,5 @@ Install the R package:
 ```
 devtools::install_github("mi2-warsaw/PISAoccupations")
 ```
+
+Some short summaries: https://github.com/mstaniak/PISAoccupationsStories/tree/master/html_files
