@@ -2,16 +2,18 @@
 #'
 #' @param csubject Chosen subject - character "MATH"/"READ"/"SCIE"
 #' @param cyear Chosen year of PISA study.
+#' @param isco_cats Chosen isco categories.
 #'
 #' @return ggplot2 plot.
 #'
 #' @export
 #'
 
-plotDot <- function(csubject, cyear) {
+plotDot <- function(csubject, cyear, isco_cats) {
   pisa %>%
     filter(year == cyear,
-	   subject == csubject) %>%
+	   subject == csubject,
+	   isco %in% isco_cats) %>%
     mutate(label = giveLabel(subject, cnt_lab, isco_lab, ave.perf, se, pop.share))-> sdf
 
   ggplot(sdf, aes(x = reorder(cnt_lab, cnt_avg), y = ave.perf, color = isco, size = pop.share)) +
@@ -25,4 +27,3 @@ plotDot <- function(csubject, cyear) {
     theme_tufte()
 }
 
-ggiraph(code = print(plotDot("MATH", "2012")))
