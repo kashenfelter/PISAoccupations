@@ -13,5 +13,5 @@ giveLabel <- function(point) {
 		 paste("Mean (plausible values):", round(src$ave.perf, 2)), 
 		 paste("Standard error:", round(src$se, 2)), 
 		 paste("Population share:", paste0(round(src$pop.share/1000), "k")),
-		 sep = "<br />")
+		 sep = "<br />"))
 }
