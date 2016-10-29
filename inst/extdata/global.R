@@ -7,6 +7,7 @@ library(dplyr)
 library(ggvis)
 library(markdown)
 library(ggthemes)
+library(ggiraph)
 
 pisa %>%
   group_by(cnt, year, subject) %>%
