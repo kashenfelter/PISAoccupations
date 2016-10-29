@@ -1,22 +1,28 @@
 #' Dot plot of average performances of all countries in given year.
 #'
-#' @param sdf Data frame returned by interactive function after filtering data.
+#' @param csubject Chosen subject - character "MATH"/"READ"/"SCIE"
+#' @param cyear Chosen year of PISA study.
 #'
-#' @return ggvis plot.
+#' @return ggplot2 plot.
 #'
 #' @export
+#'
 
-plot_dot <- function(sdf) {
-    ggvis(sdf, y = ~reorder(cnt_lab, -cnt_avg), x = ~ave.perf, fill := ~color, size = ~pop.share, key := ~id) %>%
-        layer_points() %>%
-        add_axis("x", title = "Mean performance",
-                      properties = axis_props(#labels = list(fontSize = 16),
-                                              title = list(fontSize = 16))) %>%
-        add_axis("y", title = "") %>%
-        hide_legend("size") %>%
-        hide_legend("fill") %>%
-        add_tooltip(give_label, "hover")  %>%
-        set_options(width = "auto",
-                    height = "auto") %>%
-        set_options(duration = 0)
+plotDot <- function(csubject, cyear) {
+  pisa %>%
+    filter(year == cyear,
+	   subject == csubject) %>%
+    mutate(label = giveLabel(subject, cnt_lab, isco_lab, ave.perf, se, pop.share))-> sdf
+
+  ggplot(sdf, aes(x = reorder(cnt_lab, cnt_avg), y = ave.perf, color = isco, size = pop.share)) +
+    geom_point_interactive(aes(tooltip = label), size = 2) +
+    ylab("Mean performance") +
+    xlab("") +
+    scale_color_manual(values = colors) +
+    guides(color = "none",
+	   size = "none") +
+    coord_flip() +
+    theme_tufte()
 }
+
+ggiraph(code = print(plotDot("MATH", "2012")))
