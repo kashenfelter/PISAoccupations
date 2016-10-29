@@ -15,7 +15,7 @@ plotRainbowTime <- function(csubject, cnts) {
   sdf %>%
     mutate(label = giveLabel(subject, cnt_lab, isco_lab, ave.perf, se, pop.share)) -> sdf
 
-  ggplot(sdf, aes(x = year, y = ave.perf, color = isco_lab, group = isco_lab)) +
+  ggplot(sdf, aes(x = year, y = ave.perf, color = isco, group = isco_lab)) +
     geom_line(size = 2) + 
     geom_point_interactive(aes(tooltip = label), size = 3) +
     theme_tufte(base_size = 16) +
