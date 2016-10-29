@@ -8,10 +8,10 @@ Authors@R: c(
     email = "mateusz.staniak@math.uni.wroc.pl")
   )
 Description: This package helps explore relationship between students' performance and parents' occupations 
-by providing tools for importing data from .txt files which can be found on OECD website, calculating 
-students' average performance with standard error grouped by chosen variables, exporting the results and creating basic plots.
-Data with calculated averages grouped just by parents' occupations and students' sex is included in the package.
-Shiny application presenting that data from different perspectives is also included.
+    by providing tools for importing data from .txt files which can be found on OECD website, calculating 
+    students' average performance with standard error grouped by chosen variables, exporting the results and creating basic plots.
+    Data with calculated averages grouped just by parents' occupations and students' sex is included in the package.
+    Shiny application presenting that data from different perspectives is also included.
 Depends:
     R (>= 3.0.0)
 License: MIT
