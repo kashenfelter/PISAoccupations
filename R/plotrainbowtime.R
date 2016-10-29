@@ -2,27 +2,28 @@
 #'
 #' @param sdf Data frame returned from reactive function.
 #'
-#' @return ggvis plot.
+#' @return ggplot2 plot.
 #'
 #' @export
+#'
 
-plot_rainbow_time <- function(sdf) {
-    ggvis(sdf, x = ~year, y = ~ave.perf, strokeWidth := 4) %>%
-        group_by(isco) %>%
-        arrange(year) %>%
-        layer_paths(stroke := ~color) %>%
-        layer_points(fill := ~color) %>%
-        layer_points(fill := ~color, key := ~id) %>% # To przez jakiś bug w ggvis.
-        hide_legend("fill") %>%
-        hide_legend("stroke") %>%
-        add_axis("x", title = "Year",
-                 properties = axis_props(title = list(fontSize = 16),
-                                         labels = list(fontSize = 16))) %>%
-        add_axis("y", title = "Mean performance", title_offset = 50,
-                 properties = axis_props(title = list(fontSize = 16),
-                                         labels = list(fontSize = 16))) %>%
-        add_tooltip(give_label, "hover") %>%
-        set_options(width = "auto",
-                    height = "auto",
-                    duration = 0)
+plotRainbowTime <- function(csubject, cnts) {
+  pisa %>%
+    filter(subject == csubject,
+	   cnt %in% cnts) -> sdf
+
+  sdf %>%
+    mutate(label = giveLabel(subject, cnt_lab, isco_lab, ave.perf, se, pop.share)) -> sdf
+
+  ggplot(sdf, aes(x = year, y = ave.perf, color = isco_lab, group = isco_lab)) +
+    geom_line(size = 2) + 
+    geom_point_interactive(aes(tooltip = label), size = 3) +
+    theme_tufte(base_size = 16) +
+    theme(panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey"),
+	  panel.grid = element_line(linetype = 2, size = 0.5, color = "grey")) +
+    guides(color = "none") +
+    xlab("Year") +
+    ylab("Mean performance") +
+    facet_wrap(~cnt)
 }
+
