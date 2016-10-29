@@ -21,7 +21,7 @@ plotRainbowTime <- function(csubject, cnts) {
     theme_tufte(base_size = 16) +
     theme(panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey"),
 	  panel.grid = element_line(linetype = 2, size = 0.5, color = "grey")) +
-    guides(color = "none") +
+    scale_color_manual(values = colors, guide = "none") +
     xlab("Year") +
     ylab("Mean performance") +
     facet_wrap(~cnt)
