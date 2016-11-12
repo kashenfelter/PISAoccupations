@@ -19,7 +19,7 @@ plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     names(vals) <- unique(c(sdf$cnt_lab[sdf$cnt == cnts[1]], sdf$cnt_lab[sdf$cnt == cnts[2]]))
     ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
-        geom_point(size = 4, stroke = 2) +
+        geom_point_interactive(aes(tooltip = label), size = 4, stroke = 2) +
         theme_tufte(base_size = 16) +
         theme(legend.position = c(0.94, 0.92),
               axis.text.x = element_text(angle = 90),
