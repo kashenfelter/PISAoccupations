@@ -3,8 +3,8 @@ shinyServer(function(input, output) {
         plot_rainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
         height = 800
     )
-    output$time <- renderPlot(
-        plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
+    output$time <- renderggiraph(
+        ggiraph(code = print(plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats))),
         height = 800
     )
     output$rainbowTime <- renderggiraph(
