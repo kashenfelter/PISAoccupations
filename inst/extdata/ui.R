@@ -24,9 +24,9 @@ shinyUI(fluidPage(
 	  year of PISA study is displayed on the horizontal axis to help you discover
 	  trends across all the ISCO categories."),br(),
 	selectInput("cnt1", label = "Select your country of interest",
-		    choices = country_names, selected = "FIN"),
+		    choices = countryNames, selected = "FIN"),
 	selectInput("cnt2", label = "Add second country for comparison",
-		    choices = c("-" = "-", country_names), selected = "-"),
+		    choices = c("-" = "-", countryNames), selected = "-"),
 	radioButtons("subject", label = "Choose the subject of interest",
 		     choices = subs_i,
 		     selected = "MATH"),
@@ -43,7 +43,7 @@ shinyUI(fluidPage(
 	checkboxGroupInput("isco_cats", label = "Major ISCO group",
 			   choices = iscos, selected = as.character(1:9)))),
 	         column(10,
-			plotOutput("time")))),
+			ggiraphOutput("time")))),
              tabPanel("Two countries",
 		fluidRow(
 	           column(2,
@@ -52,9 +52,9 @@ shinyUI(fluidPage(
 			    two countries are on left and right sides of the plot.
 			    This plot helps you find out if the results are similar in all categories."),br(),
                      selectInput("cnt12", label = "Select your country of interest",
-				 choices = country_names, selected = "FIN"),
+				 choices = countryNames, selected = "FIN"),
                      selectInput("cnt22", label = "Add second country for comparison",
-				 choices = c("-" = "-", country_names), selected = "BEL"),
+				 choices = c("-" = "-", countryNames), selected = "BEL"),
 		     radioButtons("subject1", label = "Choose the subject of interest",
 				  choices = subs_i,
 				  selected = "MATH"),
@@ -72,18 +72,17 @@ shinyUI(fluidPage(
 			    You can see how results structure changed over years in one country
 			    and compare it with another."),br(),
 			  selectInput("cnt11", label = "Select your country of interest",
-				      choices = country_names,
+				      choices = countryNames,
 				      selected = "FIN"),
 			  selectInput("cnt21", label = "Add second country for comparison",
-				      choices = c("-" = "-", country_names),
+				      choices = c("-" = "-", countryNames),
 				      selected = "BEL"),
                           radioButtons("subjectt1", label = "Choose the subject of interest",
 				       choices = subs_i,
 				       selected = "MATH"),
 			  p("Hovering over lines or points on the plot displays a tooltip that gives a name of occupation, it's mean performance and more information.")),
                         column(10,
-			       ggiraphOutput("rainbowTime")
-                          )
+			                   ggiraphOutput("rainbowTime"))
 			)),
              tabPanel("All countries",
                       fluidRow(
