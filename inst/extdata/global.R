@@ -29,10 +29,6 @@ names(countryNames) <- pisa %>%
 
 countryNames <- countryNames[order(names(countryNames))]
 
-isco_cats
-iscos
-isco_cats2
-
 iscoLabs <- pisa %>%
   select(isco_lab) %>%
   distinct() %>%
@@ -48,3 +44,4 @@ names(subjectsiChoices) <- c("Mathematics", "Reading", "Science")
 yearChoices <- as.character(unique(pisa$year))
 names(yearChoices) <- as.numeric(yearChoices)
 # Podmienić nazwy w pliku ui.R
+
