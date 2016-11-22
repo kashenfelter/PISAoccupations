@@ -1,15 +1,40 @@
+#' Changing distances between student's performances to make rainbow plot more readable.
+#'
+#' @param ave_perfs Vector of average performances filtered by plot_rainbow function.
+#'
+#' @return Modified vector in which distance between adjacent elements are greater then 8.
+#'
+
+nice_text <- function(ave_perfs) {
+    nc <- 1 # Tylko po to, żeby wystartować pętlę.
+    while(nc > 0) {
+        nc <- 0
+        for(i in 2:length(ave_perfs)) {
+            if(ave_perfs[i] - ave_perfs[i - 1] >= 5)
+                next
+            else {
+                ave_perfs[i] <- ave_perfs[i] + 0.5
+                ave_perfs[i - 1] <- ave_perfs[i - 1] - 0.5
+                nc <- nc + 1
+            } # else
+        } # for
+    } # while
+    return(ave_perfs)
+}
+
+
 #' Rainbow plot of average performances for two countries grouped by isco categories designed for shiny app.
 #'
 #' @param subject Character of the from "MATH"/"READ"/"SCIE".
-#' @param cnts Country codes of countries to compare on a rainbow plot.
-#' @param cyear Chosen year as a character - 2003/2006/2009/2012.
+#' @param countries Country codes of countries to compare on a rainbow plot.
+#' @param chosenYear Chosen year as a character - 2003/2006/2009/2012.
 #'
 #' @return GGplot2 object.
 #'
 #' @export
 
-plot_rainbow <- function(csubject, cnts, cyear) {
-    if("AUT" %in% cnts & cyear == "2012") {
+plotRainbow <- function(chosenSubject, countries, chosenYear) {
+    if(any(countries == "AUT") & chosenYear == "2012") {
         ggplot(pisa) +
             geom_blank() +
             ggtitle("Austria did not provide data on parents' occupations") +
@@ -17,10 +42,10 @@ plot_rainbow <- function(csubject, cnts, cyear) {
     }
     else {
         pisa %>%
-            filter(subject == csubject,
-                   year == cyear,
-                   cnt %in% cnts) %>%
-            mutate(no = ifelse(cnt == cnts[1], 1, 3),
+            filter(subject == chosenSubject,
+                   year == chosenYear,
+                   cnt %in% countries) %>%
+            mutate(no = ifelse(cnt == countries[1], 1, 3),
                    isco2 = ifelse(isco == "cnt", cnt_lab, isco_lab),
                    text_pos = ave.perf) %>%
             arrange(cnt, ave.perf)-> sdf
