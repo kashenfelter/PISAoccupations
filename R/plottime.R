@@ -15,7 +15,9 @@ plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     pisa %>%
         filter(subject == csubject,
                cnt %in% cnts,
-               isco %in% c("cnt", isco_cats)) -> sdf
+               isco %in% c("cnt", isco_cats)) %>% 
+        mutate(label = giveLabel(subject, cnt_lab, isco_lab,
+				 ave.perf, se, pop.share)) -> sdf
     names(vals) <- unique(c(sdf$cnt_lab[sdf$cnt == cnts[1]], sdf$cnt_lab[sdf$cnt == cnts[2]]))
     ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
