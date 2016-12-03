@@ -10,10 +10,9 @@
 plotRainbowTime <- function(csubject, cnts) {
   pisa %>%
     filter(subject == csubject,
-	   cnt %in% cnts) -> sdf
-
-  sdf %>%
-    mutate(label = giveLabel(subject, cnt_lab, isco_lab, ave.perf, se, pop.share)) -> sdf
+	   cnt %in% cnts) %>%
+  mutate(label = giveLabel(subject, cnt_lab, isco_lab,
+			   ave.perf, se, pop.share)) -> sdf
 
   ggplot(sdf, aes(x = year, y = ave.perf, color = isco, group = isco_lab)) +
     geom_line(size = 2) + 
