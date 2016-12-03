@@ -32,7 +32,7 @@ mean_ppvs <- function(data, pvname, groups, final_weights, student_id, school_id
         select_(.dots = c(pvlabs, groups, final_weights, student_id, school_id)) %>%
         group_by_(.dots = groups) %>%
         rename_(.dots = setNames(c(final_weights, pvlabs, student_id, school_id), 
-				 c("W_F", paste0("PV", 1:5), "STU_ID", "SCH_ID"))) %>%
+				 c("W_F", paste0("PV", 1:5), "STUD_ID", "SCH_ID"))) %>%
         summarise(mpv1 = sum(PV1*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
                   mpv2 = sum(PV2*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
                   mpv3 = sum(PV3*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
