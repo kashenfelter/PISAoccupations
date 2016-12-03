@@ -8,9 +8,11 @@ shinyServer(function(input, output) {
         height = 800
     )
     output$rainbowTime <- renderggiraph(
-      ggiraph(code = print(plotRainbowTime(input$subjectt1, c(input$cnt11, input$cnt21))))
+      ggiraph(code = print(plotRainbowTime(input$subjectt1, c(input$cnt11, input$cnt21)))),
+      height = 800
     )
     output$dots <- renderggiraph(
-      ggiraph(code = print(plotDot(input$subjectt, input$cyear, c("cnt", input$isco_cats2))))
+      ggiraph(code = print(plotDot(input$subjectt, input$cyear, c("cnt", input$isco_cats2)))),
+      height = 800
     )
 })
