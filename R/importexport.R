@@ -100,5 +100,5 @@ importFromTxt <- function(inputFilePath, variablesStartPositions, variablesEndPo
       filter(occupation != "0") %>%
       select(-occupation) %>%
       filter(complete.cases(.)) %>%
-      mutate(year = studyYear) %>%
+      mutate(year = studyYear)
 }
