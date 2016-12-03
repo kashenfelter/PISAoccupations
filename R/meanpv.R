@@ -10,7 +10,7 @@
 
 mean_pvse <- function(data, pvname, groups, final_weights) {
     data %>%
-        select_(.dots = c(pvname, groups,  final_weights)) %>%
+        select_(.dots = c(pvname, groups, final_weights)) %>%
         group_by_(.dots = groups) %>%
         rename_(.dots = setNames(c(pvname, final_weights), c("PV", "W_F"))) %>%
         summarise(mpv1 = sum(PV*W_F, na.rm = T)/sum(W_F, na.rm = T))
@@ -71,5 +71,5 @@ mean_o <- function(means_ppv) {
 mean_pv <- function(data, pvname, groups, final_weights, brr_weights, student_id, school_id) {
   tmp <- mean_ppvs(data, pvname, groups, final_weights, student_id, school_id)
   tmp %>% select(-starts_with("mpv")) -> tmp2
-  data.frame(tmp2, "mean" = mean_o(tmp), "se" = se_pv(pvname, groups, final_weights, brr_weights, tmp, data))
+  data.frame(tmp2, "mean" = mean_o(tmp), "se" = se_pv(data, pvname, groups, tmp, final_weights, brr_weights))
 }
