@@ -29,19 +29,18 @@ names(countryNames) <- pisa %>%
 
 countryNames <- countryNames[order(names(countryNames))]
 
-iscoLabs <- pisa %>%
+iscoLabs <- as.character(1:9)
+names(iscoLabs) <- pisa %>%
   select(isco_lab) %>%
   distinct() %>%
   unlist() %>%
   as.character() %>%
   grep(pattern = "[1-9]", value = TRUE) %>%
   sort()
-names(iscoLabs) <- c(as.character(1:9))
 
 subjectChoices <- as.character(sort(unique(pisa$subject)))
-names(subjectsiChoices) <- c("Mathematics", "Reading", "Science") 
+names(subjectChoices) <- c("Mathematics", "Reading", "Science") 
 
 yearChoices <- as.character(unique(pisa$year))
 names(yearChoices) <- as.numeric(yearChoices)
-# Podmienić nazwy w pliku ui.R
 
