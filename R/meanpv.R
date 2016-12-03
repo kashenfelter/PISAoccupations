@@ -29,7 +29,7 @@ mean_pvse <- function(data, pvname, groups, final_weights) {
 mean_ppvs <- function(data, pvname, groups, final_weights, student_id, school_id) {
     pvlabs <- paste0(paste0("PV", 1:5), pvname)
     data %>%
-        select_(.dots = c(pvlabs, groups, final_weights, school_id)) %>%
+        select_(.dots = c(pvlabs, groups, final_weights, student_id, school_id)) %>%
         group_by_(.dots = groups) %>%
         rename_(.dots = setNames(c(final_weights, pvlabs, student_id, school_id), 
 				 c("W_F", paste0("PV", 1:5), "STU_ID", "SCH_ID"))) %>%
@@ -39,7 +39,7 @@ mean_ppvs <- function(data, pvname, groups, final_weights, student_id, school_id
                   mpv4 = sum(PV4*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
                   mpv5 = sum(PV5*W_F, na.rm = TRUE)/sum(W_F, na.rm = TRUE),
                   population.share = 0.5*sum(W_F, na.rm = TRUE),
-                  nstud = n_distinct(STUD_IDi, na.rm = TRUE),
+                  nstud = n_distinct(STUD_ID, na.rm = TRUE),
                   nschool = n_distinct(SCH_ID, na.rm = TRUE))
 }
 
