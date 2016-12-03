@@ -4,15 +4,12 @@ shinyServer(function(input, output) {
         height = 800
     )
     output$time <- renderggiraph(
-        ggiraph(code = print(plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats))),
-        height = 800
+        ggiraph(code = print(plot_time(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats)))
     )
     output$rainbowTime <- renderggiraph(
-      ggiraph(code = print(plotRainbowTime(input$subjectt1, c(input$cnt11, input$cnt21)))),
-      height = 800
+      ggiraph(code = print(plotRainbowTime(input$subjectt1, c(input$cnt11, input$cnt21))))
     )
     output$dots <- renderggiraph(
-      ggiraph(code = print(plotDot(input$subjectt, input$cyear, c("cnt", input$isco_cats2)))),
-      height = 800
+      ggiraph(code = print(plotDot(input$subjectt, input$cyear, c("cnt", input$isco_cats2))))
     )
 })

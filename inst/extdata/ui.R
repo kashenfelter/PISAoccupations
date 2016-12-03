@@ -43,7 +43,7 @@ shinyUI(fluidPage(
 	checkboxGroupInput("isco_cats", label = "Major ISCO group",
 			   choices = iscoLabs, selected = as.character(1:9)))),
 	         column(10,
-			ggiraphOutput("time")))),
+			ggiraphOutput("time", height = 800)))),
              tabPanel("Two countries",
 		fluidRow(
 	           column(2,
@@ -82,7 +82,7 @@ shinyUI(fluidPage(
 				       selected = "MATH"),
 			  p("Hovering over lines or points on the plot displays a tooltip that gives a name of occupation, it's mean performance and more information.")),
                         column(10,
-			                   ggiraphOutput("rainbowTime"))
+			                   ggiraphOutput("rainbowTime", height = 800))
 			)),
              tabPanel("All countries",
                       fluidRow(
@@ -102,7 +102,7 @@ shinyUI(fluidPage(
                                                 checkboxGroupInput("isco_cats2", label = "Primary ISCO categories",
                                                                    choices = iscoLabs, selected = as.character(1:9)))),
                         column(10,
-                               ggiraphOutput("dots"))
+                               ggiraphOutput("dots", height = 800))
                       ))
   )
 ))
