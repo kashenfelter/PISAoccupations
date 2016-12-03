@@ -10,7 +10,7 @@
 #'
 #' @export
 
-plot_time <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
+plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     vals <- c(16,2)
     pisa %>%
         filter(subject == csubject,
