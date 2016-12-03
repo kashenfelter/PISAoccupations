@@ -3,6 +3,6 @@
 export(exploreOccupations)
 export(mean_pv)
 export(plotDot)
-export(plot_rainbow)
+export(plotRainbow)
 export(plotRainbowTime)
-export(plot_time)
+export(plotTime)
