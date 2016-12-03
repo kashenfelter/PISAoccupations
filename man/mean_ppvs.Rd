@@ -4,8 +4,7 @@
 \alias{mean_ppvs}
 \title{Mean calculated separately for each of the five plausible values and a given weight.}
 \usage{
-mean_ppvs(data, pvname, groups, final_weights = "W_FSTUWT",
-  school_id = "SCH_ID")
+mean_ppvs(data, pvname, groups, final_weights, student_id, school_id)
 }
 \arguments{
 \item{data}{Name of a data frame containing columns given in other arguments.}
@@ -15,6 +14,8 @@ mean_ppvs(data, pvname, groups, final_weights = "W_FSTUWT",
 \item{groups}{Name of one or more factors used for grouping.}
 
 \item{final_weights}{Name of a column that contains final student weights.}
+
+\item{student_id}{Name of a column with school IDs.}
 
 \item{school_id}{Name of a column with school IDs.}
 }

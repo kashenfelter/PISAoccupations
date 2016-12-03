@@ -4,7 +4,7 @@
 \alias{mean_pv}
 \title{Average student's performances with standard errors by given factor variables.}
 \usage{
-mean_pv(data, pvname, groups, final_weights, brr_weights, school_id)
+mean_pv(data, pvname, groups, final_weights, brr_weights, student_id, school_id)
 }
 \arguments{
 \item{data}{Name of a data frame containing columns given in other arguments.}
@@ -17,6 +17,8 @@ mean_pv(data, pvname, groups, final_weights, brr_weights, school_id)
 
 \item{brr_weights}{Names of the columns that contain BRR weights. If se is set to FALSE,
 this argument is redunant and thus the default value is "".}
+
+\item{student_id}{Name of a column with school IDs.}
 
 \item{school_id}{Name of a column with school IDs.}
 }
