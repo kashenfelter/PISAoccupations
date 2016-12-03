@@ -15,7 +15,7 @@ mean_ppvs(data, pvname, groups, final_weights, student_id, school_id)
 
 \item{final_weights}{Name of a column that contains final student weights.}
 
-\item{student_id}{Name of a column with school IDs.}
+\item{student_id}{Name of a column with student IDs.}
 
 \item{school_id}{Name of a column with school IDs.}
 }

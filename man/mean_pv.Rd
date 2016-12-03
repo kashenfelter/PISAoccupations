@@ -18,7 +18,7 @@ mean_pv(data, pvname, groups, final_weights, brr_weights, student_id, school_id)
 \item{brr_weights}{Names of the columns that contain BRR weights. If se is set to FALSE,
 this argument is redunant and thus the default value is "".}
 
-\item{student_id}{Name of a column with school IDs.}
+\item{student_id}{Name of a column with student IDs.}
 
 \item{school_id}{Name of a column with school IDs.}
 }
