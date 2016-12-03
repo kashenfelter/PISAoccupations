@@ -25,7 +25,7 @@ var_sml_opv <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_wei
 
 var_sml <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_weights = paste0("W_FSTR", 1:80)) {
   pvlabs <- paste0(paste0("PV", 1:5), pvname)
-  varsmls <- lapply((1:5), {function(x) return(var_sml_opv(pvlabs[x], groups, brr_weights,final_weight, data))})
+  varsmls <- lapply((1:5), {function(x) return(var_sml_opv(data, pvlabs[x], groups, brr_weights,final_weight))})
   0.2*rowSums(data.frame(varsmls), na.rm = T)
 }
 
@@ -53,5 +53,5 @@ var_imp <- function(means_ppv) {
 #'
 
 se_pv <- function(data, pvname, groups, means_ppv, final_weight = "W_FSTUWT", brr_weights = paste0("W_FSTR", 1:80)) {
-  sqrt(var_sml(pvname, groups, brr_weights, final_weight, data) + 1.2*var_imp(means_ppv))
+  sqrt(var_sml(data, pvname, groups, brr_weights, final_weight) + 1.2*var_imp(means_ppv))
 }
