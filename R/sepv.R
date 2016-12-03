@@ -7,8 +7,8 @@
 #'
 
 var_sml_opv <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_weights = paste0("W_FSTR", 1:80)) {
-  replicate_means <- lapply(brr_weights, {function(x) return(mean_pvse(pvname, groups, x, data)[, "mpv1"])})
-  diffs <- lapply(data.frame(replicate_means), {function(x) return((x - mean_pvse(pvname, groups, final_weight, data)[, "mpv1"])^2)})
+  replicate_means <- lapply(brr_weights, {function(x) return(mean_pvse(data, pvname, groups, x)[, "mpv1"])})
+  diffs <- lapply(data.frame(replicate_means), {function(x) return((x - mean_pvse(data, pvname, groups, final_weight)[, "mpv1"])^2)})
   0.05*rowSums(data.frame(diffs), na.rm = T)
 }
 
