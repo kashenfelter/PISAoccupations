@@ -4,5 +4,5 @@
 #'
 
 exploreOccupations <- function() {
-  runApp("inst/extdata/")
+  runApp()
 }
