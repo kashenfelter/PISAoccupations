@@ -22,5 +22,6 @@ Imports: dplyr,
     ggthemes,
     tidyr,
     tibble,
-    ggiraph
+    ggiraph,
+    WriteXLS
 Suggests: testthat
