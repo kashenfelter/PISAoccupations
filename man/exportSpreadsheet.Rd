@@ -12,7 +12,7 @@ exportSpreadsheet(dataSource, outputFilePath)
 \item{sourceTibble}{tibble returned by importFromTxt function.}
 }
 \value{
-nothing
+list of objects that were written to a file (invisible)
 }
 \description{
 Export data for one year to spreadsheet file.

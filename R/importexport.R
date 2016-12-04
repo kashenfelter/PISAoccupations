@@ -38,7 +38,7 @@ spreadBySubject <- function(sourceTibble, column) {
 #' @param sourceTibble tibble returned by importFromTxt function.
 #' @param outputFilePath Path to an output file.
 #'
-#' @return nothing
+#' @return list of objects that were written to a file (invisible)
 #'
 #' @export
 #'
@@ -55,6 +55,7 @@ exportSpreadsheet <- function(dataSource, outputFilePath) {
   WriteXLS(tmp, outputFilePath, c("MATH means", "READ means", "SCIE means",
 				  "MATH se", "READ se", "SCIE se",
 				  "population share", "number of schools", "number of students"))
+  invisible(tmp)
 }
 
 #' Helper function that adds subjects to data frames in importFromTxt function.
