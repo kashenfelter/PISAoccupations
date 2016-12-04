@@ -17,6 +17,46 @@ addISCO <- function(dataSource, NAcodes) {
 }
 
 
+#' Helper function for exportSpreadsheet to convert data in wide format.
+#'
+#' @param sourceTibble tibble returned by importFromTxt function.
+#' @param column name of a column to spread.
+#'
+#' @return tibble
+#'
+
+spreadBySubject <- function(sourceTibble, column) {
+  sourceTibble %>%
+    select(cnt, isco, eval(as.name(column))) %>%
+    spread_("isco", column) %>%
+    setNames(c(" ", as.character(1:9), "country"))
+}
+
+
+#' Export data for one year to spreadsheet file.
+#'
+#' @param sourceTibble tibble returned by importFromTxt function.
+#' @param outputFilePath Path to an output file.
+#'
+#' @return nothing
+#'
+#' @export
+#'
+
+exportSpreadsheet <- function(dataSource, outputFilePath) {
+  bySubject <- split(dataSource, dataSource$subject)
+  means <- lapply(bySubject, function(x) spreadBySubject(x, "ave.perf")[, c(1, 11, 2:10)])
+  ses <- lapply(bySubject, function(x) spreadBySubject(x, "se")[, c(1, 11, 2:10)])
+  popShare <- lapply(bySubject[1], function(x) spreadBySubject(x, "pop.share")[, c(1, 11, 2:10)])
+  nStud <- lapply(bySubject[1], function(x) spreadBySubject(x, "nstud")[, c(1, 11, 2:10)])
+  nSchool <- lapply(bySubject[1], function(x) spreadBySubject(x, "nschool")[, c(1, 11, 2:10)])
+  tmp <- c(means, ses, popShare, nStud, nSchool)
+
+  WriteXLS(tmp, outputFilePath, c("MATH means", "READ means", "SCIE means",
+				  "MATH se", "READ se", "SCIE se",
+				  "population share", "number of schools", "number of students"))
+}
+
 #' Helper function that adds subjects to data frames in importFromTxt function.
 #'
 #' @param slist List containing tibbles.
