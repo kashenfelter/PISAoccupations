@@ -4,7 +4,6 @@ if (!require(PISAoccupations)) {
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(ggvis)
 library(markdown)
 library(ggthemes)
 library(ggiraph)
