@@ -1,5 +1,5 @@
 shinyServer(function(input, output) {
-    output$rainbow <- renderggiraph(
+    output$rainbow <- renderPlot(
       plotRainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1),
       height = 800
     )
