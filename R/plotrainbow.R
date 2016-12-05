@@ -67,7 +67,7 @@ plotRainbow <- function(chosenSubject, countries, chosenYear) {
             geom_text(data = subset(sdf, isco == "cnt" & no == 3),
                       color = "black", hjust = "outward", size = 7, nudge_x = 0.1) +
             scale_size(guide = "none") +
-            scale_color_discrete(guide = "none") +
+            scale_color_manual(values = colors, guide = "none") +
             theme(axis.ticks.x = element_blank(),
                   axis.text.x = element_blank(),
                   legend.position = "none",
