@@ -1,9 +1,12 @@
 shinyServer(function(input, output) {
-    output$rainbow <- renderPlot(
-        plotRainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1)
+    output$rainbow <- renderggiraph(
+#         plotRainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1)
+      ggiraph(code = print(plotRainbow(input$subject1, c(input$cnt12, input$cnt22), input$cyear1)))
     )
-    output$time <- renderggiraph(
-        ggiraph(code = print(plotTime(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats)))
+    output$time <- renderPlot(
+#         ggiraph(code = print(plotTime(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats)))
+      plotTime(input$subject, c(input$cnt1, input$cnt2), c(input$se, input$trend), input$isco_cats),
+      height = 800
     )
     output$rainbowTime <- renderggiraph(
       ggiraph(code = print(plotRainbowTime(input$subjectt1, c(input$cnt11, input$cnt21))))

@@ -43,7 +43,7 @@ shinyUI(fluidPage(
 	checkboxGroupInput("isco_cats", label = "Major ISCO group",
 			   choices = iscoLabs, selected = as.character(1:9)))),
 	         column(10,
-			ggiraphOutput("time", width = "100%", height = 800)))),
+			plotOutput("time")))),
              tabPanel("Two countries",
 		fluidRow(
 	           column(2,
@@ -62,7 +62,7 @@ shinyUI(fluidPage(
 				  choices = yearChoices,
 				  selected = "2012")),
 		   column(10,
-			  plotOutput("rainbow", width = "100%", height = 800)))),
+			  ggiraphOutput("rainbow", width = "100%", height = 800)))),
              tabPanel("Trends in two countries",
                       fluidRow(
                         column(2,
