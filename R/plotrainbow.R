@@ -51,8 +51,9 @@ plotRainbow <- function(chosenSubject, countries, chosenYear) {
             arrange(cnt, ave.perf)-> sdf
         sdf$text_pos[sdf$no == 1] <- nice_text(sdf$text_pos[sdf$no == 1])
         sdf$text_pos[sdf$no == 3] <- nice_text(sdf$text_pos[sdf$no == 3])
+	labs <- gsub(naming, pattern = "\\n", replacement = "")
         sdf$isco2[sdf$isco != "cnt"] <- apply(data.frame(sdf$isco[sdf$isco != "cnt"]), 1,
-                                              {function(x) return(naming2[x])})
+                                              {function(x) return(labs[x])})
 
         ggplot(subset(sdf, isco != "cnt"), aes(x = no, y = ave.perf, color = isco, group = isco2, label = isco2)) +
             theme_tufte(base_size = 16) +
