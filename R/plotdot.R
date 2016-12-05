@@ -17,13 +17,13 @@ plotDot <- function(csubject, cyear, isco_cats) {
     mutate(label = giveLabel(subject, cnt_lab, isco_lab, ave.perf, se, pop.share))-> sdf
 
   ggplot(sdf, aes(x = reorder(cnt_lab, cnt_avg), y = ave.perf, color = isco, size = pop.share)) +
-    geom_point_interactive(aes(tooltip = label), size = 2) +
+    geom_point_interactive(aes(tooltip = label), size = 1.5) +
     ylab("Mean performance") +
     xlab("") +
     scale_color_manual(values = colors) +
     guides(color = "none",
 	   size = "none") +
     coord_flip() +
-    theme_tufte()
+    theme_tufte(base_size = 10)
 }
 
