@@ -32,7 +32,7 @@ plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         scale_color_manual(values = colors, guide = "none") +
         xlab("Year of study") +
         ylab("Mean performance") +
-        facet_grid(~isco, labeller = as_labeller(naming)) -> plt # [naming != "Country"]
+        facet_grid(~isco, labeller = as_labeller(naming)) -> plt
 
     if(disp[1])
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2)
