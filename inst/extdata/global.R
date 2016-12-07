@@ -15,18 +15,10 @@ pisa %>%
   arrange(-cnt_avg) %>%
   as.data.frame() -> pisa
 
-countryNames <- pisa %>%
-  select(cnt) %>%
-  distinct() %>%
-  unlist() %>%
-  as.character()
-names(countryNames) <- pisa %>%
-  select(cnt_lab) %>%
-  distinct() %>%
-  unlist() %>%
-  as.character() 
+countryNames <- unique(pisa$cnt)
+names(countryNames) <- countryNames
 
-countryNames <- countryNames[order(names(countryNames))]
+# countryNames <- countryNames[order(names(countryNames))]
 
 iscoLabs <- as.character(1:9)
 names(iscoLabs) <- pisa %>%
@@ -40,6 +32,6 @@ names(iscoLabs) <- pisa %>%
 subjectChoices <- as.character(sort(unique(pisa$subject)))
 names(subjectChoices) <- c("Mathematics", "Reading", "Science") 
 
-yearChoices <- as.character(unique(pisa$year))
-names(yearChoices) <- as.numeric(yearChoices)
+yearChoices <- as.character(unique(pisa$year))[order(as.numeric(unique(pisa$year)))]
+names(yearChoices) <- sort(as.numeric(yearChoices))
 
