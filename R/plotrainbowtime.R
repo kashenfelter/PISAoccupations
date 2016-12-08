@@ -23,6 +23,6 @@ plotRainbowTime <- function(csubject, cnts) {
     scale_color_manual(values = colors, guide = "none") +
     xlab("Year") +
     ylab("Mean performance") +
-    facet_wrap(~cnt)
+    facet_wrap(~cnt_lab)
 }
 
