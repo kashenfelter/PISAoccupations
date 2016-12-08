@@ -22,7 +22,7 @@ plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
 
     ggplot(sdf, aes(x = year, y = ave.perf, shape = cnt_lab,
                     color = isco, group = as.factor(paste0(isco, cnt))), linetype = 2) +
-        geom_point_interactive(aes(tooltip = label), size = 1.5, stroke = 2) +
+        geom_point_interactive(aes(tooltip = label), size = 1, stroke = 2) +
         theme_tufte(base_size = 8) +
         theme(legend.position = c(0.94, 0.92),
               axis.text.x = element_text(angle = 90),
@@ -36,7 +36,7 @@ plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
 
     if(disp[1])
         plt <- plt + geom_pointrange((aes(ymin = ave.perf - se, ymax = ave.perf + se)), linetype = 2) +
-        geom_point_interactive(aes(tooltip = label), size = 1.5, stroke = 2)
+        geom_point_interactive(aes(tooltip = label), size = 1, stroke = 2)
     if(disp[2])
         plt <- plt + geom_line(data = subset(sdf, cnt == cnts[1]), stat = "smooth",
                   linetype = 1, method = "lm", se = F, size = 1, show.legend = F) +
