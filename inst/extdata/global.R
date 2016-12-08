@@ -14,11 +14,10 @@ pisa %>%
   dplyr::ungroup() %>%
   arrange(-cnt_avg) %>%
   as.data.frame() -> pisa
+# Dodać filtrowanie wg liczby szkół i uczniów.
 
 countryNames <- unique(pisa$cnt)
-names(countryNames) <- countryNames
-
-# countryNames <- countryNames[order(names(countryNames))]
+names(countryNames) <- unique(pisa$cnt_lab)
 
 iscoLabs <- as.character(1:9)
 names(iscoLabs) <- pisa %>%
