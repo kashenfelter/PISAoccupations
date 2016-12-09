@@ -7,9 +7,9 @@
 #'
 
 var_sml_opv <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_weights = paste0("W_FSTR", 1:80)) {
-    replicate_means <- lapply(brr_weights, {function(x) return(mean_pvse(pvname, groups, x, data)[, "mpv1"])})
-    diffs <- lapply(data.frame(replicate_means), {function(x) return((x - mean_pvse(pvname, groups, final_weight, data)[, "mpv1"])^2)})
-    return(0.05*rowSums(data.frame(diffs), na.rm = T))
+  replicate_means <- lapply(brr_weights, {function(x) return(mean_pvse(data, pvname, groups, x)[, "mpv1"])})
+  diffs <- lapply(data.frame(replicate_means), {function(x) return((x - mean_pvse(data, pvname, groups, final_weight)[, "mpv1"])^2)})
+  0.05*rowSums(data.frame(diffs), na.rm = T)
 }
 
 
@@ -24,9 +24,9 @@ var_sml_opv <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_wei
 #'
 
 var_sml <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_weights = paste0("W_FSTR", 1:80)) {
-    pvlabs <- paste0(paste0("PV", 1:5), pvname)
-    varsmls <- lapply((1:5), {function(x) return(var_sml_opv(pvlabs[x], groups, brr_weights,final_weight, data))})
-    return(0.2*rowSums(data.frame(varsmls), na.rm = T))
+  pvlabs <- paste0(paste0("PV", 1:5), pvname)
+  varsmls <- lapply((1:5), {function(x) return(var_sml_opv(data, pvlabs[x], groups, brr_weights,final_weight))})
+  0.2*rowSums(data.frame(varsmls), na.rm = T)
 }
 
 
@@ -38,8 +38,8 @@ var_sml <- function(data, pvname, groups, final_weight = "W_FSTUWT", brr_weights
 #'
 
 var_imp <- function(means_ppv) {
-    return(0.25*rowSums(data.frame(lapply(means_ppv[, paste0("mpv", 1:5)],
-                                          {function(x) return((x - mean_o(means_ppv))^2)})), na.rm = T))
+  0.25*rowSums(data.frame(lapply(means_ppv[, paste0("mpv", 1:5)],
+				 {function(x) return((x - mean_o(means_ppv))^2)})), na.rm = T)
 }
 
 
@@ -53,5 +53,5 @@ var_imp <- function(means_ppv) {
 #'
 
 se_pv <- function(data, pvname, groups, means_ppv, final_weight = "W_FSTUWT", brr_weights = paste0("W_FSTR", 1:80)) {
-    return(sqrt(var_sml(pvname, groups, brr_weights, final_weight, data) + 1.2*var_imp(means_ppv)))
+  sqrt(var_sml(data, pvname, groups, brr_weights, final_weight) + 1.2*var_imp(means_ppv))
 }

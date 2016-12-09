@@ -4,21 +4,23 @@
 \alias{mean_pv}
 \title{Average student's performances with standard errors by given factor variables.}
 \usage{
-mean_pv(data, pvname, groups, final_weight, brr_weights, school_id)
+mean_pv(data, pvname, groups, final_weights, brr_weights, student_id, school_id)
 }
 \arguments{
 \item{data}{Name of a data frame containing columns given in other arguments.}
 
-\item{pvname}{String of the form "MATH"/"READ"/"SCIE".}
+\item{pvname}{Name of the plausible value column.}
 
 \item{groups}{Name of one or more factors used for grouping.}
 
-\item{final_weight}{Name of a column that contains final student weights.}
+\item{final_weights}{Name of a column that contains final student weights.}
 
 \item{brr_weights}{Names of the columns that contain BRR weights. If se is set to FALSE,
 this argument is redunant and thus the default value is "".}
 
-\item{school_id}{Name of a column with school ids.}
+\item{student_id}{Name of a column with student IDs.}
+
+\item{school_id}{Name of a column with school IDs.}
 }
 \value{
 Data frame with columns for each given factor and student's average performances with standard errors.

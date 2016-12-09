@@ -1,16 +1,21 @@
 #' Labels for shiny app's tooltips.
 #'
-#' @param point Object from a ggvis plot.
+#' @param subj Column with the subject name.
+#' @param cnt Column with the country label.
+#' @param isco Column with the isco label.
+#' @param avep Column with students' average performance.
+#' @param se Column with standard errors.
+#' @param pop Column with population share.
 #'
 #' @return html object for a tooltip.
 #'
 
-give_label <- function(point) {
-    src <- as.list(pisa[pisa$id == point$id, ])
-    return(paste("Subject:", src$subject, "<br />",
-          src$cnt_lab, "<br />",
-          src$isco_lab, "<br />",
-          "Mean (plausible values):", round(src$ave.perf, 2), "<br />",
-          "Standard error:", round(src$se, 2), "<br />",
-          "Population share:", paste0(round(src$pop.share/1000), "k")))
+giveLabel <- function(subj, cnt, isco, avep, se, pop) {
+    return(paste(paste("Subject:", subj), 
+		 cnt, 
+		 isco,
+		 paste("Mean (plausible values):", round(avep, 2)), 
+		 paste("Standard error:", round(se, 2)), 
+		 paste("Population share:", paste0(round(pop/1000), "k")),
+		 sep = "<br />"))
 }

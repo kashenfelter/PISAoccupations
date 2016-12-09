@@ -17,9 +17,9 @@ se_pv(data, pvname, groups, means_ppv, final_weight = "W_FSTUWT",
 \item{means_ppv}{Data frame returned by mean_ppvs function that contains average performances
 computed for each plausible value.}
 
-\item{final_weight}{Name of a column that contains final student weights.}
+\item{final_weight}{Name of a column with student's final weight.}
 
-\item{brr_weights}{Names of the columns that contain BRR weights.}
+\item{brr_weights}{Names of columns that contain BRR weights.}
 }
 \value{
 Vector that contains computed standard errors.
