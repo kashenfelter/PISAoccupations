@@ -1,6 +1,6 @@
 # Trends in PISA Occupations
 
-MI2 website: http://mi2.mini.pw.edu.pl:8080/SmarterPoland/TrendsInPISAOccupations/
+MI2 website: http://52.31.27.158/PISAoccupations/
 
 MTST website: https://mtstwr.shinyapps.io/PISAoccupationsApp/
 
