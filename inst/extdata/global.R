@@ -18,6 +18,7 @@ pisa %>%
 
 countryNames <- unique(pisa$cnt)
 names(countryNames) <- unique(pisa$cnt_lab)
+countryNames <- countryNames[order(names(countryNames))]
 
 iscoLabs <- as.character(1:9)
 names(iscoLabs) <- pisa %>%
