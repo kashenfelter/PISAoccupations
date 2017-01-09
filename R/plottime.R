@@ -27,8 +27,8 @@ plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
         theme_tufte(base_size = 8) +
         theme(legend.position = c(0.94, 0.92),
               axis.text.x = element_text(angle = 90),
-              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey"),
-              panel.grid = element_line(linetype = 2, size = 0.5, color = "grey")) +
+              panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey70"),
+              panel.grid = element_line(linetype = 2, size = 0.5, color = "grey70")) +
         scale_shape_manual(name = "Country", values = vals) +
         scale_color_manual(values = colors, guide = "none") +
         xlab("Year of study") +

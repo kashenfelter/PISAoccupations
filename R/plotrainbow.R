@@ -74,8 +74,8 @@ plotRainbow <- function(chosenSubject, countries, chosenYear) {
             theme(axis.ticks.x = element_blank(),
                   axis.text.x = element_blank(),
                   legend.position = "none",
-                  panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey"),
-                  panel.grid = element_line(linetype = 2, size = 0.5, color = "grey")#,
+                  panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey70"),
+                  panel.grid = element_line(linetype = 2, size = 0.5, color = "grey70")#,
 #                   axis.text = element_text(face = "bold")
 		  ) +
             xlab("") +
