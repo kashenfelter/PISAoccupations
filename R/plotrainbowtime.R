@@ -10,7 +10,8 @@
 plotRainbowTime <- function(csubject, cnts) {
   pisa %>%
     filter(subject == csubject,
-	   cnt %in% cnts) %>%
+           year %in% c("2006", "2009", "2012", "2015"),
+           cnt %in% cnts) %>%
   mutate(label = giveLabel(subject, cnt_lab, isco_lab,
 			   ave.perf, se, pop.share)) -> sdf
 

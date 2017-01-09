@@ -14,6 +14,7 @@ plotTime <- function(csubject, cnts, disp, isco_cats = as.character(1:9)) {
     vals <- c(16,2)
     pisa %>%
         filter(subject == csubject,
+               year %in% c("2006", "2009", "2012", "2015"),
                cnt %in% cnts,
                isco %in% c("cnt", isco_cats)) %>% 
         mutate(label = giveLabel(subject, cnt_lab, isco_lab,
