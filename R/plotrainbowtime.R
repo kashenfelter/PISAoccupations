@@ -19,7 +19,7 @@ plotRainbowTime <- function(csubject, cnts) {
     geom_line(size = 1) + 
     geom_point_interactive(aes(tooltip = label), size = 1.5) +
     theme_tufte(base_size = 10) +
-    theme(panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey70"),
+    theme(#panel.grid.major.y = element_line(linetype = 2, size = 0.5, color = "grey70"),
 	  panel.grid = element_line(linetype = 2, size = 0.5, color = "grey70")) +
     scale_color_manual(values = colors, guide = "none") +
     xlab("Year") +
